@@ -1,0 +1,3 @@
+/Users/davidlatorre/Documents/GitHub/CELESTE_PICO-8/macos/FreeGLUT/OpenGL/04-transforms/build/CMakeFiles/transforms.dir
+/Users/davidlatorre/Documents/GitHub/CELESTE_PICO-8/macos/FreeGLUT/OpenGL/04-transforms/build/CMakeFiles/edit_cache.dir
+/Users/davidlatorre/Documents/GitHub/CELESTE_PICO-8/macos/FreeGLUT/OpenGL/04-transforms/build/CMakeFiles/rebuild_cache.dir
