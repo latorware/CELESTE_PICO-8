@@ -109,10 +109,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/Cellar/cmake/3.22.3/share/cmake/Modules/Platform/Darwin.cmake"
   "/usr/local/Cellar/cmake/3.22.3/share/cmake/Modules/Platform/UnixPaths.cmake"
   "/usr/local/Cellar/cmake/3.22.3/share/cmake/Modules/SelectLibraryConfigurations.cmake"
-  "/usr/local/lib/cmake/glew/CopyImportedTargetProperties.cmake"
-  "/usr/local/lib/cmake/glew/glew-config.cmake"
-  "/usr/local/lib/cmake/glew/glew-targets-release.cmake"
-  "/usr/local/lib/cmake/glew/glew-targets.cmake"
   )
 
 # The corresponding makefile is:
