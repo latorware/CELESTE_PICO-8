@@ -43,7 +43,9 @@ CMakeFiles/transforms.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/os/availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
-  /usr/local/Cellar/freeglut/3.2.2/include/GL/glut.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl3.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gltypes.h \
+  /usr/local/Cellar/freeglut/3.2.2/include/GL/freeglut.h \
   /usr/local/Cellar/freeglut/3.2.2/include/GL/freeglut_std.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/stdlib.h \
@@ -80,6 +82,9 @@ CMakeFiles/transforms.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/malloc/_malloc.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_dev_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_mode_t.h \
+  /usr/local/Cellar/freeglut/3.2.2/include/GL/freeglut_ext.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/stdarg.h \
+  /usr/local/Cellar/freeglut/3.2.2/include/GL/freeglut_ucall.h \
   /Users/davidlatorre/Documents/GitHub/CELESTE_PICO-8/macos/FreeGLUT/OpenGL/04-transforms/Game.h \
   /Users/davidlatorre/Documents/GitHub/CELESTE_PICO-8/macos/FreeGLUT/OpenGL/04-transforms/Scene.h \
   /usr/local/include/glm/glm.hpp \
@@ -272,7 +277,6 @@ CMakeFiles/transforms.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stddef.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/wchar.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_mbstate_t.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/stdarg.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/_stdio.h \
