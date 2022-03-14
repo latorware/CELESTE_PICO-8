@@ -109,6 +109,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/Cellar/cmake/3.22.3/share/cmake/Modules/Platform/Darwin.cmake"
   "/usr/local/Cellar/cmake/3.22.3/share/cmake/Modules/Platform/UnixPaths.cmake"
   "/usr/local/Cellar/cmake/3.22.3/share/cmake/Modules/SelectLibraryConfigurations.cmake"
+  "/usr/local/lib/cmake/glfw3/glfw3Config.cmake"
+  "/usr/local/lib/cmake/glfw3/glfw3ConfigVersion.cmake"
+  "/usr/local/lib/cmake/glfw3/glfw3Targets-release.cmake"
+  "/usr/local/lib/cmake/glfw3/glfw3Targets.cmake"
   )
 
 # The corresponding makefile is:

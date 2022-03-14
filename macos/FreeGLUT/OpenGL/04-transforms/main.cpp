@@ -2,8 +2,9 @@
 #include <OpenGL/gl3.h>
 //#include <GL/glut.h>
 #include <GL/freeglut.h>
-
+#include <GLFW/glfw3.h>
 #include "Game.h"
+#include <iostream>
 
 
 //Remove console (only works in Visual Studio)
@@ -15,6 +16,7 @@
 
 static int prevTime;
 static Game game; // This object represents our whole game
+const char* a = "a"; 
 
 
 // If a key is pressed this callback is called
@@ -89,13 +91,19 @@ int main(int argc, char **argv)
 	// GLUT initialization
 	glutInit(&argc, argv);
 	glutInitContextVersion(3,2);
-	glutInitContextFlags(GLUT_CORE_PROFILE);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
 	//glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH | GLUT_3_2_CORE_PROFILE);
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(640, 480);
 
-	glutCreateWindow(argv[0]);
+	glfwCreateWindow(640, 480, a, 0, 0);
+
+
+	//glutCreateWindow(argv[0]);
 	glutDisplayFunc(drawCallback);
 	glutIdleFunc(idleCallback);
 	glutKeyboardFunc(keyboardDownCallback);
