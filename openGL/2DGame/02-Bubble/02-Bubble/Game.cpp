@@ -14,7 +14,7 @@ void Game::init()
 bool Game::update(int deltaTime)
 {
 	//scene.update(deltaTime);
-	menu.update(); 
+	menu.update(deltaTime); 
 
 
 	return bPlay;
