@@ -1,10 +1,7 @@
 # CELESTE_PICO-8
 
-## David
+## Otros proyectos para inspiración
 
-- Pantalles parells
-
-
-## Juan
-
-- Pantalles imparells 
+- https://github.com/carlotacb/Lemmings
+- https://github.com/Albertbm4/FIB-VJ-2D
+- https://github.com/PauVal99/The-Goonies
