@@ -1,11 +1,131 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu(ShaderProgram &shaderProgram)
+MainMenu::MainMenu()
 {
     currentTime = 0.0f;
 
-    scene.loadFromFile("images/menu.png", TEXTURE_PIXEL_FORMAT_RGBA);
-	background = Sprite::createSprite(glm::ivec2(512, 512), glm::vec2(float(1.f), float(1.f)), &scene, &shaderProgram);
+    menuGuiTexture.loadFromFile("images/menu.png", TEXTURE_PIXEL_FORMAT_RGBA);
+	MenuGui = Sprite::createSprite(glm::ivec2(512, 512), glm::vec2(float(1.f), float(1.f)), &menuGuiTexture, &texProgram);
+
+    spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
+	selector = Sprite::createSprite(glm::ivec2(8, 8), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &texProgram);
+	selector->setNumberAnimations(1);
+	selector->setAnimationSpeed(0, 1);
+	selector->addKeyframe(0, textureCoordinates);
+	selector->changeAnimation(0);
+	selector->setPosition(startButtonPosition);
+    actualPosition = START; 
+	selector->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+    menuGuiTexture.setWrapS(GL_CLAMP_TO_EDGE);
+	menuGuiTexture.setWrapT(GL_CLAMP_TO_EDGE);
+	menuGuiTexture.setMinFilter(GL_NEAREST);
+	menuGuiTexture.setMagFilter(GL_NEAREST);
+
+    spritesheet.setWrapS(GL_CLAMP_TO_EDGE);
+	spritesheet.setWrapT(GL_CLAMP_TO_EDGE);
+	spritesheet.setMinFilter(GL_NEAREST);
+	spritesheet.setMagFilter(GL_NEAREST);
 
 
+    projection = glm::ortho(0.f, float(SCREEN_WIDTH - 1), float(SCREEN_HEIGHT - 1), 0.f);
+
+}
+
+MainMenu::~MainMenu() {
+    if (selector != NULL) delete selector; 
+    if (MenuGui != NULL) delete MenuGui; 
+}
+
+
+MainMenu::update(int deltaTime) {
+    //currentTime += deltaTime;
+	//sprite->update(deltaTime);
+}
+
+MainMenu::setOptionArrowRight() {
+    if (actualPosition == START) {
+        selector -> setPosition(guideButtonPosition); 
+        actualPosition = GUIDE; 
+    }
+    else if (actualPosition == CREDITS) {
+        selector -> setPosition(exitButtonPosition); 
+        actualPosition = EXIT; 
+    }
+}
+
+MainMenu::setOptionArrowUp() {
+    if (actualPosition == CREDITS) {
+        selector -> setPosition(startButtonPosition); 
+        actualPosition = START; 
+    }
+    else if (actualPosition == EXIT) {
+        selector -> setPosition(guideButtonPosition); 
+        actualPosition = GUIDE; 
+    }
+}
+
+MainMenu::setOptionArrowDown() {
+    if (actualPosition == START) {
+        selector -> setPosition(creditsButtonPosition); 
+        actualPosition = CREDITS; 
+    }
+    else if (actualPosition == GUIDE) {
+        selector -> setPosition(exitButtonPosition); 
+        actualPosition = EXIT; 
+    }
+}
+
+MainMenu::setOptionArrowLeft() {
+    if (actualPosition == GUIDE) {
+        selector -> setPosition(startButtonPosition); 
+        actualPosition = START; 
+    }
+    else if (actualPosition == EXIT) {
+        selector -> setPosition(creditsButtonPosition); 
+        actualPosition = CREDITS; 
+    }
+}
+
+MainMenu::render() {
+    glm::mat4 modelview;
+
+	texProgram.use();
+	texProgram.setUniformMatrix4f("projection", projection);
+	texProgram.setUniform4f("color", 1.0f, 1.0f, 1.0f, 1.0f);
+	modelview = glm::mat4(1.0f);
+	texProgram.setUniformMatrix4f("modelview", modelview);
+	texProgram.setUniform2f("texCoordDispl", 0.f, 0.f);
+    MenuGui->render(); 
+    selector->render(); 
+}
+
+void MainMenu::initShaders()
+{
+	Shader vShader, fShader;
+
+	vShader.initFromFile(VERTEX_SHADER, "shaders/texture.vert");
+	if(!vShader.isCompiled())
+	{
+		cout << "Vertex Shader Error" << endl;
+		cout << "" << vShader.log() << endl << endl;
+	}
+	fShader.initFromFile(FRAGMENT_SHADER, "shaders/texture.frag");
+	if(!fShader.isCompiled())
+	{
+		cout << "Fragment Shader Error" << endl;
+		cout << "" << fShader.log() << endl << endl;
+	}
+	texProgram.init();
+	texProgram.addShader(vShader);
+	texProgram.addShader(fShader);
+	texProgram.link();
+	if(!texProgram.isLinked())
+	{
+		cout << "Shader Linking Error" << endl;
+		cout << "" << texProgram.log() << endl << endl;
+	}
+	texProgram.bindFragmentOutput("outColor");
+	vShader.free();
+	fShader.free();
 }
