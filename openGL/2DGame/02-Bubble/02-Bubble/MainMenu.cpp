@@ -14,6 +14,16 @@ MainMenu::~MainMenu() {
 void MainMenu::init() {
     currentTime = 0.0f;
 
+	menuGuiTexture.setWrapS(GL_CLAMP_TO_EDGE);
+	menuGuiTexture.setWrapT(GL_CLAMP_TO_EDGE);
+	menuGuiTexture.setMinFilter(GL_NEAREST);
+	menuGuiTexture.setMagFilter(GL_NEAREST); 
+
+    spritesheet.setWrapS(GL_CLAMP_TO_EDGE);
+	spritesheet.setWrapT(GL_CLAMP_TO_EDGE);
+	spritesheet.setMinFilter(GL_NEAREST);
+	spritesheet.setMagFilter(GL_NEAREST);
+
     menuGuiTexture.loadFromFile("images/menu.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	MenuGui = Sprite::createSprite(glm::ivec2(512, 512), glm::vec2(float(1.f), float(1.f)), &menuGuiTexture, &texProgram);
 
@@ -27,24 +37,15 @@ void MainMenu::init() {
     actualPosition = START; 
 	selector->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 
-    menuGuiTexture.setWrapS(GL_CLAMP_TO_EDGE);
-	menuGuiTexture.setWrapT(GL_CLAMP_TO_EDGE);
-	menuGuiTexture.setMinFilter(GL_NEAREST);
-	menuGuiTexture.setMagFilter(GL_NEAREST);
-
-    spritesheet.setWrapS(GL_CLAMP_TO_EDGE);
-	spritesheet.setWrapT(GL_CLAMP_TO_EDGE);
-	spritesheet.setMinFilter(GL_NEAREST);
-	spritesheet.setMagFilter(GL_NEAREST);
-
 
     projection = glm::ortho(0.f, float(SCREEN_WIDTH - 1), float(SCREEN_HEIGHT - 1), 0.f);
+	initShaders(); 
 }
 
 
 void MainMenu::update(int deltaTime) {
-    //currentTime += deltaTime;
-	//sprite->update(deltaTime);
+    currentTime += deltaTime;
+	selector->update(deltaTime);
 }
 
 void MainMenu::setOptionArrowRight() {
