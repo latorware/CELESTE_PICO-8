@@ -11,7 +11,11 @@ public:
 	MainMenu(); 
 	~MainMenu();
 
-	void init(); 
+	//virtual void init(); 
+	virtual void render(); 
+	virtual void update(int deltaTime);
+
+
 
 private: 
 
