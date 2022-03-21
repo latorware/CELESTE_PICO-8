@@ -2,6 +2,15 @@
 
 MainMenu::MainMenu()
 {
+
+}
+
+MainMenu::~MainMenu() {
+    if (selector != NULL) delete selector; 
+    if (MenuGui != NULL) delete MenuGui; 
+}
+
+void MainMenu::init() {
     currentTime = 0.0f;
 
     menuGuiTexture.loadFromFile("images/menu.png", TEXTURE_PIXEL_FORMAT_RGBA);
@@ -29,21 +38,15 @@ MainMenu::MainMenu()
 
 
     projection = glm::ortho(0.f, float(SCREEN_WIDTH - 1), float(SCREEN_HEIGHT - 1), 0.f);
-
-}
-
-MainMenu::~MainMenu() {
-    if (selector != NULL) delete selector; 
-    if (MenuGui != NULL) delete MenuGui; 
 }
 
 
-MainMenu::update(int deltaTime) {
+void MainMenu::update(int deltaTime) {
     //currentTime += deltaTime;
 	//sprite->update(deltaTime);
 }
 
-MainMenu::setOptionArrowRight() {
+void MainMenu::setOptionArrowRight() {
     if (actualPosition == START) {
         selector -> setPosition(guideButtonPosition); 
         actualPosition = GUIDE; 
@@ -54,7 +57,7 @@ MainMenu::setOptionArrowRight() {
     }
 }
 
-MainMenu::setOptionArrowUp() {
+void MainMenu::setOptionArrowUp() {
     if (actualPosition == CREDITS) {
         selector -> setPosition(startButtonPosition); 
         actualPosition = START; 
@@ -65,7 +68,7 @@ MainMenu::setOptionArrowUp() {
     }
 }
 
-MainMenu::setOptionArrowDown() {
+void MainMenu::setOptionArrowDown() {
     if (actualPosition == START) {
         selector -> setPosition(creditsButtonPosition); 
         actualPosition = CREDITS; 
@@ -76,7 +79,7 @@ MainMenu::setOptionArrowDown() {
     }
 }
 
-MainMenu::setOptionArrowLeft() {
+void MainMenu::setOptionArrowLeft() {
     if (actualPosition == GUIDE) {
         selector -> setPosition(startButtonPosition); 
         actualPosition = START; 
@@ -87,7 +90,7 @@ MainMenu::setOptionArrowLeft() {
     }
 }
 
-MainMenu::render() {
+void MainMenu::render() {
     glm::mat4 modelview;
 
 	texProgram.use();

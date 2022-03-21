@@ -2,8 +2,7 @@
 #define _MAINMENU_INCLUDE
 
 
-#include "Scene.h"
-
+#include "Sprite.h"
 
 
 class MainMenu {
@@ -11,7 +10,7 @@ public:
 	MainMenu(ShaderProgram &shaderProgram); 
 	~MainMenu();
 
-	//void init(); 
+	void init(); 
 	void render(); 
 	void update(int deltaTime);
 	void setOptionArrowLeft(); 
