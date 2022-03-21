@@ -8,18 +8,23 @@
 
 class MainMenu : public Scene {
 public:
-	MainMenu(); 
+	MainMenu(ShaderProgram &shaderProgram); 
 	~MainMenu();
 
 	//virtual void init(); 
 	virtual void render(); 
 	virtual void update(int deltaTime);
-
-
+	void setOption(int option); 
 
 private: 
+	Sprite* selector;
+	Sprite* background; 
+	float currentTime;
+	Texture spritesheet;
+	glm::mat4 projection;
+	Texture scene; 
 
 };
 
 
-#endif //
+#endif
