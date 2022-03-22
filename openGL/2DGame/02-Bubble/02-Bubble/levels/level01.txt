@@ -1,5 +1,0 @@
-TILEMAP
-16 16 							-- Size of tile map in tiles
-32 32 							-- Tile size & block size
-images/repaired_sheet.png 	-- Tilesheet
-16 16 								-- Number of tiles in tilesheet
