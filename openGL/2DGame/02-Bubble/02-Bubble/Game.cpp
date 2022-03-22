@@ -9,6 +9,7 @@ void Game::init()
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 	//scene.init();
 	menu.init(); 
+	actualScene = 0; 
 }
 
 bool Game::update(int deltaTime)
@@ -41,6 +42,18 @@ void Game::keyReleased(int key)
 
 void Game::specialKeyPressed(int key)
 {
+	if (key == GLUT_KEY_DOWN && actualScene== 0) { //scroll menu down
+		menu.setOptionArrowDown(); 
+	}
+	if (key == GLUT_KEY_UP && actualScene == 0) { //scroll menu down
+		menu.setOptionArrowUp();
+	}
+	if (key == GLUT_KEY_RIGHT && actualScene == 0) { //scroll menu down
+		menu.setOptionArrowRight();
+	}
+	if (key == GLUT_KEY_LEFT && actualScene == 0) { //scroll menu down
+		menu.setOptionArrowLeft();
+	}
 	specialKeys[key] = true;
 }
 
