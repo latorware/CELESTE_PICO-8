@@ -16,18 +16,16 @@ class Scene
 {
 
 public:
-	Scene();
-	~Scene();
 
-	void init();
-	void update(int deltaTime);
-	void render();
+	void virtual init();
+	void virtual update(int deltaTime);
+	void virtual render();
 
-private:
+protected:
 	void initShaders();
 
-private:
-	TileMap *map, *background;
+protected:
+	//TileMap *map, *background;
 	Player *player;
 	ShaderProgram texProgram;
 	float currentTime;
