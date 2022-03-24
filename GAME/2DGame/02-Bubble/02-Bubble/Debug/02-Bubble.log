@@ -1,4 +1,12 @@
-﻿  MapScene.cpp
+﻿  Game.cpp
+  MainMenu.cpp
+  MapScene.cpp
+  Player.cpp
+  Scene.cpp
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(12,1): warning C4005: 'INIT_PLAYER_Y_TILES': redefinición de macro
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.h(12): message : vea la definición anterior de 'INIT_PLAYER_Y_TILES'
+  main.cpp
+  Generando código...
 SOIL.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'vc100.pdb' con 'SOIL.lib(image_DXT.obj)' o en 'C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 SOIL.lib(image_helper.obj) : warning LNK4099: no se encontró PDB 'vc100.pdb' con 'SOIL.lib(image_helper.obj)' o en 'C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 SOIL.lib(SOIL.obj) : warning LNK4099: no se encontró PDB 'vc100.pdb' con 'SOIL.lib(SOIL.obj)' o en 'C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; se vinculará el objeto sin tener en cuenta información de depuración

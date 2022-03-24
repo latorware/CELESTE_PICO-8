@@ -26,7 +26,7 @@ protected:
 
 protected:
 	//TileMap *map, *background;
-	Player *player;
+	//Player *player;
 	ShaderProgram texProgram;
 	float currentTime;
 	glm::mat4 projection;
