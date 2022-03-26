@@ -1,11 +1,19 @@
 # CELESTE_PICO-8
 
-## Preguntes pel profe
+## Coses que falten
 
-- Es realment el menu subclasse de Scene? Ja que nomes fa el render de una imatge
+- Arreglar limits entre mapa i personatge
 
-## Otros proyectos para inspiración
+- Habilitats personatge. 
 
-- https://github.com/carlotacb/Lemmings
-- https://github.com/Albertbm4/FIB-VJ-2D
-- https://github.com/PauVal99/The-Goonies
+- Fer la neu i núvols. 
+
+- Música. 
+
+- Transicions entre mapes. 
+
+- Credits. 
+
+- Intruccions. 
+
+- Etiqueta dels metres d'escalat de la muntanya que surt quan progresses a un nou level
