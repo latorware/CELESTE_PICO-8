@@ -40,7 +40,9 @@ void Game::keyPressed(int key)
 	if (key == 13) // Enter code
 		actualScene = 1;
 	if (key == 27) // Escape code
-		bPlay = false;
+		if (actualScene == 0) // Si estamos en una pantalla que no es el menú principal, volvemos a el
+			bPlay = false;
+		else actualScene = 0; // Si estamos en el menú principal, cerramos el juego
 	if (key == 49) // Number 1 code
 		MScene.init(1);
 	if (key == 50) // Number 2 code
