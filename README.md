@@ -2,56 +2,56 @@
 
 ## Coses que falten
 
-- Fer sprite molles. 
+- Fer sprite molles. Juan
 
-- Fer sprite maduixes no voladores. 
+- Fer sprite maduixes no voladores. David
 
-- Fer sprite maduixes voladores. 
+- Sprite nuvols.            Juan
 
-- Fer sprite blocs que despareixen. 
+- Fer sprite maduixes voladores. David
 
-- Fer sprite. 
+- Fer sprite blocs que despareixen. David
 
 - Main menu convertir a tilemap. 
 
-- Fer instruccions. 
+- Fer instruccions.         Juan
 
-- Fer credits. 
+- Fer credits.              David
 
-- Implementar boto exit. 
+- Implementar boto exit. David
 
-- Transicions entre mapes (i sprite mestres muntanya). 
+- Transicions entre mapes (i sprite mestres muntanya). David
 
-- Sprite nieve. 
+- Sprite nieve. Juan
 
-- Sprite nuves. 
+- Sprite nuves. Juan
 
-- Modificar jump. 
+- Modificar jump. David
 
 - Limits jugador mapa. 
 
-- Fer dash. 
+- Fer dash. Juan
 
 - Classe map. 
 
-- funcio vibrar.
+- funcio vibrar. David
 
-- Sprite punxes matar.
+- Sprite punxes matar. Juan
 
-- Climb. 
+- Climb. David
 
-- Sprites correr. 
+- Sprites correr. Juan
 
-- Sprite contador. 
+- Sprite contador. David
 
-- Tecla invulnerabilitat. 
+- Tecla invulnerabilitat. Juan
 
-- Tecla dash infinit. 
+- Tecla dash infinit. David
 
 - Tecla velocitat joc. 
 
-- Musica. 
+- Musica.       David
 
-- So efectes especials. 
+- So efectes especials. David
 
 - Totes altres animacions. 
