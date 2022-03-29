@@ -2,18 +2,56 @@
 
 ## Coses que falten
 
-- Arreglar limits entre mapa i personatge
+- Fer sprite molles. 
 
-- Habilitats personatge. 
+- Fer sprite maduixes no voladores. 
 
-- Fer la neu i núvols. 
+- Fer sprite maduixes voladores. 
 
-- Música. 
+- Fer sprite blocs que despareixen. 
 
-- Transicions entre mapes. 
+- Fer sprite. 
 
-- Credits. 
+- Main menu convertir a tilemap. 
 
-- Intruccions. 
+- Fer instruccions. 
 
-- Etiqueta dels metres d'escalat de la muntanya que surt quan progresses a un nou level
+- Fer credits. 
+
+- Implementar boto exit. 
+
+- Transicions entre mapes (i sprite mestres muntanya). 
+
+- Sprite nieve. 
+
+- Sprite nuves. 
+
+- Modificar jump. 
+
+- Limits jugador mapa. 
+
+- Fer dash. 
+
+- Classe map. 
+
+- funcio vibrar.
+
+- Sprite punxes matar.
+
+- Climb. 
+
+- Sprites correr. 
+
+- Sprite contador. 
+
+- Tecla invulnerabilitat. 
+
+- Tecla dash infinit. 
+
+- Tecla velocitat joc. 
+
+- Musica. 
+
+- So efectes especials. 
+
+- Totes altres animacions. 
