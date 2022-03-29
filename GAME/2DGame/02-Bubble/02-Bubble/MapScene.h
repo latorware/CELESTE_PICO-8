@@ -20,7 +20,7 @@ class MapScene : public Scene
 
 		void init(int level);
 		void update(int deltaTime);
-		void render();
+		void render();	
 
 	private:
 		TileMap *map, *background;
