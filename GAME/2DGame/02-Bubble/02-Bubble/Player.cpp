@@ -62,39 +62,24 @@ void Player::update(int deltaTime)
 		deixatClicarSalt = true; 
 	}
 
-
-	if(Game::instance().getSpecialKey(GLUT_KEY_LEFT))
+	if (deixatClicarSalt && Game::instance().getSpecialKey(GLUT_KEY_UP)) //comprovem si es vol fer salt de CLIMB
 	{
-		if(sprite->animation() != MOVE_LEFT)
-			sprite->changeAnimation(MOVE_LEFT);
+		//comprovem si estem al costat de mur esquerre
 		posPlayer.x -= 2;
-		if(map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
+		if (map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
 		{
-			if (deixatClicarSalt && Game::instance().getSpecialKey(GLUT_KEY_UP)) //comprovem si es vol fer salt de CLIMB
-			{
-				//fem el climb
-				posPlayer.x += 2;
-				deixatClicarSalt = false;
-				bJumping = true;
-				jumpAngle = 0;
-				startY = posPlayer.y;
-			}
-			else 
-			{
-				posPlayer.x += 2;
-				sprite->changeAnimation(STAND_LEFT);
-			}
-
+			//fem el climb
+			posPlayer.x += 2;
+			deixatClicarSalt = false;
+			bJumping = true;
+			jumpAngle = 0;
+			startY = posPlayer.y;
 		}
-	}
-	else if(Game::instance().getSpecialKey(GLUT_KEY_RIGHT))
-	{
-		if(sprite->animation() != MOVE_RIGHT)
-			sprite->changeAnimation(MOVE_RIGHT);
-		posPlayer.x += 2;
-		if(map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)))
+		//altrament comprovem si estem al costat de mur dret
+		else
 		{
-			if (deixatClicarSalt && Game::instance().getSpecialKey(GLUT_KEY_UP)) //comprovem si es vol fer salt de CLIMB
+			posPlayer.x += 4;
+			if (map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)))
 			{
 				//fem el climb
 				posPlayer.x -= 2;
@@ -105,9 +90,34 @@ void Player::update(int deltaTime)
 			}
 			else
 			{
+				posPlayer.x -= 2; 
+			}
+		}
+		
+	}
+
+
+	if(Game::instance().getSpecialKey(GLUT_KEY_LEFT))
+	{
+		if(sprite->animation() != MOVE_LEFT)
+			sprite->changeAnimation(MOVE_LEFT);
+		posPlayer.x -= 2;
+		if(map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
+		{
+				posPlayer.x += 2;
+				sprite->changeAnimation(STAND_LEFT);
+
+		}
+	}
+	else if(Game::instance().getSpecialKey(GLUT_KEY_RIGHT))
+	{
+		if(sprite->animation() != MOVE_RIGHT)
+			sprite->changeAnimation(MOVE_RIGHT);
+		posPlayer.x += 2;
+		if(map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)))
+		{
 				posPlayer.x -= 2;
 				sprite->changeAnimation(STAND_RIGHT);
-			}
 		}
 	}
 	else
@@ -121,7 +131,7 @@ void Player::update(int deltaTime)
 	if(bJumping)
 	{
 		jumpAngle += JUMP_ANGLE_STEP;
-		if(jumpAngle == 180)
+		if(jumpAngle >= 180)
 		{
 			bJumping = false;
 			//posPlayer.y = startY;
