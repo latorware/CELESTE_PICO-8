@@ -6,6 +6,8 @@
 
 - CollisionMoveUp i lligarlo amb Jugador.cc (que el jugador no atravessi els murs cap a dalt, i acabi de fer el salt pero cap baix)
 
+- Modificar Jump. 
+
 ## Coses que falten
 
 - Fer sprite molles. Juan
@@ -32,7 +34,7 @@
 
 - Sprite nuves. Juan
 
-- Modificar jump. David
+- <del>Modificar jump. David</del>
 
 - Limits jugador mapa. 
 
@@ -44,7 +46,7 @@
 
 - Sprite punxes matar. Juan
 
-- Climb. David
+- <del>Climb. David</del>
 
 - Sprites correr. Juan
 
