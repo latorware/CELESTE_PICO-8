@@ -124,7 +124,8 @@ void Player::update(int deltaTime)
 		if(jumpAngle == 180)
 		{
 			bJumping = false;
-			posPlayer.y = startY;
+			//posPlayer.y = startY;
+
 		}
 		else
 		{
@@ -133,7 +134,10 @@ void Player::update(int deltaTime)
 			if (map->collisionMoveUp(posPlayer, glm::ivec2(32, 32), &posPlayer.y)) //comprovar collisionMoveUp
 			{
 				posPlayer.y = posicioAnterior; 
-				bJumping = false; 
+				//trobar angle
+				jumpAngle = 90; 
+				startY = posPlayer.y + JUMP_HEIGHT; 
+				//bJumping = false; 
 			}
 			else 
 			{
