@@ -57,7 +57,7 @@ void Player::update(int deltaTime)
 {
 	sprite->update(deltaTime);
 
-	if (!Game::instance().getSpecialKey(GLUT_KEY_UP)) 
+	if (!Game::instance().getSpecialKey(GLUT_KEY_UP)) //per que no es produeixi loop de salts
 	{
 		deixatClicarSalt = true; 
 	}
@@ -70,8 +70,21 @@ void Player::update(int deltaTime)
 		posPlayer.x -= 2;
 		if(map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
 		{
-			posPlayer.x += 2;
-			sprite->changeAnimation(STAND_LEFT);
+			if (deixatClicarSalt && Game::instance().getSpecialKey(GLUT_KEY_UP)) //comprovem si es vol fer salt de CLIMB
+			{
+				//fem el climb
+				posPlayer.x += 2;
+				deixatClicarSalt = false;
+				bJumping = true;
+				jumpAngle = 0;
+				startY = posPlayer.y;
+			}
+			else 
+			{
+				posPlayer.x += 2;
+				sprite->changeAnimation(STAND_LEFT);
+			}
+
 		}
 	}
 	else if(Game::instance().getSpecialKey(GLUT_KEY_RIGHT))
@@ -81,8 +94,20 @@ void Player::update(int deltaTime)
 		posPlayer.x += 2;
 		if(map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)))
 		{
-			posPlayer.x -= 2;
-			sprite->changeAnimation(STAND_RIGHT);
+			if (deixatClicarSalt && Game::instance().getSpecialKey(GLUT_KEY_UP)) //comprovem si es vol fer salt de CLIMB
+			{
+				//fem el climb
+				posPlayer.x -= 2;
+				deixatClicarSalt = false;
+				bJumping = true;
+				jumpAngle = 0;
+				startY = posPlayer.y;
+			}
+			else
+			{
+				posPlayer.x -= 2;
+				sprite->changeAnimation(STAND_RIGHT);
+			}
 		}
 	}
 	else
