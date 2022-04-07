@@ -25,6 +25,7 @@ void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 	spritesheet.setMagFilter(GL_NEAREST);
 
 	bJumping = false;
+	deixatClicarSalt = true; 
 	spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	sprite = Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &shaderProgram);
 	sprite->setNumberAnimations(1);
@@ -55,6 +56,13 @@ void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 void Player::update(int deltaTime)
 {
 	sprite->update(deltaTime);
+
+	if (!Game::instance().getSpecialKey(GLUT_KEY_UP)) 
+	{
+		deixatClicarSalt = true; 
+	}
+
+
 	if(Game::instance().getSpecialKey(GLUT_KEY_LEFT))
 	{
 		if(sprite->animation() != MOVE_LEFT)
@@ -102,11 +110,12 @@ void Player::update(int deltaTime)
 	}
 	else
 	{
-		posPlayer.y += FALL_STEP;
+		posPlayer.y += FALL_STEP;  //UN COP SACABA EL SALT, la caiguda es fa lineal ja que es va restant el fall_step
 		if(map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
 		{
-			if(Game::instance().getSpecialKey(GLUT_KEY_UP))
+			if(Game::instance().getSpecialKey(GLUT_KEY_UP) && deixatClicarSalt)
 			{
+				deixatClicarSalt = false; 
 				bJumping = true;
 				jumpAngle = 0;
 				startY = posPlayer.y;
