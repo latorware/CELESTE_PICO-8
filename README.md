@@ -1,5 +1,11 @@
 # CELESTE_PICO-8
 
+## Coses fetes
+
+- Climb. 
+
+- CollisionMoveUp i lligarlo amb Jugador.cc (que el jugador no atravessi els murs cap a dalt, i acabi de fer el salt pero cap baix)
+
 ## Coses que falten
 
 - Fer sprite molles. Juan
