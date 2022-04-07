@@ -1,9 +1,10 @@
 #pragma once
 
 #include "Scene.h"
-
+#include <vector>
 #include "TileMap.h"
 #include "Player.h"
+#include "Sprite.h"
 
 #define SCREEN_X 16
 #define SCREEN_Y 16
@@ -25,4 +26,7 @@ class MapScene : public Scene
 	private:
 		TileMap *map, *background;
 		Player* player;
+		vector<Sprite *> sprites; 
+		vector<Texture> textures; 
+		int currentLevel, movementAngle; 
 };

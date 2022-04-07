@@ -1,5 +1,7 @@
 # CELESTE_PICO-8
 
+<b>Recordar treure la AllocConsole(serveix per debugejar couts) a l'hora d'entregar</b>
+
 ## Coses fetes
 
 - Climb. 
