@@ -24,8 +24,9 @@ public:
 private:
 	bool bJumping;
 	bool deixatClicarSalt; 
+	bool climbDretEnProces, climbEsquerreEnProces;
 	glm::ivec2 tileMapDispl, posPlayer;
-	int jumpAngle, startY;
+	int jumpAngle, startY; 
 	Texture spritesheet;
 	Sprite *sprite;
 	TileMap *map;

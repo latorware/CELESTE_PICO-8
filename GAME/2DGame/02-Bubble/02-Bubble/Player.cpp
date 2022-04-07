@@ -26,6 +26,8 @@ void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 
 	bJumping = false;
 	deixatClicarSalt = true; 
+	climbDretEnProces = false; 
+	climbEsquerreEnProces = false; 
 	spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	sprite = Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &shaderProgram);
 	sprite->setNumberAnimations(1);
@@ -74,6 +76,7 @@ void Player::update(int deltaTime)
 			bJumping = true;
 			jumpAngle = 0;
 			startY = posPlayer.y;
+			climbDretEnProces = true; 
 		}
 		//altrament comprovem si estem al costat de mur dret
 		else
@@ -87,6 +90,7 @@ void Player::update(int deltaTime)
 				bJumping = true;
 				jumpAngle = 0;
 				startY = posPlayer.y;
+				climbEsquerreEnProces = true; 
 			}
 			else
 			{
@@ -97,7 +101,7 @@ void Player::update(int deltaTime)
 	}
 
 
-	if(Game::instance().getSpecialKey(GLUT_KEY_LEFT))
+	if(Game::instance().getSpecialKey(GLUT_KEY_LEFT) || climbEsquerreEnProces)
 	{
 		if(sprite->animation() != MOVE_LEFT)
 			sprite->changeAnimation(MOVE_LEFT);
@@ -109,7 +113,7 @@ void Player::update(int deltaTime)
 
 		}
 	}
-	else if(Game::instance().getSpecialKey(GLUT_KEY_RIGHT))
+	else if(Game::instance().getSpecialKey(GLUT_KEY_RIGHT) || climbDretEnProces)
 	{
 		if(sprite->animation() != MOVE_RIGHT)
 			sprite->changeAnimation(MOVE_RIGHT);
@@ -152,7 +156,18 @@ void Player::update(int deltaTime)
 			else 
 			{
 				if (jumpAngle > 90)
+				{
 					bJumping = !map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y);
+					if (climbDretEnProces)
+					{
+						climbDretEnProces = false; 
+					}
+					if (climbEsquerreEnProces)
+					{
+						climbEsquerreEnProces = false; 
+					}
+				}
+					
 			}
 		}
 	}
