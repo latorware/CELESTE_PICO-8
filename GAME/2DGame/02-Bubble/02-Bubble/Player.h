@@ -23,6 +23,7 @@ public:
 	
 private:
 	bool bJumping;
+	bool dashCarregat;
 	bool deixatClicarSalt; 
 	bool climbDretEnProces, climbEsquerreEnProces;
 	glm::ivec2 tileMapDispl, posPlayer;

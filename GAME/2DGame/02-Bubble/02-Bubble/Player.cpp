@@ -25,6 +25,7 @@ void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 	spritesheet.setMagFilter(GL_NEAREST);
 
 	bJumping = false;
+	dashCarregat == true;
 	deixatClicarSalt = true; 
 	climbDretEnProces = false; 
 	climbEsquerreEnProces = false; 
@@ -49,7 +50,7 @@ void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 		sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(12.f / 16.f), float(0.f / 16.f)));*/
 		
 	sprite->changeAnimation(0);
-	sprite->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+	//sprite->setColor(glm::vec4(0.f, 0.f, 0.f, 0.f));
 	tileMapDispl = tileMapPos;
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y)));
 	
@@ -59,12 +60,12 @@ void Player::update(int deltaTime)
 {
 	sprite->update(deltaTime);
 
-	if (!Game::instance().getSpecialKey(GLUT_KEY_UP)) //per que no es produeixi loop de salts
+	if (!Game::instance().getKey(99)) //per que no es produeixi loop de salts
 	{
 		deixatClicarSalt = true; 
 	}
 
-	if (deixatClicarSalt && Game::instance().getSpecialKey(GLUT_KEY_UP)) //comprovem si es vol fer salt de CLIMB
+	if (deixatClicarSalt && Game::instance().getKey(99)) //comprovem si es vol fer salt de CLIMB
 	{
 		//comprovem si estem al costat de mur esquerre
 		posPlayer.x -= 2;
@@ -112,7 +113,7 @@ void Player::update(int deltaTime)
 				sprite->changeAnimation(STAND_LEFT);
 
 		}
-	}
+	} 
 	else if(Game::instance().getSpecialKey(GLUT_KEY_RIGHT) || climbDretEnProces)
 	{
 		if(sprite->animation() != MOVE_RIGHT)
@@ -176,7 +177,7 @@ void Player::update(int deltaTime)
 		posPlayer.y += FALL_STEP;  //UN COP SACABA EL SALT, la caiguda es fa lineal ja que es va restant el fall_step
 		if(map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
 		{
-			if(Game::instance().getSpecialKey(GLUT_KEY_UP) && deixatClicarSalt)
+			if(Game::instance().getKey(99) && deixatClicarSalt)
 			{
 				deixatClicarSalt = false; 
 				bJumping = true;
@@ -184,6 +185,12 @@ void Player::update(int deltaTime)
 				startY = posPlayer.y;
 			}
 		}
+	}
+
+	if (Game::instance().getKey(99) && dashCarregat) {
+		//dashCarregat = false;
+		sprite->setColor(glm::vec4(0.f, 0.f, 0.f, 1.f));
+		render();
 	}
 	
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y)));
