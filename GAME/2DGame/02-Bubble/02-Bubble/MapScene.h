@@ -28,7 +28,7 @@ class MapScene : public Scene
 		Player* player;
 		vector<Sprite *> sprites; 
 		vector<Texture> textures; 
-		vector<pair<bool, float>> spritesClicats;
+		vector<pair<bool, float>> spritesClicats; //si sa clicat sprite (jugador a passat per sobre) i en quin instant
 		vector<bool> spriteShouldBeRendered; 
 		int currentLevel, movementAngle; 
 };
