@@ -41,7 +41,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.3110
           [
               _Ty=bool
           ]
-C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.cpp(71): message : see reference to function template instantiation 'void std::vector<std::pair<bool,float>,std::allocator<std::pair<bool,float>>>::emplace_back<bool,int>(bool &&,int &&)' being compiled
+C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.cpp(95): message : see reference to function template instantiation 'void std::vector<std::pair<bool,float>,std::allocator<std::pair<bool,float>>>::emplace_back<bool,int>(bool &&,int &&)' being compiled
 SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; linking object as if no debug info
 SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; linking object as if no debug info
 SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; linking object as if no debug info
