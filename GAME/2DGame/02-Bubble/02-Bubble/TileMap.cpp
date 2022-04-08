@@ -8,19 +8,20 @@
 using namespace std;
 
 
-TileMap* TileMap::createTileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell)
+TileMap* TileMap::createTileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>& spriteShouldBeRenderedd)
 {
-	TileMap* map = new TileMap(levelFile, minCoords, program, levell);
+	TileMap* map = new TileMap(levelFile, minCoords, program, levell, spriteShouldBeRenderedd);
 
 	return map;
 }
 
 
-TileMap::TileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell)
+TileMap::TileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>& spriteShouldBeRenderedd)
 {
 	loadLevel(levelFile);
 	prepareArrays(minCoords, program);
-	level = levell; 
+	level = levell;
+	spriteShouldBeRendered = spriteShouldBeRenderedd;
 
 }
 
@@ -222,12 +223,6 @@ bool TileMap::collisionMoveUp(const glm::ivec2& pos, const glm::ivec2& size, int
 
 	return false;
 }
-
-
-
-
-
-
 
 
 
