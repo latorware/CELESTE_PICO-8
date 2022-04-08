@@ -14,29 +14,26 @@ class Player
 {
 
 public:
-	void init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram, MapScene &mapScenee);
+	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram);
 	void update(int deltaTime);
 	void render();
-	
-	void setTileMap(TileMap *tileMap);
-	void setPosition(const glm::vec2 &pos);
-	glm::ivec2 getPositionPlayer(); 
-	
+
+	void setTileMap(TileMap* tileMap);
+	void setPosition(const glm::vec2& pos);
+	glm::ivec2 getPositionPlayer();
+
 private:
 	bool bJumping;
 	bool dashCarregat;
-	bool deixatClicarSalt; 
+	bool deixatClicarSalt;
 	bool climbDretEnProces, climbEsquerreEnProces;
 	glm::ivec2 tileMapDispl, posPlayer;
-	int jumpAngle, startY; 
+	int jumpAngle, startY;
 	Texture spritesheet;
-	Sprite *sprite;
-	TileMap *map;
-	MapScene mapScene; 
+	Sprite* sprite;
+	TileMap* map;
 
 };
 
 
 #endif // _PLAYER_INCLUDE
-
-
