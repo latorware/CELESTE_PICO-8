@@ -58,8 +58,8 @@ void Game::keyPressed(int key)
 		MScene.init(5);
 	if (key == 54) // Number 6 code
 		MScene.init(6);
-	/*if (key == 55) // Number 7 code
-		MScene.init(7);*/
+	if (key == 55) // Number 7 code
+		MScene.init(7);
 	if (key == 56) // Number 8 code
 		MScene.init(8);
 	if (key == 57) // Number 9 code
