@@ -78,8 +78,8 @@ void MapScene::init(int level) {
 	spriteShouldBeRendered.clear();
 
 
-	map = TileMap::createTileMap("levels/level_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, level, spriteShouldBeRendered);
-	background = TileMap::createTileMap("levels/background_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, spriteShouldBeRendered);
+	map = TileMap::createTileMap("levels/level_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, level, &spriteShouldBeRendered);
+	background = TileMap::createTileMap("levels/background_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, &spriteShouldBeRendered);
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
 	player->setTileMap(map);
@@ -548,7 +548,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC1LVL4 - OFFSET)) && (y <= (POSYBLOC1LVL4 + OFFSET))) && ((x >= (POSXBLOC1LVL4 - OFFSET)) && (x <= (POSXBLOC1LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC1LVL4-16) - OFFSET)) && (y <= ((POSYBLOC1LVL4-16) + OFFSET))) && ((x >= (POSXBLOC1LVL4 - OFFSET)) && (x <= (POSXBLOC1LVL4 + OFFSET)))))
 			{
 				spritesClicats[1].first = true;
 				spritesClicats[1].second = currentTime;
@@ -591,7 +591,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC2LVL4 - OFFSET)) && (y <= (POSYBLOC2LVL4 + OFFSET))) && ((x >= (POSXBLOC2LVL4 - OFFSET)) && (x <= (POSXBLOC2LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC2LVL4-16) - OFFSET)) && (y <= ((POSYBLOC2LVL4-16) + OFFSET))) && ((x >= (POSXBLOC2LVL4 - OFFSET)) && (x <= (POSXBLOC2LVL4 + OFFSET)))))
 			{
 				spritesClicats[2].first = true;
 				spritesClicats[2].second = currentTime;
@@ -631,7 +631,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC3LVL4 - OFFSET)) && (y <= (POSYBLOC3LVL4 + OFFSET))) && ((x >= (POSXBLOC3LVL4 - OFFSET)) && (x <= (POSXBLOC3LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC3LVL4-16) - OFFSET)) && (y <= ((POSYBLOC3LVL4-16) + OFFSET))) && ((x >= (POSXBLOC3LVL4 - OFFSET)) && (x <= (POSXBLOC3LVL4 + OFFSET)))))
 			{
 				spritesClicats[3].first = true;
 				spritesClicats[3].second = currentTime;
@@ -671,7 +671,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC4LVL4 - OFFSET)) && (y <= (POSYBLOC4LVL4 + OFFSET))) && ((x >= (POSXBLOC4LVL4 - OFFSET)) && (x <= (POSXBLOC4LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC4LVL4-16) - OFFSET)) && (y <= ((POSYBLOC4LVL4-16) + OFFSET))) && ((x >= (POSXBLOC4LVL4 - OFFSET)) && (x <= (POSXBLOC4LVL4 + OFFSET)))))
 			{
 				spritesClicats[4].first = true;
 				spritesClicats[4].second = currentTime;
@@ -711,7 +711,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC5LVL4 - OFFSET)) && (y <= (POSYBLOC5LVL4 + OFFSET))) && ((x >= (POSXBLOC5LVL4 - OFFSET)) && (x <= (POSXBLOC5LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC5LVL4-16) - OFFSET)) && (y <= ((POSYBLOC5LVL4-16) + OFFSET))) && ((x >= (POSXBLOC5LVL4 - OFFSET)) && (x <= (POSXBLOC5LVL4 + OFFSET)))))
 			{
 				spritesClicats[5].first = true;
 				spritesClicats[5].second = currentTime;
@@ -751,7 +751,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC6LVL4 - OFFSET)) && (y <= (POSYBLOC6LVL4 + OFFSET))) && ((x >= (POSXBLOC6LVL4 - OFFSET)) && (x <= (POSXBLOC6LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC6LVL4-16) - OFFSET)) && (y <= ((POSYBLOC6LVL4-16) + OFFSET))) && ((x >= (POSXBLOC6LVL4 - OFFSET)) && (x <= (POSXBLOC6LVL4 + OFFSET)))))
 			{
 				spritesClicats[6].first = true;
 				spritesClicats[6].second = currentTime;
@@ -791,7 +791,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC7LVL4 - OFFSET)) && (y <= (POSYBLOC7LVL4 + OFFSET))) && ((x >= (POSXBLOC7LVL4 - OFFSET)) && (x <= (POSXBLOC7LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC7LVL4-16) - OFFSET)) && (y <= ((POSYBLOC7LVL4-16) + OFFSET))) && ((x >= (POSXBLOC7LVL4 - OFFSET)) && (x <= (POSXBLOC7LVL4 + OFFSET)))))
 			{
 				spritesClicats[7].first = true;
 				spritesClicats[7].second = currentTime;
@@ -831,7 +831,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC8LVL4 - OFFSET)) && (y <= (POSYBLOC8LVL4 + OFFSET))) && ((x >= (POSXBLOC8LVL4 - OFFSET)) && (x <= (POSXBLOC8LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC8LVL4-16) - OFFSET)) && (y <= ((POSYBLOC8LVL4-16) + OFFSET))) && ((x >= (POSXBLOC8LVL4 - OFFSET)) && (x <= (POSXBLOC8LVL4 + OFFSET)))))
 			{
 				spritesClicats[8].first = true;
 				spritesClicats[8].second = currentTime;
@@ -871,7 +871,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC9LVL4 - OFFSET)) && (y <= (POSYBLOC9LVL4 + OFFSET))) && ((x >= (POSXBLOC9LVL4 - OFFSET)) && (x <= (POSXBLOC9LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC9LVL4-16) - OFFSET)) && (y <= ((POSYBLOC9LVL4-16) + OFFSET))) && ((x >= (POSXBLOC9LVL4 - OFFSET)) && (x <= (POSXBLOC9LVL4 + OFFSET)))))
 			{
 				spritesClicats[9].first = true;
 				spritesClicats[9].second = currentTime;
@@ -911,7 +911,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC10LVL4 - OFFSET)) && (y <= (POSYBLOC10LVL4 + OFFSET))) && ((x >= (POSXBLOC10LVL4 - OFFSET)) && (x <= (POSXBLOC10LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC10LVL4-16) - OFFSET)) && (y <= ((POSYBLOC10LVL4-16) + OFFSET))) && ((x >= (POSXBLOC10LVL4 - OFFSET)) && (x <= (POSXBLOC10LVL4 + OFFSET)))))
 			{
 				spritesClicats[10].first = true;
 				spritesClicats[10].second = currentTime;
@@ -951,7 +951,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC11LVL4 - OFFSET)) && (y <= (POSYBLOC11LVL4 + OFFSET))) && ((x >= (POSXBLOC11LVL4 - OFFSET)) && (x <= (POSXBLOC11LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC11LVL4-16) - OFFSET)) && (y <= ((POSYBLOC11LVL4-16) + OFFSET))) && ((x >= (POSXBLOC11LVL4 - OFFSET)) && (x <= (POSXBLOC11LVL4 + OFFSET)))))
 			{
 				spritesClicats[11].first = true;
 				spritesClicats[11].second = currentTime;
@@ -991,7 +991,7 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC12LVL4 - OFFSET)) && (y <= (POSYBLOC12LVL4 + OFFSET))) && ((x >= (POSXBLOC12LVL4 - OFFSET)) && (x <= (POSXBLOC12LVL4 + OFFSET)))))
+			if ((((y >= ((POSYBLOC12LVL4-16) - OFFSET)) && (y <= ((POSYBLOC12LVL4-16) + OFFSET))) && ((x >= (POSXBLOC12LVL4 - OFFSET)) && (x <= (POSXBLOC12LVL4 + OFFSET)))))
 			{
 				spritesClicats[12].first = true;
 				spritesClicats[12].second = currentTime;

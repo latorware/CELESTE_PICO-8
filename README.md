@@ -14,6 +14,8 @@
 
 - Clau, tresor level 5. 
 
+- Sprites que desapareixen. 
+
 ## Coses que falten
 
 - Fer sprite molles. Juan
@@ -24,7 +26,7 @@
 
 - <del>Fer sprite maduixes voladores. David</del>
 
-- Fer sprite blocs que despareixen. David
+- <del>Fer sprite blocs que despareixen. David</del>
 
 - Main menu convertir a tilemap. 
 

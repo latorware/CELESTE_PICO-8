@@ -18,11 +18,11 @@ class TileMap
 {
 
 private:
-	TileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>& spriteShouldBeRenderedd);
+	TileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>* spriteShouldBeRenderedd);
 
 public:
 	// Tile maps can only be created inside an OpenGL context
-	static TileMap* createTileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>& spriteShouldBeRenderedd);
+	static TileMap* createTileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>* spriteShouldBeRenderedd);
 
 	~TileMap();
 
@@ -50,7 +50,7 @@ private:
 	glm::vec2 tileTexSize;
 	int* map;
 	int level;
-	vector<bool> spriteShouldBeRendered;
+	vector<bool>* spriteShouldBeRendered;
 };
 
 

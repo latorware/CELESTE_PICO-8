@@ -3,12 +3,51 @@
 #include <sstream>
 #include <vector>
 #include "TileMap.h"
+#define POSXBLOC1LVL4 142
+#define POSYBLOC1LVL4 495
+#define POSXBLOC2LVL4 174
+#define POSYBLOC2LVL4 495
+
+#define POSXBLOC3LVL4 270
+#define POSYBLOC3LVL4 463
+#define POSXBLOC4LVL4 302
+#define POSYBLOC4LVL4 463
+
+#define POSXBLOC5LVL4 398
+#define POSYBLOC5LVL4 431
+#define POSXBLOC6LVL4 430
+#define POSYBLOC6LVL4 431
+
+#define POSXBLOC7LVL4 462
+#define POSYBLOC7LVL4 367
+#define POSXBLOC8LVL4 494
+#define POSYBLOC8LVL4 367
+
+#define POSXBLOC9LVL4 366
+#define POSYBLOC9LVL4 303
+#define POSXBLOC10LVL4 398
+#define POSYBLOC10LVL4 303
+
+#define POSXBLOC11LVL4 398
+#define POSYBLOC11LVL4 207
+#define POSXBLOC12LVL4 430
+#define POSYBLOC12LVL4 207
+
+#define POSXCLAULVL5 245
+#define POSYCLAULVL5 460
+#define POSXTRESORLVL5 470
+#define POSYTRESORLVL5 400
+#define POSXMADUIXALVL5 485
+#define POSYMADUIXALVL5 380
+#define POSXMADUIXALVL7 330
+#define POSYMADUIXALVL7 120
+#define OFFSET 20
 
 
 using namespace std;
 
 
-TileMap* TileMap::createTileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>& spriteShouldBeRenderedd)
+TileMap* TileMap::createTileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>* spriteShouldBeRenderedd)
 {
 	TileMap* map = new TileMap(levelFile, minCoords, program, levell, spriteShouldBeRenderedd);
 
@@ -16,7 +55,7 @@ TileMap* TileMap::createTileMap(const string& levelFile, const glm::vec2& minCoo
 }
 
 
-TileMap::TileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>& spriteShouldBeRenderedd)
+TileMap::TileMap(const string& levelFile, const glm::vec2& minCoords, ShaderProgram& program, int levell, vector<bool>* spriteShouldBeRenderedd)
 {
 	loadLevel(levelFile);
 	prepareArrays(minCoords, program);
@@ -192,6 +231,182 @@ bool TileMap::collisionMoveDown(const glm::ivec2& pos, const glm::ivec2& size, i
 			if (*posY - tileSize * y + size.y <= 8)
 			{
 				*posY = tileSize * y - size.y;
+				return true;
+			}
+		}
+	}
+
+	//Cas que sigui level 4, analitzar els blocs flotants
+	if (level == 4)
+	{
+
+		int y = pos.y + 14;
+		int x = pos.x + 14;
+		if ((((y >= ((POSYBLOC1LVL4-16) - OFFSET)) && (y <= ((POSYBLOC1LVL4-16) + OFFSET))) && ((x >= (POSXBLOC1LVL4 - OFFSET)) && (x <= (POSXBLOC1LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[3])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC2LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC2LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC2LVL4 - OFFSET)) && (x <= (POSXBLOC2LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[4])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC3LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC3LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC3LVL4 - OFFSET)) && (x <= (POSXBLOC3LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[5])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC4LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC4LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC4LVL4 - OFFSET)) && (x <= (POSXBLOC4LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[6])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC5LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC5LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC5LVL4 - OFFSET)) && (x <= (POSXBLOC5LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[7])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC6LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC6LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC6LVL4 - OFFSET)) && (x <= (POSXBLOC6LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[8])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC7LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC7LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC7LVL4 - OFFSET)) && (x <= (POSXBLOC7LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[9])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC8LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC8LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC8LVL4 - OFFSET)) && (x <= (POSXBLOC8LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[10])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC9LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC9LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC9LVL4 - OFFSET)) && (x <= (POSXBLOC9LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[11])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC10LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC10LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC10LVL4 - OFFSET)) && (x <= (POSXBLOC10LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[12])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC11LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC11LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC11LVL4 - OFFSET)) && (x <= (POSXBLOC11LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[13])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC12LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC12LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC12LVL4 - OFFSET)) && (x <= (POSXBLOC12LVL4 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[14])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
 				return true;
 			}
 		}
