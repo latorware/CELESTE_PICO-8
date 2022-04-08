@@ -7,30 +7,38 @@
 #define POSYMADUIXALVL3 200
 #define POSXMADUIXALVL4 65
 #define POSYMADUIXALVL4 165
-#define POSXBLOC1LVL4 100
-#define POSYBLOC1LVL4 300
-#define POSXBLOC2LVL4 65
-#define POSYBLOC2LVL4 165
-#define POSXBLOC3LVL4 65
-#define POSYBLOC3LVL4 165
-#define POSXBLOC4LVL4 65
-#define POSYBLOC4LVL4 165
-#define POSXBLOC5LVL4 65
-#define POSYBLOC5LVL4 165
-#define POSXBLOC6LVL4 65
-#define POSYBLOC6LVL4 165
-#define POSXBLOC7LVL4 65
-#define POSYBLOC7LVL4 165
-#define POSXBLOC8LVL4 65
-#define POSYBLOC8LVL4 165
-#define POSXBLOC9LVL4 65
-#define POSYBLOC9LVL4 165
-#define POSXBLOC10LVL4 65
-#define POSYBLOC10LVL4 165
-#define POSXBLOC11LVL4 65
-#define POSYBLOC11LVL4 165
-#define POSXBLOC12LVL4 65
-#define POSYBLOC12LVL4 165
+
+
+#define POSXBLOC1LVL4 142
+#define POSYBLOC1LVL4 495
+#define POSXBLOC2LVL4 174
+#define POSYBLOC2LVL4 495
+
+#define POSXBLOC3LVL4 270
+#define POSYBLOC3LVL4 463
+#define POSXBLOC4LVL4 302
+#define POSYBLOC4LVL4 463
+
+#define POSXBLOC5LVL4 398
+#define POSYBLOC5LVL4 431
+#define POSXBLOC6LVL4 430
+#define POSYBLOC6LVL4 431
+
+#define POSXBLOC7LVL4 462
+#define POSYBLOC7LVL4 367
+#define POSXBLOC8LVL4 494
+#define POSYBLOC8LVL4 367
+
+#define POSXBLOC9LVL4 366
+#define POSYBLOC9LVL4 303
+#define POSXBLOC10LVL4 398
+#define POSYBLOC10LVL4 303
+
+#define POSXBLOC11LVL4 398
+#define POSYBLOC11LVL4 207
+#define POSXBLOC12LVL4 430
+#define POSYBLOC12LVL4 207
+
 #define POSXCLAULVL5 245
 #define POSYCLAULVL5 460
 #define POSXTRESORLVL5 470
@@ -39,7 +47,7 @@
 #define POSYMADUIXALVL5 380
 #define POSXMADUIXALVL7 330
 #define POSYMADUIXALVL7 120
-#define OFFSET 2
+#define OFFSET 20
 
 MapScene::MapScene() {
 	map = NULL;
@@ -540,10 +548,10 @@ void MapScene::update(int deltaTime) {
 		{
 			int y = player->getPositionPlayer().y + 14;
 			int x = player->getPositionPlayer().x + 14;
-			if ((((y >= (POSYBLOC1LVL4 - OFFSET)) && (y <= (POSYBLOC1LVL4 + OFFSET))) && ((x >= (POSXBLOC1LVL4 - OFFSET)) && (x <= (POSXBLOC1LVL4 + OFFSET)))) && (y > POSYBLOC1LVL4))
+			if ((((y >= (POSYBLOC1LVL4 - OFFSET)) && (y <= (POSYBLOC1LVL4 + OFFSET))) && ((x >= (POSXBLOC1LVL4 - OFFSET)) && (x <= (POSXBLOC1LVL4 + OFFSET)))))
 			{
-				spritesClicats[0].first = true;
-				spritesClicats[0].second = currentTime;
+				spritesClicats[1].first = true;
+				spritesClicats[1].second = currentTime;
 			}
 		}
 		else
@@ -579,16 +587,445 @@ void MapScene::update(int deltaTime) {
 
 
 		//tractem bloc 2
+		if (!spritesClicats[2].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC2LVL4 - OFFSET)) && (y <= (POSYBLOC2LVL4 + OFFSET))) && ((x >= (POSXBLOC2LVL4 - OFFSET)) && (x <= (POSXBLOC2LVL4 + OFFSET)))))
+			{
+				spritesClicats[2].first = true;
+				spritesClicats[2].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[2].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[2].first = false;
+				spriteShouldBeRendered[4] = true;
+				sprites[4]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[4]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[4]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[4] = false;
+				}
+			}
+		}
 		//tractem bloc 3
+		if (!spritesClicats[3].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC3LVL4 - OFFSET)) && (y <= (POSYBLOC3LVL4 + OFFSET))) && ((x >= (POSXBLOC3LVL4 - OFFSET)) && (x <= (POSXBLOC3LVL4 + OFFSET)))))
+			{
+				spritesClicats[3].first = true;
+				spritesClicats[3].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[3].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[3].first = false;
+				spriteShouldBeRendered[5] = true;
+				sprites[5]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[5]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[5]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[5] = false;
+				}
+			}
+		}
 		//tractem bloc 4
+		if (!spritesClicats[4].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC4LVL4 - OFFSET)) && (y <= (POSYBLOC4LVL4 + OFFSET))) && ((x >= (POSXBLOC4LVL4 - OFFSET)) && (x <= (POSXBLOC4LVL4 + OFFSET)))))
+			{
+				spritesClicats[4].first = true;
+				spritesClicats[4].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[4].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[4].first = false;
+				spriteShouldBeRendered[6] = true;
+				sprites[6]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[6]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[6]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[6] = false;
+				}
+			}
+		}
 		//tractem bloc 5
+		if (!spritesClicats[5].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC5LVL4 - OFFSET)) && (y <= (POSYBLOC5LVL4 + OFFSET))) && ((x >= (POSXBLOC5LVL4 - OFFSET)) && (x <= (POSXBLOC5LVL4 + OFFSET)))))
+			{
+				spritesClicats[5].first = true;
+				spritesClicats[5].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[5].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[5].first = false;
+				spriteShouldBeRendered[7] = true;
+				sprites[7]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[7]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[7]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[7] = false;
+				}
+			}
+		}
 		//tractem bloc 6
+		if (!spritesClicats[6].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC6LVL4 - OFFSET)) && (y <= (POSYBLOC6LVL4 + OFFSET))) && ((x >= (POSXBLOC6LVL4 - OFFSET)) && (x <= (POSXBLOC6LVL4 + OFFSET)))))
+			{
+				spritesClicats[6].first = true;
+				spritesClicats[6].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[6].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[6].first = false;
+				spriteShouldBeRendered[8] = true;
+				sprites[8]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[8]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[8]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[8] = false;
+				}
+			}
+		}
 		//tractem bloc 7
+		if (!spritesClicats[7].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC7LVL4 - OFFSET)) && (y <= (POSYBLOC7LVL4 + OFFSET))) && ((x >= (POSXBLOC7LVL4 - OFFSET)) && (x <= (POSXBLOC7LVL4 + OFFSET)))))
+			{
+				spritesClicats[7].first = true;
+				spritesClicats[7].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[7].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[7].first = false;
+				spriteShouldBeRendered[9] = true;
+				sprites[9]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[9]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[9]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[9] = false;
+				}
+			}
+		}
 		//tractem bloc 8
+		if (!spritesClicats[8].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC8LVL4 - OFFSET)) && (y <= (POSYBLOC8LVL4 + OFFSET))) && ((x >= (POSXBLOC8LVL4 - OFFSET)) && (x <= (POSXBLOC8LVL4 + OFFSET)))))
+			{
+				spritesClicats[8].first = true;
+				spritesClicats[8].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[8].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[8].first = false;
+				spriteShouldBeRendered[10] = true;
+				sprites[10]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[10]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[10]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[10] = false;
+				}
+			}
+		}
 		//tractem bloc 9
+		if (!spritesClicats[9].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC9LVL4 - OFFSET)) && (y <= (POSYBLOC9LVL4 + OFFSET))) && ((x >= (POSXBLOC9LVL4 - OFFSET)) && (x <= (POSXBLOC9LVL4 + OFFSET)))))
+			{
+				spritesClicats[9].first = true;
+				spritesClicats[9].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[9].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[9].first = false;
+				spriteShouldBeRendered[11] = true;
+				sprites[11]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[11]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[11]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[11] = false;
+				}
+			}
+		}
 		//tractem bloc 10
+		if (!spritesClicats[10].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC10LVL4 - OFFSET)) && (y <= (POSYBLOC10LVL4 + OFFSET))) && ((x >= (POSXBLOC10LVL4 - OFFSET)) && (x <= (POSXBLOC10LVL4 + OFFSET)))))
+			{
+				spritesClicats[10].first = true;
+				spritesClicats[10].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[10].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[10].first = false;
+				spriteShouldBeRendered[12] = true;
+				sprites[12]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[12]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[12]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[12] = false;
+				}
+			}
+		}
 		//tractem bloc 11
+		if (!spritesClicats[11].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC11LVL4 - OFFSET)) && (y <= (POSYBLOC11LVL4 + OFFSET))) && ((x >= (POSXBLOC11LVL4 - OFFSET)) && (x <= (POSXBLOC11LVL4 + OFFSET)))))
+			{
+				spritesClicats[11].first = true;
+				spritesClicats[11].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[11].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[11].first = false;
+				spriteShouldBeRendered[13] = true;
+				sprites[13]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[13]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[13]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[13] = false;
+				}
+			}
+		}
 		//tractem bloc 12
+		if (!spritesClicats[12].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= (POSYBLOC12LVL4 - OFFSET)) && (y <= (POSYBLOC12LVL4 + OFFSET))) && ((x >= (POSXBLOC12LVL4 - OFFSET)) && (x <= (POSXBLOC12LVL4 + OFFSET)))))
+			{
+				spritesClicats[12].first = true;
+				spritesClicats[12].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[12].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[12].first = false;
+				spriteShouldBeRendered[14] = true;
+				sprites[14]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[14]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[14]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[14] = false;
+				}
+			}
+		}
 	}
 	else if (currentLevel == 5)
 	{
