@@ -10,15 +10,19 @@
 
 - Modificar Jump. 
 
+- Maduixes (voladores i no voladores). 
+
+- Clau, tresor level 5. 
+
 ## Coses que falten
 
 - Fer sprite molles. Juan
 
-- Fer sprite maduixes no voladores. David
+- <del>Fer sprite maduixes no voladores. David</del>
 
 - Sprite nuvols.            Juan
 
-- Fer sprite maduixes voladores. David
+- <del>Fer sprite maduixes voladores. David</del>
 
 - Fer sprite blocs que despareixen. David
 
