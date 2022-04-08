@@ -28,5 +28,7 @@ class MapScene : public Scene
 		Player* player;
 		vector<Sprite *> sprites; 
 		vector<Texture> textures; 
+		vector<pair<bool, float>> spritesClicats;
+		vector<bool> spriteShouldBeRendered; 
 		int currentLevel, movementAngle; 
 };
