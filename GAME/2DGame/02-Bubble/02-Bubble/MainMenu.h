@@ -45,8 +45,6 @@ private:
 
 	Positions actualPosition; 
 
-
 };
-
 
 #endif

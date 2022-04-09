@@ -25,8 +25,8 @@ protected:
 	void initShaders();
 
 protected:
-	//TileMap *map, *background;
-	//Player *player;
+	Texture spritesheet;
+	Sprite* snowFlake;
 	ShaderProgram texProgram;
 	float currentTime;
 	glm::mat4 projection;

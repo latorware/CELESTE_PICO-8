@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include "TileMap.h"
+
 #define POSXBLOC1LVL4 142
 #define POSYBLOC1LVL4 495
 #define POSXBLOC2LVL4 174

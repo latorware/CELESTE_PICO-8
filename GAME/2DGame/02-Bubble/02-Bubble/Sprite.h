@@ -52,6 +52,5 @@ private:
 
 };
 
-
 #endif // _SPRITE_INCLUDE
 
