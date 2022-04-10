@@ -38,7 +38,7 @@
 
 - Transicions entre mapes (i sprite mestres muntanya). David
 
-- Sprite nieve. Juan
+- <del>Sprite nieve. Juan</del>
 
 - Sprite nuves. Juan
 
@@ -71,3 +71,5 @@
 - So efectes especials. David
 
 - Totes altres animacions. 
+
+- Gestió de memòria (alliberar espai de memòria al cambiar de mapa). 
