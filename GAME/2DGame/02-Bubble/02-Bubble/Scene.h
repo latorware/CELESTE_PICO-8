@@ -26,10 +26,12 @@ protected:
 
 protected:
 	Texture spritesheet;
-	Sprite* snowFlake;
+	vector<Sprite*> snowFlakes;
 	ShaderProgram texProgram;
 	float currentTime;
 	glm::mat4 projection;
+	int snowPosition;
+	vector<int> randomSnow;
 
 };
 

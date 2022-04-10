@@ -16,14 +16,25 @@ void Scene::init()
 	initShaders();
 	currentTime = 0.0f;
 
+	for (int i = 0; i < 20; ++i) {
+		randomSnow.push_back(2+rand()%(25-2));
+	}
+
 	spritesheet.setWrapS(GL_CLAMP_TO_EDGE);
 	spritesheet.setWrapT(GL_CLAMP_TO_EDGE);
 	spritesheet.setMinFilter(GL_NEAREST);
 	spritesheet.setMagFilter(GL_NEAREST);
 
 	spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
-	snowFlake = Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &texProgram);
-	snowFlake->setNumberAnimations(1);
+	for (int i = 0; i < randomSnow.size(); ++i) {
+		snowFlakes.push_back(Sprite::createSprite(glm::ivec2(4 + 4*(i%2), 4 + 4*(i%2)), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &texProgram));
+		snowFlakes[i]->setNumberAnimations(1);
+		snowFlakes[i]->setAnimationSpeed(0, 1);
+		snowFlakes[i]->addKeyframe(0, glm::vec2(float(3.f / 16.f), float(0.f / 16.f)));
+		snowFlakes[i]->changeAnimation(0);
+		snowFlakes[i]->setPosition(glm::vec2(10, 10));
+		snowFlakes[i]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+	}
 
 	projection = glm::ortho(0.f, float(SCREEN_WIDTH - 1), float(SCREEN_HEIGHT - 1), 0.f);
 }
@@ -32,7 +43,13 @@ void Scene::update(int deltaTime)
 {
 	currentTime += deltaTime;
 
-
+	//int randomNumber = 10+rand()%(51-10);
+	for (int i = 0; i < randomSnow.size(); ++i) {
+		float oscilation = (sin(((currentTime / 1000.f) + randomSnow[i]) + 1.0f) / 2.0f);
+		int desplazamiento = ((int)currentTime / randomSnow[i]) + i*20;
+		snowFlakes[i]->setPosition(glm::vec2(desplazamiento % 546, (randomSnow[i] * 10 * oscilation) + (546/20) * i));
+	}
+	
 }
 
 void Scene::render()
@@ -45,7 +62,6 @@ void Scene::render()
 	modelview = glm::mat4(1.0f);
 	texProgram.setUniformMatrix4f("modelview", modelview);
 	texProgram.setUniform2f("texCoordDispl", 0.f, 0.f);
-	snowFlake->render();
 }
 
 void Scene::initShaders()

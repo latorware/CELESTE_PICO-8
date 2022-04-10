@@ -19,8 +19,13 @@ void Game::init()
 bool Game::update(int deltaTime)
 {
 	//scene.update(deltaTime);
-	menu.update(deltaTime);
-	MScene.update(deltaTime);
+
+	if (actualScene == 0) {
+		menu.update(deltaTime);
+	}
+	else if (actualScene == 1) {
+		MScene.update(deltaTime);
+	}
 
 	return bPlay;
 }
