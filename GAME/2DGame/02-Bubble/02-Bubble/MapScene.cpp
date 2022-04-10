@@ -61,6 +61,7 @@ MapScene::~MapScene() {
 
 void MapScene::init(int level) {
 	Scene::init();
+
 	currentLevel = level;
 	movementAngle = 0;
 
@@ -418,7 +419,7 @@ void MapScene::update(int deltaTime) {
 	currentTime += deltaTime;
 	//cout << "currentTime " << currentTime << "        deltaTime " << deltaTime << endl; 
 	player->update(deltaTime);
-	Scene::update(deltaTime);
+
 	if (currentLevel == 3)
 	{
 		if (!spritesClicats[0].first)
@@ -1198,8 +1199,6 @@ void MapScene::update(int deltaTime) {
 
 void MapScene::render() {
 
-	//Scene::render();
-
 	glm::mat4 modelview;
 
 	texProgram.use();
@@ -1212,9 +1211,7 @@ void MapScene::render() {
 	background->render();
 	map->render();
 	player->render();
-	for (int i = 0; i < snowFlakes.size(); ++i) {
-		snowFlakes[i]->render();
-	}
+	
 
 	if (currentLevel == 3)
 	{

@@ -18,8 +18,11 @@ class Scene
 public:
 
 	void virtual init();
+	void initObjects();
 	void virtual update(int deltaTime);
 	void virtual render();
+	void renderClouds();
+	void renderSnow();
 
 protected:
 	void initShaders();

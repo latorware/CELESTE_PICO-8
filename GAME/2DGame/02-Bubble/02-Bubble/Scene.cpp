@@ -16,8 +16,13 @@ void Scene::init()
 	initShaders();
 	currentTime = 0.0f;
 
+	projection = glm::ortho(0.f, float(SCREEN_WIDTH - 1), float(SCREEN_HEIGHT - 1), 0.f);
+}
+
+void Scene::initObjects() 
+{
 	for (int i = 0; i < 20; ++i) {
-		randomSnow.push_back(2+rand()%(25-2));
+		randomSnow.push_back(15 + rand() % (41 - 15));
 	}
 
 	spritesheet.setWrapS(GL_CLAMP_TO_EDGE);
@@ -27,7 +32,7 @@ void Scene::init()
 
 	spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	for (int i = 0; i < randomSnow.size(); ++i) {
-		snowFlakes.push_back(Sprite::createSprite(glm::ivec2(4 + 4*(i%2), 4 + 4*(i%2)), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &texProgram));
+		snowFlakes.push_back(Sprite::createSprite(glm::ivec2(4 + 4 * (i % 2), 4 + 4 * (i % 2)), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &texProgram));
 		snowFlakes[i]->setNumberAnimations(1);
 		snowFlakes[i]->setAnimationSpeed(0, 1);
 		snowFlakes[i]->addKeyframe(0, glm::vec2(float(3.f / 16.f), float(0.f / 16.f)));
@@ -35,25 +40,21 @@ void Scene::init()
 		snowFlakes[i]->setPosition(glm::vec2(10, 10));
 		snowFlakes[i]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	}
-
-	projection = glm::ortho(0.f, float(SCREEN_WIDTH - 1), float(SCREEN_HEIGHT - 1), 0.f);
 }
 
 void Scene::update(int deltaTime)
 {
-	currentTime += deltaTime;
+	currentTime += deltaTime*6;
 
-	//int randomNumber = 10+rand()%(51-10);
 	for (int i = 0; i < randomSnow.size(); ++i) {
-		float oscilation = (sin(((currentTime / 1000.f) + randomSnow[i]) + 1.0f) / 2.0f);
-		int desplazamiento = ((int)currentTime / randomSnow[i]) + i*20;
-		snowFlakes[i]->setPosition(glm::vec2(desplazamiento % 546, (randomSnow[i] * 10 * oscilation) + (546/20) * i));
+		float oscilation = (sin(((currentTime / 1000.f) + randomSnow[i]) + 1.0f) / 2.0f); //calcula el movimiento vertical de cada SnowFlake
+		int desplazamiento = ((int)currentTime / randomSnow[i]) + i*20; //calcula el desplazamiento horizontal de cada SnowFlake
+		snowFlakes[i]->setPosition(glm::vec2(desplazamiento % 546, (randomSnow[i] * 4 * oscilation) + (546/20) * i));
 	}
 	
 }
 
-void Scene::render()
-{
+void Scene::render() {
 	glm::mat4 modelview;
 
 	texProgram.use();
@@ -62,6 +63,19 @@ void Scene::render()
 	modelview = glm::mat4(1.0f);
 	texProgram.setUniformMatrix4f("modelview", modelview);
 	texProgram.setUniform2f("texCoordDispl", 0.f, 0.f);
+}
+
+void Scene::renderClouds() {
+	render();
+}
+
+void Scene::renderSnow()
+{
+	render();
+
+	for (int i = 0; i < snowFlakes.size(); ++i) {
+		snowFlakes[i]->render();
+	}
 }
 
 void Scene::initShaders()

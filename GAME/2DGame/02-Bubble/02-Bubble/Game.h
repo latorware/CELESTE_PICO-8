@@ -46,7 +46,7 @@ public:
 
 private:
 	bool bPlay;                       // Continue to play game?
-	//Scene scene;                      // Scene to render
+	Scene scene;                      // Scene to render
 	MainMenu menu;						//Escena del menú principal
 	MapScene MScene;					// Escena de los niveles del juego
 	bool keys[256], specialKeys[256]; // Store key states so that 
