@@ -38,7 +38,7 @@
 
 - Transicions entre mapes (i sprite mestres muntanya). David
 
-- </del>Sprite nieve. Juan</del>
+- <del>Sprite nieve. Juan</del>
 
 - Sprite nuves. Juan
 
