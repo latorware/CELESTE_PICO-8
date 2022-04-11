@@ -29,6 +29,7 @@ void MainMenu::init() {
     menuGuiTexture.loadFromFile("images/menu.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	MenuGui = Sprite::createSprite(glm::ivec2(512, 512), glm::vec2(float(1.f), float(1.f)), &menuGuiTexture, &texProgram);
 	MenuGui->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+	MenuGui->setPosition(glm::vec2(SCREEN_X, SCREEN_Y));
 
     spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	selector = Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &texProgram);
