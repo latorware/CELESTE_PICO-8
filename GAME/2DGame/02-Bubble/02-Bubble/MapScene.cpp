@@ -57,6 +57,9 @@ MapScene::MapScene() {
 
 MapScene::~MapScene() {
 	if (map != NULL) delete map;
+	if (background != NULL) delete background; 
+	if (player != NULL) delete player;
+
 }
 
 void MapScene::init(int level) {

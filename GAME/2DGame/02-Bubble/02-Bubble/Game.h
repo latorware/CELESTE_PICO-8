@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "MainMenu.h"
 #include "MapScene.h"
+#include "Credits.h"
 
 
 #define SCREEN_WIDTH 546
@@ -48,6 +49,7 @@ private:
 	bool bPlay;                       // Continue to play game?
 	Scene scene;                      // Scene to render
 	MainMenu menu;						//Escena del menú principal
+	Credits credits; 
 	MapScene MScene;					// Escena de los niveles del juego
 	bool keys[256], specialKeys[256]; // Store key states so that 
 	                                  // we can have access at any time

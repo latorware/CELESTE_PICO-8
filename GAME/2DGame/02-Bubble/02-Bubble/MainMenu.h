@@ -19,6 +19,7 @@ public:
 	void setOptionArrowRight(); 
 	void setOptionArrowUp(); 
 	void setOptionArrowDown(); 
+	int getOption(); 
 
 
 private:

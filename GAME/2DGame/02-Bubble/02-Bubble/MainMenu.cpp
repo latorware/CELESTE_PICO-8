@@ -137,3 +137,10 @@ void MainMenu::initShaders()
 	vShader.free();
 	fShader.free();
 }
+
+
+
+int MainMenu::getOption()
+{
+	return actualPosition; 
+}

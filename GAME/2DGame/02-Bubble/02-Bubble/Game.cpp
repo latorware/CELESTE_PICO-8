@@ -14,7 +14,8 @@ void Game::init()
 	scene.initObjects();		//inicializa los objetos en una función diferente para evitar un uso excesivo de la memoria
 	menu.init();
 	MScene.init(1);
-	actualScene = 0; 
+	actualScene = 0; //0 = menu		1 = game	2 = guide		3 = credits
+	credits.init(); 
 }
 
 bool Game::update(int deltaTime)
@@ -27,6 +28,10 @@ bool Game::update(int deltaTime)
 	}
 	else if (actualScene == 1) {	//solo actualiza el juego si estamos en un nivel, para que los clics del teclado anteriores no afecten al Player
 		MScene.update(deltaTime); 
+	}
+	else if (actualScene == 3)
+	{
+		credits.update(deltaTime); 
 	}
 
 	return bPlay;
@@ -43,6 +48,10 @@ void Game::render()
 		scene.renderClouds(); //solo renderiza las nubes si estamos en un nivel
 		MScene.render();
 	}
+	else if (actualScene == 3)
+	{
+		credits.render(); 
+	}
 
 	scene.renderSnow(); //renderiza la nieve en todo el juego
 }
@@ -50,17 +59,29 @@ void Game::render()
 void Game::keyPressed(int key)
 {
 	if (key == 13) // Enter code
+	{
 		actualScene = 1;
-		/*if () {			Si el selector está en play, entramos al primer nivel
+		if (menu.getOption() == 0)
+		{
 			actualScene = 1;
 		}
-		else if () {		Si el selector está en exit, salimos del juego
+		else if (menu.getOption() == 2)
+		{
+			actualScene = 3;
+		}
+		else if (menu.getOption() == 3)
+		{
 			bPlay = false;
-		}*/
+		}
+	}
+
 	if (key == 27) // Escape code
+	{
 		if (actualScene == 0) // Si estamos en una pantalla que no es el menú principal, volvemos a el
 			bPlay = false;
 		else actualScene = 0; // Si estamos en el menú principal, cerramos el juego
+	}
+
 	if (actualScene == 1) {		//Solo se inicializan los mapas una vez pulsamos jugar (mejor gestion de memoria)
 		if (key == 49) // Number 1 code
 			MScene.init(1);
