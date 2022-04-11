@@ -2,6 +2,7 @@
 
 uniform mat4 projection, modelview;
 uniform vec2 texCoordDispl;
+uniform float time; 
 
 in vec2 position;
 in vec2 texCoord;
