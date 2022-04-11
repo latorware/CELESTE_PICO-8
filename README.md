@@ -16,6 +16,10 @@
 
 - Sprites que desapareixen. 
 
+- Credits. 
+
+- El boto exit. 
+
 ## Coses que falten
 
 - Fer sprite molles. Juan
@@ -32,9 +36,9 @@
 
 - Fer instruccions.         Juan
 
-- Fer credits.              David
+- <del>Fer credits.              David</del>
 
-- Implementar boto exit. David
+- <del>Implementar boto exit. David</del>
 
 - Transicions entre mapes (i sprite mestres muntanya). David
 
