@@ -16,6 +16,7 @@ void Game::init()
 	MScene.init(1);
 	actualScene = 0; //0 = menu		1 = game	2 = guide		3 = credits
 	credits.init();
+	guide.init();
 }
 
 bool Game::update(int deltaTime)
@@ -23,11 +24,17 @@ bool Game::update(int deltaTime)
 
 	scene.update(deltaTime);
 
-	if (actualScene == 0) {
+	if (actualScene == 0) 
+	{
 		menu.update(deltaTime);
 	}
-	else if (actualScene == 1) {	//solo actualiza el juego si estamos en un nivel, para que los clics del teclado anteriores no afecten al Player
+	else if (actualScene == 1) //solo actualiza el juego si estamos en un nivel, para que los clics del teclado anteriores no afecten al Player
+	{	
 		MScene.update(deltaTime);
+	}
+	else if (actualScene == 2)
+	{
+		guide.update(deltaTime);
 	}
 	else if (actualScene == 3)
 	{
@@ -41,12 +48,18 @@ void Game::render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	if (actualScene == 0) {
+	if (actualScene == 0) 
+	{
 		menu.render();
 	}
-	else if (actualScene == 1) {
+	else if (actualScene == 1) 
+	{
 		scene.renderClouds(); //solo renderiza las nubes si estamos en un nivel
 		MScene.render();
+	}
+	else if (actualScene == 2) 
+	{
+		guide.render();
 	}
 	else if (actualScene == 3)
 	{
@@ -60,10 +73,13 @@ void Game::keyPressed(int key)
 {
 	if (key == 13) // Enter code
 	{
-		actualScene = 1;
 		if (menu.getOption() == 0)
 		{
 			actualScene = 1;
+		}
+		else if (menu.getOption() == 1)
+		{
+			actualScene = 2;
 		}
 		else if (menu.getOption() == 2)
 		{

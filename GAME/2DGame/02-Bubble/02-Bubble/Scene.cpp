@@ -4,10 +4,6 @@
 #include "Scene.h"
 #include "Game.h"
 
-
-#define SCREEN_X 16
-#define SCREEN_Y 16
-
 #define INIT_PLAYER_X_TILES 1
 #define INIT_PLAYER_Y_TILES 12
 

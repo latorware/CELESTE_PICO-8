@@ -14,6 +14,7 @@
     <ClInclude Include="AnimKeyframes.h" />
     <ClInclude Include="Credits.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Guide.h" />
     <ClInclude Include="MapScene.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Player.h" />
@@ -35,6 +36,7 @@
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="MapScene.cpp" />
+    <ClCompile Include="Guide.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TileMap.cpp" />

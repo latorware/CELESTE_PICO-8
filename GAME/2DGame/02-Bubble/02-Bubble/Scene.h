@@ -7,6 +7,11 @@
 #include "TileMap.h"
 #include "Player.h"
 
+#define SCREEN_X 16
+#define SCREEN_Y 16
+
+#define SCREEN_WIDTH 546
+#define SCREEN_HEIGHT 546
 
 // Scene contains all the entities of our game.
 // It is responsible for updating and render them.

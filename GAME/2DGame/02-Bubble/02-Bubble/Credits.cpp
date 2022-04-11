@@ -41,7 +41,7 @@ void Credits::init() {
 	textureCredits.setMinFilter(GL_NEAREST);
 	textureCredits.setMagFilter(GL_NEAREST);
 
-	textureCredits.loadFromFile("images/Credits.png", TEXTURE_PIXEL_FORMAT_RGBA);
+	textureCredits.loadFromFile("images/credits.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	Creditsgui = Sprite::createSprite(glm::ivec2(512, 512), glm::vec2(float(1.f), float(1.f)), &textureCredits, &texProgram);
 	Creditsgui->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	Creditsgui->setPosition(glm::vec2(SCREEN_X, SCREEN_Y));
@@ -52,12 +52,6 @@ void Credits::init() {
 	projection = glm::ortho(0.f, float(SCREEN_WIDTH - 1), float(SCREEN_HEIGHT - 1), 0.f);
 
 }
-
-
-
-
-
-
 
 
 void Credits::initShaders()

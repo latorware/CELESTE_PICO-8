@@ -6,7 +6,10 @@
 #include "MainMenu.h"
 #include "MapScene.h"
 #include "Credits.h"
+#include "Guide.h"
 
+#define SCREEN_X 16
+#define SCREEN_Y 16
 
 #define SCREEN_WIDTH 546
 #define SCREEN_HEIGHT 546
@@ -50,6 +53,7 @@ private:
 	Scene scene;                      // Scene to render
 	MainMenu menu;						//Escena del menú principal
 	Credits credits;
+	Guide guide;						//Escena de les instruccions
 	MapScene MScene;					// Escena de los niveles del juego
 	bool keys[256], specialKeys[256]; // Store key states so that 
 									  // we can have access at any time
