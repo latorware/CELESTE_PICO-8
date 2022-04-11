@@ -64,6 +64,7 @@ MapScene::~MapScene() {
 
 void MapScene::init(int level) {
 	Scene::init();
+	//displacement = glm::vec2(float(5.f), float(5.f)); 
 
 	currentLevel = level;
 	movementAngle = 0;

@@ -2,7 +2,7 @@
 
 uniform mat4 projection, modelview;
 uniform vec2 texCoordDispl;
-uniform float time; 
+uniform vec2 displacement; 
 
 in vec2 position;
 in vec2 texCoord;
@@ -13,6 +13,6 @@ void main()
 	// Pass texture coordinates to access a given texture atlas
 	texCoordFrag = texCoord + texCoordDispl;
 	// Transform position from pixel coordinates to clipping coordinates
-	gl_Position = projection * modelview * vec4(position, 0.0, 1.0);
+	gl_Position = projection * modelview * vec4(position+displacement, 0.0, 1.0);
 }
 

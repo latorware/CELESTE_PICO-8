@@ -32,6 +32,9 @@ private:
 	Texture spritesheet;
 	Sprite* sprite;
 	TileMap* map;
+	ShaderProgram texProgram;
+	glm::vec2 displacement;
+	bool tremolarWhenPosible; 
 
 };
 

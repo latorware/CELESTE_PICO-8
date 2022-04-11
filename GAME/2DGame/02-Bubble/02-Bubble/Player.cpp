@@ -19,6 +19,9 @@ enum PlayerAnims
 
 void Player::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
 {
+	tremolarWhenPosible = false; 
+	displacement = glm::vec2(float(0.f), float(0.f));
+	texProgram = shaderProgram; 
 	spritesheet.setWrapS(GL_CLAMP_TO_EDGE);
 	spritesheet.setWrapT(GL_CLAMP_TO_EDGE);
 	spritesheet.setMinFilter(GL_NEAREST);
@@ -231,6 +234,7 @@ void Player::update(int deltaTime)
 
 void Player::render()
 {
+	texProgram.setUniform2f("displacement", displacement.x, displacement.y);
 	sprite->render();
 }
 
