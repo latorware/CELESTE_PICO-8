@@ -15,7 +15,7 @@ void Game::init()
 	menu.init();
 	MScene.init(1);
 	actualScene = 0; //0 = menu		1 = game	2 = guide		3 = credits
-	credits.init(); 
+	credits.init();
 }
 
 bool Game::update(int deltaTime)
@@ -27,11 +27,11 @@ bool Game::update(int deltaTime)
 		menu.update(deltaTime);
 	}
 	else if (actualScene == 1) {	//solo actualiza el juego si estamos en un nivel, para que los clics del teclado anteriores no afecten al Player
-		MScene.update(deltaTime); 
+		MScene.update(deltaTime);
 	}
 	else if (actualScene == 3)
 	{
-		credits.update(deltaTime); 
+		credits.update(deltaTime);
 	}
 
 	return bPlay;
@@ -50,7 +50,7 @@ void Game::render()
 	}
 	else if (actualScene == 3)
 	{
-		credits.render(); 
+		credits.render();
 	}
 
 	scene.renderSnow(); //renderiza la nieve en todo el juego
@@ -104,7 +104,7 @@ void Game::keyPressed(int key)
 		if (key == 48) // Number 0 code
 			MScene.init(10);
 	}
-	
+
 	keys[key] = true;
 }
 
@@ -116,7 +116,7 @@ void Game::keyReleased(int key)
 void Game::specialKeyPressed(int key)
 {
 	if (key == GLUT_KEY_DOWN && actualScene == 0) { //scroll menu down
-		menu.setOptionArrowDown(); 
+		menu.setOptionArrowDown();
 	}
 	if (key == GLUT_KEY_UP && actualScene == 0) { //scroll menu down
 		menu.setOptionArrowUp();
@@ -156,8 +156,5 @@ bool Game::getSpecialKey(int key) const
 {
 	return specialKeys[key];
 }
-
-
-
 
 

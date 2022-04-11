@@ -15,20 +15,20 @@
 
 class MapScene : public Scene
 {
-	public: 
-		MapScene();
-		~MapScene();
+public:
+	MapScene();
+	~MapScene();
 
-		void init(int level);
-		void update(int deltaTime);
-		void render();	
+	void init(int level);
+	void update(int deltaTime);
+	void render();
 
-	private:
-		TileMap *map, *background;
-		Player* player;
-		vector<Sprite *> sprites; 
-		vector<Texture> textures; 
-		vector<pair<bool, float>> spritesClicats; //si sa clicat sprite (jugador a passat per sobre) i en quin instant
-		vector<bool> spriteShouldBeRendered; 
-		int currentLevel, movementAngle; 
+private:
+	TileMap* map, * background;
+	Player* player;
+	vector<Sprite*> sprites;
+	vector<Texture> textures;
+	vector<pair<bool, float>> spritesClicats; //si sa clicat sprite (jugador a passat per sobre) i en quin instant
+	vector<bool> spriteShouldBeRendered;
+	int currentLevel, movementAngle;
 };

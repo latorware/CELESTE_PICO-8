@@ -23,8 +23,8 @@ private:
 
 
 private:
-	Texture textureCredits; 
-	Sprite* Creditsgui; 
+	Texture textureCredits;
+	Sprite* Creditsgui;
 	float currentTime;
 	glm::mat4 projection;
 	ShaderProgram texProgram;
