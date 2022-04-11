@@ -13,7 +13,7 @@
 
 enum PlayerAnims
 {
-	STAND_LEFT, STAND_RIGHT, MOVE_LEFT, MOVE_RIGHT
+	STAND_LEFT, STAND_RIGHT, MOVE_LEFT, MOVE_RIGHT, LOOK_UP_LEFT, LOOK_UP_RIGHT, LOOK_DOWN_LEFT, LOOK_DOWN_RIGHT
 };
 
 
@@ -25,29 +25,43 @@ void Player::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
 	spritesheet.setMagFilter(GL_NEAREST);
 
 	bJumping = false;
-	dashCarregat == true;
+	dashCarregat = true;
 	deixatClicarSalt = true;
 	climbDretEnProces = false;
 	climbEsquerreEnProces = false;
 	spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	sprite = Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &shaderProgram);
-	sprite->setNumberAnimations(1);
+	sprite->setNumberAnimations(8);
 
 	sprite->setAnimationSpeed(STAND_LEFT, 8);
-	sprite->addKeyframe(STAND_LEFT, glm::vec2(float(10.f / 16.f), float(0.f / 16.f)));
+	sprite->addKeyframe(STAND_LEFT, glm::vec2(float(15.f / 16.f), float(0.f / 16.f)));
 
-	//sprite->setAnimationSpeed(STAND_RIGHT, 8);
-	//sprite->addKeyframe(STAND_RIGHT, glm::vec2(float(10.f / 16.f), 0.f));
+	sprite->setAnimationSpeed(STAND_RIGHT, 8);
+	sprite->addKeyframe(STAND_RIGHT, glm::vec2(float(10.f / 16.f), float(0.f / 16.f)));
 
-	/*sprite->setAnimationSpeed(MOVE_LEFT, 8);
-	sprite->addKeyframe(MOVE_LEFT, glm::vec2(0.f, 0.f));
-	sprite->addKeyframe(MOVE_LEFT, glm::vec2(0.f, 0.25f));
-	sprite->addKeyframe(MOVE_LEFT, glm::vec2(0.f, 0.5f));
+	sprite->setAnimationSpeed(MOVE_LEFT, 8);
+	sprite->addKeyframe(MOVE_LEFT, glm::vec2(float(15.f / 16.f), float(0.f / 16.f)));
+	sprite->addKeyframe(MOVE_LEFT, glm::vec2(float(14.f / 16.f), float(0.f / 16.f)));
+	sprite->addKeyframe(MOVE_LEFT, glm::vec2(float(15.f / 16.f), float(1.f / 16.f)));
+	sprite->addKeyframe(MOVE_LEFT, glm::vec2(float(13.f / 16.f), float(0.f / 16.f)));
 
 	sprite->setAnimationSpeed(MOVE_RIGHT, 8);
 	sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(10.f / 16.f), float(0.f / 16.f)));
 	sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(11.f / 16.f), float(0.f / 16.f)));
-	sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(12.f / 16.f), float(0.f / 16.f)));*/
+	sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(10.f / 16.f), float(1.f / 16.f)));
+	sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(12.f / 16.f), float(0.f / 16.f)));
+
+	sprite->setAnimationSpeed(LOOK_UP_LEFT, 8);
+	sprite->addKeyframe(LOOK_UP_LEFT, glm::vec2(float(14.f / 16.f), float(2.f / 16.f)));
+
+	sprite->setAnimationSpeed(LOOK_UP_RIGHT, 8);
+	sprite->addKeyframe(LOOK_UP_RIGHT, glm::vec2(float(11.f / 16.f), float(2.f / 16.f)));
+
+	sprite->setAnimationSpeed(LOOK_DOWN_LEFT, 8);
+	sprite->addKeyframe(LOOK_DOWN_LEFT, glm::vec2(float(15.f / 16.f), float(2.f / 16.f)));
+
+	sprite->setAnimationSpeed(LOOK_DOWN_RIGHT, 8);
+	sprite->addKeyframe(LOOK_DOWN_RIGHT, glm::vec2(float(10.f / 16.f), float(2.f / 16.f)));
 
 	sprite->changeAnimation(0);
 	sprite->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
@@ -60,12 +74,12 @@ void Player::update(int deltaTime)
 {
 	sprite->update(deltaTime);
 
-	if (!Game::instance().getKey(99)) //per que no es produeixi loop de salts
+	if (!(Game::instance().getKey(67) || Game::instance().getKey(99))) //per que no es produeixi loop de salts
 	{
 		deixatClicarSalt = true;
 	}
 
-	if (deixatClicarSalt && Game::instance().getKey(99)) //comprovem si es vol fer salt de CLIMB
+	if (deixatClicarSalt && (Game::instance().getKey(67) || Game::instance().getKey(99))) //comprovem si es vol fer salt de CLIMB. Codis: C=67 i c=99 
 	{
 		//comprovem si estem al costat de mur esquerre
 		posPlayer.x -= 2;
@@ -125,6 +139,24 @@ void Player::update(int deltaTime)
 			sprite->changeAnimation(STAND_RIGHT);
 		}
 	}
+	else if (Game::instance().getSpecialKey(GLUT_KEY_UP))
+	{
+		/*
+		if (sprite->animation() == STAND_LEFT)
+			sprite->changeAnimation(LOOK_UP_LEFT);
+		else if (sprite->animation() != LOOK_UP_RIGHT)
+			sprite->changeAnimation(LOOK_UP_RIGHT);
+		*/
+	}
+	else if (Game::instance().getSpecialKey(GLUT_KEY_DOWN))
+	{
+		/*
+		if (sprite->animation() != LOOK_DOWN_LEFT)
+			sprite->changeAnimation(LOOK_DOWN_LEFT);
+		else if (sprite->animation() != LOOK_DOWN_RIGHT)
+			sprite->changeAnimation(LOOK_DOWN_RIGHT);
+		*/
+	}
 	else
 	{
 		if (sprite->animation() == MOVE_LEFT)
@@ -177,7 +209,7 @@ void Player::update(int deltaTime)
 		posPlayer.y += FALL_STEP;  //UN COP SACABA EL SALT, la caiguda es fa lineal ja que es va restant el fall_step
 		if (map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
 		{
-			if (Game::instance().getKey(99) && deixatClicarSalt)
+			if ((Game::instance().getKey(67)|| Game::instance().getKey(99)) && deixatClicarSalt) //Codis: C=67 i c=99
 			{
 				deixatClicarSalt = false;
 				bJumping = true;
@@ -187,9 +219,10 @@ void Player::update(int deltaTime)
 		}
 	}
 
-	if (Game::instance().getKey(99) && dashCarregat) {
-		//dashCarregat = false;
-		sprite->setColor(glm::vec4(0.f, 0.f, 0.f, 1.f));
+	if ((Game::instance().getKey(88) || Game::instance().getKey(120)) && dashCarregat) //Codis: X=88 i x=120
+	{
+		dashCarregat = false;
+		sprite->setColor(glm::vec4(0.f, 1.f, 1.f, 1.f));
 		render();
 	}
 
