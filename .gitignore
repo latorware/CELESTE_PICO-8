@@ -1,2 +1,8 @@
 
 *.ipch
+*.pdb
+*.exe
+*.pdb
+*.idb
+*.ipch
+*.recipe
