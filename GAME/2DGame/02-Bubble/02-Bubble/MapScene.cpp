@@ -118,7 +118,7 @@ void MapScene::update(int deltaTime) {
 	else
 	{
 		float duracio = currentTime - transicio.startTime; 
-		cout << "duracio " << duracio << endl; 
+		//cout << "duracio " << duracio << endl; 
 		if (duracio >= 1000)
 		{
 			displacement = glm::vec2(float(0.f), float(0.f));
@@ -145,6 +145,7 @@ void MapScene::update(int deltaTime) {
 			{
 				if (!transicio.canviTileMapFet)
 				{
+					inincialitzatNivellPrimeraVegada = false; 
 					transicio.canviTileMapFet = true; 
 					currentLevel = transicio.aLevel; 
 
@@ -180,7 +181,7 @@ void MapScene::update(int deltaTime) {
 
 
 			displacement = glm::vec2(float(0.f), float(ydesviation));
-			cout << "factor " << ydesviation << endl;
+			//cout << "factor " << ydesviation << endl;
 		}
 	}
 
@@ -967,8 +968,15 @@ void MapScene::update(int deltaTime) {
 
 void MapScene::render() {
 
-	glm::mat4 modelview;
 
+	if (!inincialitzatNivellPrimeraVegada)
+	{
+		
+		inicialitzaNivellActual(); 
+		inincialitzatNivellPrimeraVegada = true;
+	}
+
+	glm::mat4 modelview;
 	texProgram.use();
 	texProgram.setUniformMatrix4f("projection", projection);
 	texProgram.setUniform4f("color", 1.0f, 1.0f, 1.0f, 1.0f);
@@ -1220,6 +1228,7 @@ void MapScene::render() {
 
 void MapScene::comensaJoc()
 {
+	inincialitzatNivellPrimeraVegada = false; 
 	Scene::init();
 	transicio.fentTransicio = false;
 	currentLevel = 1;
@@ -1251,6 +1260,7 @@ void MapScene::comensaJoc()
 
 void MapScene::canviaNivell(int level)
 {
+	inincialitzatNivellPrimeraVegada = false; 
 	Scene::init();
 	if (level == currentLevel)
 	{
@@ -2136,4 +2146,5 @@ void MapScene::inicialitzaNivellActual()
 	}
 
 
+	inincialitzatNivellPrimeraVegada = true; 
 }

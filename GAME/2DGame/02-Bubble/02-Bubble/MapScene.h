@@ -43,4 +43,5 @@ private:
 		bool canviTileMapFet; 
 	} transicio;
 	glm::vec2 displacement;
+	bool inincialitzatNivellPrimeraVegada; //per evitar bug en que no es mostren les textures perque no san carregat encars
 };
