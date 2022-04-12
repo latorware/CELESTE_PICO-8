@@ -15,6 +15,7 @@ void Game::init()
 	menu.init();
 	//MScene.init(1);
 	actualScene = 0; //0 = menu		1 = game	2 = guide		3 = credits
+	audioManager.menuMusicPlay(); 
 	credits.init();
 	guide.init();
 }
@@ -75,16 +76,26 @@ void Game::keyPressed(int key)
 	{
 		if (menu.getOption() == 0)
 		{
-			MScene.comensaJoc(); 
+			audioManager.menuMusicStop();
+			audioManager.gameMusicPlay();
+			MScene.comensaJoc(&audioManager); 
 			actualScene = 1;
 		}
 		else if (menu.getOption() == 1)
 		{
 			actualScene = 2;
+			if (actualScene != 2)
+			{
+				audioManager.selectSoundPlay();
+			}
 		}
 		else if (menu.getOption() == 2)
 		{
 			actualScene = 3;
+			if (actualScene != 3)
+			{
+				audioManager.selectSoundPlay();
+			}
 		}
 		else if (menu.getOption() == 3)
 		{
@@ -96,7 +107,13 @@ void Game::keyPressed(int key)
 	{
 		if (actualScene == 0) // Si estamos en una pantalla que no es el menú principal, volvemos a el
 			bPlay = false;
-		else actualScene = 0; // Si estamos en el menú principal, cerramos el juego
+		else
+		{
+			audioManager.gameMusicStop(); 
+			audioManager.menuMusicPlay(); 
+			audioManager.selectSoundPlay();
+			actualScene = 0; // Si estamos en el menú principal, cerramos el juego
+		}
 	}
 
 	if (actualScene == 1) {		//Solo se inicializan los mapas una vez pulsamos jugar (mejor gestion de memoria)
@@ -133,15 +150,19 @@ void Game::keyReleased(int key)
 void Game::specialKeyPressed(int key)
 {
 	if (key == GLUT_KEY_DOWN && actualScene == 0) { //scroll menu down
+		audioManager.selectSoundPlay();
 		menu.setOptionArrowDown();
 	}
 	if (key == GLUT_KEY_UP && actualScene == 0) { //scroll menu down
+		audioManager.selectSoundPlay();
 		menu.setOptionArrowUp();
 	}
 	if (key == GLUT_KEY_RIGHT && actualScene == 0) { //scroll menu down
+		audioManager.selectSoundPlay();
 		menu.setOptionArrowRight();
 	}
 	if (key == GLUT_KEY_LEFT && actualScene == 0) { //scroll menu down
+		audioManager.selectSoundPlay();
 		menu.setOptionArrowLeft();
 	}
 	specialKeys[key] = true;

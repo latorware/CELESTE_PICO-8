@@ -3,65 +3,9 @@ i:{00000000-0000-0000-0000-000000000000}:02-Bubble.sln
 ++02-Bubble
 i:{00000000-0000-0000-0000-000000000000}:02-Bubble
 ++References
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:{7A2849FB-E64A-44F6-9BAE-09D58D0BDD53}
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:{04648F8A-5AC8-4F1A-8FD8-1B9F8A414B4B}
 ++External Dependencies
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:{683EB852-36F2-4D20-9BF5-56D556F02AF0}
-++Archivos de código fuente
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:Archivos de código fuente
-++Credits.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Credits.cpp
-++Game.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Game.cpp
-++main.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\main.cpp
-++MainMenu.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MainMenu.cpp
-++MapScene.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.cpp
-++Player.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Player.cpp
-++Scene.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp
-++Shader.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Shader.cpp
-++ShaderProgram.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\ShaderProgram.cpp
-++Source.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Source.cpp
-++Sprite.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Sprite.cpp
-++Texture.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Texture.cpp
-++TileMap.cpp
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\TileMap.cpp
-++Archivos de encabezado
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:Archivos de encabezado
-++AnimKeyframes.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\AnimKeyframes.h
-++Credits.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Credits.h
-++Game.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Game.h
-++MainMenu.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MainMenu.h
-++MapScene.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.h
-++Player.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Player.h
-++Scene.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.h
-++Shader.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Shader.h
-++ShaderProgram.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\ShaderProgram.h
-++Sprite.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Sprite.h
-++Texture.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Texture.h
-++TileMap.h
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\TileMap.h
-++Archivos de recursos
-i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:Archivos de recursos
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:{3EB38187-D2D0-4663-9127-BF42609BE8B6}
 ++__msvc_system_error_abi.hpp
 e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\COMMUNITY\VC\TOOLS\MSVC\14.31.31103\INCLUDE\__MSVC_SYSTEM_ERROR_ABI.HPP
 ++__msvc_xlocinfo_types.hpp
@@ -300,6 +244,46 @@ e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES (X86)\WINDOWS KITS\10\
 e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES (X86)\WINDOWS KITS\10\INCLUDE\10.0.22000.0\UM\HANDLEAPI.H
 ++heapapi.h
 e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES (X86)\WINDOWS KITS\10\INCLUDE\10.0.22000.0\UM\HEAPAPI.H
+++ik_ESoundEngineOptions.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ESOUNDENGINEOPTIONS.H
+++ik_ESoundOutputDrivers.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ESOUNDOUTPUTDRIVERS.H
+++ik_EStreamModes.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ESTREAMMODES.H
+++ik_IAudioRecorder.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_IAUDIORECORDER.H
+++ik_IAudioStream.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_IAUDIOSTREAM.H
+++ik_IAudioStreamLoader.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_IAUDIOSTREAMLOADER.H
+++ik_IFileFactory.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_IFILEFACTORY.H
+++ik_IFileReader.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_IFILEREADER.H
+++ik_IRefCounted.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_IREFCOUNTED.H
+++ik_irrKlangTypes.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_IRRKLANGTYPES.H
+++ik_ISound.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ISOUND.H
+++ik_ISoundDeviceList.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ISOUNDDEVICELIST.H
+++ik_ISoundEffectControl.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ISOUNDEFFECTCONTROL.H
+++ik_ISoundEngine.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ISOUNDENGINE.H
+++ik_ISoundMixedOutputReceiver.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ISOUNDMIXEDOUTPUTRECEIVER.H
+++ik_ISoundSource.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ISOUNDSOURCE.H
+++ik_ISoundStopEventReceiver.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_ISOUNDSTOPEVENTRECEIVER.H
+++ik_IVirtualRefCounted.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_IVIRTUALREFCOUNTED.H
+++ik_SAudioStreamFormat.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_SAUDIOSTREAMFORMAT.H
+++ik_vec3d.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IK_VEC3D.H
 ++ime_cmodes.h
 e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES (X86)\WINDOWS KITS\10\INCLUDE\10.0.22000.0\UM\IME_CMODES.H
 ++imm.h
@@ -330,6 +314,8 @@ e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES\MICROSOFT VISUAL STUDI
 e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\COMMUNITY\VC\TOOLS\MSVC\14.31.31103\INCLUDE\IOSFWD
 ++iostream
 e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\COMMUNITY\VC\TOOLS\MSVC\14.31.31103\INCLUDE\IOSTREAM
+++irrKlang.h
+e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\USERS\LATOR\DOCUMENTS\GITHUB\CELESTE_PICO-8\GAME\LIBS\IRRKLANG-1.6.0\INCLUDE\IRRKLANG.H
 ++isa_availability.h
 e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\COMMUNITY\VC\TOOLS\MSVC\14.31.31103\INCLUDE\ISA_AVAILABILITY.H
 ++istream
@@ -828,3 +814,67 @@ e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES\MICROSOFT VISUAL STUDI
 e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\COMMUNITY\VC\TOOLS\MSVC\14.31.31103\INCLUDE\YVALS_CORE.H
 ++zmmintrin.h
 e:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\COMMUNITY\VC\TOOLS\MSVC\14.31.31103\INCLUDE\ZMMINTRIN.H
+++Archivos de código fuente
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:Archivos de código fuente
+++AudioManager.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\AudioManager.cpp
+++Credits.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Credits.cpp
+++Game.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Game.cpp
+++Guide.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Guide.cpp
+++main.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\main.cpp
+++MainMenu.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MainMenu.cpp
+++MapScene.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.cpp
+++Player.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Player.cpp
+++Scene.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp
+++Shader.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Shader.cpp
+++ShaderProgram.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\ShaderProgram.cpp
+++Source.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Source.cpp
+++Sprite.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Sprite.cpp
+++Texture.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Texture.cpp
+++TileMap.cpp
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\TileMap.cpp
+++Archivos de encabezado
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:Archivos de encabezado
+++AnimKeyframes.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\AnimKeyframes.h
+++AudioManager.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\AudioManager.h
+++Credits.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Credits.h
+++Game.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Game.h
+++Guide.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Guide.h
+++MainMenu.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MainMenu.h
+++MapScene.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.h
+++Player.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Player.h
+++Scene.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.h
+++Shader.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Shader.h
+++ShaderProgram.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\ShaderProgram.h
+++Sprite.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Sprite.h
+++Texture.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Texture.h
+++TileMap.h
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\TileMap.h
+++Archivos de recursos
+i:{5be6ca2a-e5a8-40cc-9015-047ce0c78036}:Archivos de recursos

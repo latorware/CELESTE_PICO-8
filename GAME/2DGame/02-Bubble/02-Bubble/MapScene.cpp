@@ -1569,8 +1569,10 @@ void MapScene::render() {
 	}
 }
 
-void MapScene::comensaJoc()
+void MapScene::comensaJoc(AudioManager* audioManagerr)
 {
+	audioManager = audioManagerr; 
+	audioManager->levelUpSoundPlay();
 	inincialitzatNivellPrimeraVegada = false; 
 	Scene::init();
 	transicio.fentTransicio = false;
@@ -1604,6 +1606,7 @@ void MapScene::comensaJoc()
 void MapScene::canviaNivell(int level)
 {
 	inincialitzatNivellPrimeraVegada = false; 
+	audioManager->levelUpSoundPlay();
 	Scene::init();
 	if (level == currentLevel)
 	{

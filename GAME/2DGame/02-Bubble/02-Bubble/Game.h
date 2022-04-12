@@ -7,6 +7,7 @@
 #include "MapScene.h"
 #include "Credits.h"
 #include "Guide.h"
+#include "AudioManager.h"
 
 #define SCREEN_X 16
 #define SCREEN_Y 16
@@ -58,6 +59,7 @@ private:
 	bool keys[256], specialKeys[256]; // Store key states so that 
 									  // we can have access at any time
 	int actualScene;
+	AudioManager audioManager; 
 
 };
 
