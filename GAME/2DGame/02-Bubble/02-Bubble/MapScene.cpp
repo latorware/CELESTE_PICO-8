@@ -124,7 +124,7 @@ MapScene::~MapScene() {
 }
 
 void MapScene::init(int level) {
-	//dividit en comensaJoc(), canviaNivell(int level)
+	//dividit en començaJoc(), canviaNivell(int level)
 }
 
 void MapScene::update(int deltaTime) {

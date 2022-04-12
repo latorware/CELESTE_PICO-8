@@ -16,7 +16,8 @@
 
 enum PlayerAnims
 {
-	STAND_LEFT, STAND_RIGHT, MOVE_LEFT, MOVE_RIGHT, LOOK_UP_LEFT, LOOK_UP_RIGHT, LOOK_DOWN_LEFT, LOOK_DOWN_RIGHT
+	STAND_LEFT, STAND_RIGHT, MOVE_LEFT, MOVE_RIGHT, LOOK_UP_LEFT, LOOK_UP_RIGHT, LOOK_DOWN_LEFT, LOOK_DOWN_RIGHT,
+	DASH_LEFT, DASH_RIGHT
 };
 
 
@@ -39,36 +40,42 @@ void Player::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, Au
 	climbEsquerreEnProces = false;
 	spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	sprite = Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &shaderProgram);
-	sprite->setNumberAnimations(8);
+	sprite->setNumberAnimations(10);
 
-	sprite->setAnimationSpeed(STAND_LEFT, 8);
+	sprite->setAnimationSpeed(STAND_LEFT, 8);	//Quieta hacia la izquierda
 	sprite->addKeyframe(STAND_LEFT, glm::vec2(float(15.f / 16.f), float(0.f / 16.f)));
 
-	sprite->setAnimationSpeed(STAND_RIGHT, 8);
+	sprite->setAnimationSpeed(STAND_RIGHT, 8);	//Quieta hacia la derecha
 	sprite->addKeyframe(STAND_RIGHT, glm::vec2(float(10.f / 16.f), float(0.f / 16.f)));
 
-	sprite->setAnimationSpeed(MOVE_LEFT, 8);
+	sprite->setAnimationSpeed(MOVE_LEFT, 8);	//Animación corriendo hacia la izquierda
 	sprite->addKeyframe(MOVE_LEFT, glm::vec2(float(15.f / 16.f), float(0.f / 16.f)));
 	sprite->addKeyframe(MOVE_LEFT, glm::vec2(float(14.f / 16.f), float(0.f / 16.f)));
 	sprite->addKeyframe(MOVE_LEFT, glm::vec2(float(15.f / 16.f), float(1.f / 16.f)));
 	sprite->addKeyframe(MOVE_LEFT, glm::vec2(float(13.f / 16.f), float(0.f / 16.f)));
 
-	sprite->setAnimationSpeed(MOVE_RIGHT, 8);
+	sprite->setAnimationSpeed(MOVE_RIGHT, 8);	//Animación corriendo hacia la derecha
 	sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(10.f / 16.f), float(0.f / 16.f)));
 	sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(11.f / 16.f), float(0.f / 16.f)));
 	sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(10.f / 16.f), float(1.f / 16.f)));
 	sprite->addKeyframe(MOVE_RIGHT, glm::vec2(float(12.f / 16.f), float(0.f / 16.f)));
 
-	sprite->setAnimationSpeed(LOOK_UP_LEFT, 8);
+	sprite->setAnimationSpeed(DASH_LEFT, 8);	//Animación DASH izquierda
+	sprite->addKeyframe(DASH_LEFT, glm::vec2(float(14.f / 16.f), float(1.f / 16.f)));
+
+	sprite->setAnimationSpeed(DASH_RIGHT, 8);	//Animación DASH derecha
+	sprite->addKeyframe(DASH_RIGHT, glm::vec2(float(11.f / 16.f), float(1.f / 16.f)));
+
+	sprite->setAnimationSpeed(LOOK_UP_LEFT, 8);	//Mirando hacia arriba izquierda
 	sprite->addKeyframe(LOOK_UP_LEFT, glm::vec2(float(14.f / 16.f), float(2.f / 16.f)));
 
-	sprite->setAnimationSpeed(LOOK_UP_RIGHT, 8);
+	sprite->setAnimationSpeed(LOOK_UP_RIGHT, 8);	//Mirando hacia arriba derecha
 	sprite->addKeyframe(LOOK_UP_RIGHT, glm::vec2(float(11.f / 16.f), float(2.f / 16.f)));
 
-	sprite->setAnimationSpeed(LOOK_DOWN_LEFT, 8);
+	sprite->setAnimationSpeed(LOOK_DOWN_LEFT, 8);	//Mirando hacia abajo izquierda
 	sprite->addKeyframe(LOOK_DOWN_LEFT, glm::vec2(float(15.f / 16.f), float(2.f / 16.f)));
 
-	sprite->setAnimationSpeed(LOOK_DOWN_RIGHT, 8);
+	sprite->setAnimationSpeed(LOOK_DOWN_RIGHT, 8);	//Mirando hacia abajo derecha
 	sprite->addKeyframe(LOOK_DOWN_RIGHT, glm::vec2(float(10.f / 16.f), float(2.f / 16.f)));
 
 	sprite->changeAnimation(0);
@@ -126,8 +133,10 @@ void Player::update(int deltaTime, float currentTime)
 
 	if (Game::instance().getSpecialKey(GLUT_KEY_LEFT) || climbEsquerreEnProces)
 	{
-		if (sprite->animation() != MOVE_LEFT)
+		if (sprite->animation() != MOVE_LEFT && dashCarregat)
+		{
 			sprite->changeAnimation(MOVE_LEFT);
+		}
 		posPlayer.x -= 2;
 		if (map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
 		{
@@ -138,8 +147,10 @@ void Player::update(int deltaTime, float currentTime)
 	}
 	else if (Game::instance().getSpecialKey(GLUT_KEY_RIGHT) || climbDretEnProces)
 	{
-		if (sprite->animation() != MOVE_RIGHT)
+		if (sprite->animation() != MOVE_RIGHT && dashCarregat)
+		{
 			sprite->changeAnimation(MOVE_RIGHT);
+		}
 		posPlayer.x += 2;
 		if (map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)))
 		{
@@ -217,6 +228,7 @@ void Player::update(int deltaTime, float currentTime)
 		posPlayer.y += FALL_STEP;  //UN COP SACABA EL SALT, la caiguda es fa lineal ja que es va restant el fall_step
 		if (map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
 		{
+			dashCarregat = true;
 			if (tremolarAlCaure)
 			{
 				fentTremolar.first = true; 
@@ -234,11 +246,29 @@ void Player::update(int deltaTime, float currentTime)
 		}
 	}
 
+	//Gestión del DASH
 	if ((Game::instance().getKey(88) || Game::instance().getKey(120)) && dashCarregat) //Codis: X=88 i x=120
 	{
 		dashCarregat = false;
-		sprite->setColor(glm::vec4(0.f, 1.f, 1.f, 1.f));
-		render();
+		audioManager->dashSoundPlay();
+		bJumping = true;
+		jumpAngle = 0;
+		startY = posPlayer.y;
+		fentTremolar.first = true;
+		fentTremolar.second = currentTime;
+
+		if (sprite->animation() == MOVE_LEFT || sprite->animation() == STAND_LEFT)
+		{
+			sprite->changeAnimation(DASH_LEFT);
+		}
+		else if (sprite->animation() == MOVE_RIGHT || sprite->animation() == STAND_RIGHT)
+		{
+			sprite->changeAnimation(DASH_RIGHT);
+		}
+	}
+	else if (dashCarregat) 
+	{
+		sprite->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	}
 
 
