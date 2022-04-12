@@ -12,7 +12,7 @@
 #define FALL_STEP 4
 #define DURACIOTREMOLAR 500
 #define STRENGTHTREMOLAR 15
-
+#define LIMITINFERIOR 479
 
 enum PlayerAnims
 {
@@ -20,8 +20,9 @@ enum PlayerAnims
 };
 
 
-void Player::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
+void Player::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, AudioManager* audioManagerr)
 {
+	audioManager = audioManagerr; 
 	fentTremolar = make_pair(false, 0.f); 
 	tremolarAlCaure = false; 
 	displacement = glm::vec2(float(0.f), float(0.f));
@@ -243,6 +244,7 @@ void Player::update(int deltaTime, float currentTime)
 
 	if (fentTremolar.first)
 	{
+		cout << currentTime - fentTremolar.second << endl;
 		if ((currentTime - fentTremolar.second) >= DURACIOTREMOLAR)
 		{
 			displacement = glm::vec2(float(0.f), float(0.f));
@@ -262,6 +264,16 @@ void Player::update(int deltaTime, float currentTime)
 			//cout << "desviaciox " << desviaciox << "        desviacioy " << desviacioy << endl;
 		}
 	}
+
+	/**
+	if (posPlayer.y >= (LIMITINFERIOR*1.f))
+	{
+		cout << "a" << endl; 
+		fentTremolar.first = true;
+		fentTremolar.second = currentTime;
+		tremolarAlCaure = false;
+	}
+	*/
 
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y)));
 }
@@ -303,4 +315,9 @@ void Player::setTremolar(bool tremolar)
 		fentTremolar.first = false;
 		displacement = glm::vec2(float(0.f), float(0.f));
 	}
+}
+
+bool Player::encaraTremolant()
+{
+	return fentTremolar.first; 
 }

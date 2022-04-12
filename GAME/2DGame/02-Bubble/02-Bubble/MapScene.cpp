@@ -106,6 +106,8 @@
 #define LETTERMETTERSX 300
 #define METERSY 240
 
+#define LIMITINFERIOR 480
+
 
 
 MapScene::MapScene() {
@@ -144,7 +146,30 @@ void MapScene::update(int deltaTime) {
 	
 	if (!transicio.fentTransicio)
 	{
-		player->update(deltaTime, currentTime);
+		if (player->getPositionPlayer().y >= (LIMITINFERIOR * 1.f))
+		{
+			if ((!player->encaraTremolant()) && (!personatgeCaigut))
+			{
+				audioManager->deathSoundPlay();
+				personatgeCaigut = true; 
+				player->setTremolar(true);
+				player->update(deltaTime, currentTime);
+			}
+			else if ((player->encaraTremolant()) && (personatgeCaigut))
+			{
+				player->update(deltaTime, currentTime);
+			}
+			else if ((!player->encaraTremolant()) && (personatgeCaigut))
+			{
+				personatgeCaigut = false;
+				canviaNivell(currentLevel);
+			}
+
+		}
+		else
+		{
+			player->update(deltaTime, currentTime);
+		}
 	}
 	else
 	{
@@ -191,11 +216,11 @@ void MapScene::update(int deltaTime) {
 					spriteShouldBeRendered.clear();
 					map = TileMap::createTileMap("levels/level_" + to_string(currentLevel) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, currentLevel, &spriteShouldBeRendered);
 					background = TileMap::createTileMap("levels/background_" + to_string(currentLevel) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, &spriteShouldBeRendered);
-					player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
+					player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, audioManager);
 					player->setTremolar(true);
 					player->setTileMap(map);
 					inicialitzaNivellActual(); 
-					cout << "b" << endl; 
+					//cout << "b" << endl; 
 
 
 				}
@@ -215,9 +240,6 @@ void MapScene::update(int deltaTime) {
 			//cout << "factor " << ydesviation << endl;
 		}
 	}
-
-
-
 
 
 	if (currentLevel == 3)
@@ -1585,6 +1607,7 @@ void MapScene::render() {
 void MapScene::comensaJoc(AudioManager* audioManagerr)
 {
 	jocEnded = false; 
+	personatgeCaigut = false; 
 	audioManager = audioManagerr; 
 	audioManager->levelUpSoundPlay();
 	inincialitzatNivellPrimeraVegada = false; 
@@ -1603,7 +1626,7 @@ void MapScene::comensaJoc(AudioManager* audioManagerr)
 	spriteShouldBeRendered.clear();
 	map = TileMap::createTileMap("levels/level_" + to_string(1) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 1, &spriteShouldBeRendered);
 	background = TileMap::createTileMap("levels/background_" + to_string(1) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, &spriteShouldBeRendered);
-	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
+	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, audioManager);
 	player->setTremolar(true);
 	player->setTileMap(map);
 
@@ -1631,7 +1654,7 @@ void MapScene::canviaNivell(int level)
 		spriteShouldBeRendered.clear();
 		map = TileMap::createTileMap("levels/level_" + to_string(currentLevel) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, currentLevel, &spriteShouldBeRendered);
 		background = TileMap::createTileMap("levels/background_" + to_string(currentLevel) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, &spriteShouldBeRendered);
-		player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
+		player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, audioManager);
 		player->setTremolar(true);
 		player->setTileMap(map);
 		inicialitzaNivellActual(); 

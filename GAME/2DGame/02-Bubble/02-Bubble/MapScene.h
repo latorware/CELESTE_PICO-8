@@ -48,4 +48,5 @@ private:
 	bool inincialitzatNivellPrimeraVegada; //per evitar bug en que no es mostren les textures perque no san carregat encars
 	AudioManager* audioManager; 
 	bool jocEnded; 
+	bool personatgeCaigut; 
 };

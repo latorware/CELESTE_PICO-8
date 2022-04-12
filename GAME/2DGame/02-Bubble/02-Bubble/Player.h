@@ -4,6 +4,7 @@
 
 #include "Sprite.h"
 #include "TileMap.h"
+#include "AudioManager.h"
 
 
 // Player is basically a Sprite that represents the player. As such it has
@@ -14,7 +15,7 @@ class Player
 {
 
 public:
-	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram);
+	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, AudioManager* audioManagerr);
 	void update(int deltaTime, float currentTimee);
 	void render();
 
@@ -22,6 +23,7 @@ public:
 	void setPosition(const glm::vec2& pos);
 	glm::ivec2 getPositionPlayer();
 	void setTremolar(bool tremolar); 
+	bool encaraTremolant(); 
 
 private:
 	bool bJumping;
@@ -37,6 +39,7 @@ private:
 	glm::vec2 displacement;
 	bool tremolarAlCaure; 
 	pair<bool, float> fentTremolar;
+	AudioManager* audioManager;
 
 };
 
