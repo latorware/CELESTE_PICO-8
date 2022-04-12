@@ -25,6 +25,7 @@ public:
 	void levelUpSoundPlay(); 
 	void maduixaSoundPlay();
 	void selectSoundPlay();
+	void dashSoundPlay();
 
 
 	
@@ -40,6 +41,7 @@ private:
 	irrklang::ISound* levelUpSound; 
 	irrklang::ISound* maduixaSound; 
 	irrklang::ISound* selectSound; 
+	irrklang::ISound* dashSound;
 
 
 

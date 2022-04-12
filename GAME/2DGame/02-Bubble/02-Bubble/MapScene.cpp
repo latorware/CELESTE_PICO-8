@@ -128,6 +128,19 @@ void MapScene::init(int level) {
 void MapScene::update(int deltaTime) {
 	currentTime += deltaTime;
 	//cout << "currentTime " << currentTime << "        deltaTime " << deltaTime << endl; 
+
+	if (player->getPositionPlayer().y <= 1.f)
+	{
+		audioManager->levelUpSoundPlay();
+		if (currentLevel == 10)
+		{
+			jocEnded = true; 
+		}
+		else
+		{
+			canviaNivell(currentLevel + 1); 
+		}
+	}
 	
 	if (!transicio.fentTransicio)
 	{
@@ -1571,6 +1584,7 @@ void MapScene::render() {
 
 void MapScene::comensaJoc(AudioManager* audioManagerr)
 {
+	jocEnded = false; 
 	audioManager = audioManagerr; 
 	audioManager->levelUpSoundPlay();
 	inincialitzatNivellPrimeraVegada = false; 
@@ -1632,6 +1646,11 @@ void MapScene::canviaNivell(int level)
 	transicio.aLevel = level; 
 	transicio.canviTileMapFet = false; 
 
+}
+
+bool MapScene::jocAcabat()
+{
+	return jocEnded; 
 }
 
 void MapScene::inicialitzaNivellActual()

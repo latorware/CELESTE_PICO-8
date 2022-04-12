@@ -31,7 +31,14 @@ bool Game::update(int deltaTime)
 	}
 	else if (actualScene == 1) //solo actualiza el juego si estamos en un nivel, para que los clics del teclado anteriores no afecten al Player
 	{	
-		MScene.update(deltaTime);
+		if (MScene.jocAcabat())
+		{
+			actualScene = 3; 
+		}
+		else
+		{
+			MScene.update(deltaTime);
+		}
 	}
 	else if (actualScene == 2)
 	{

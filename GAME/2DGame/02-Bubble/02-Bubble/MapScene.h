@@ -22,6 +22,7 @@ public:
 	void render();
 	void comensaJoc(AudioManager* audioManagerr);
 	void canviaNivell(int level); 
+	bool jocAcabat(); 
 
 
 private:
@@ -46,4 +47,5 @@ private:
 	glm::vec2 displacement;
 	bool inincialitzatNivellPrimeraVegada; //per evitar bug en que no es mostren les textures perque no san carregat encars
 	AudioManager* audioManager; 
+	bool jocEnded; 
 };

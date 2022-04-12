@@ -11,6 +11,7 @@ AudioManager::AudioManager()
 	levelUpSound = engine->play2D("music/levelUp.mp3", false, true, true);
 	maduixaSound = engine->play2D("music/maduixa.mp3", false, true, true);
 	selectSound = engine->play2D("music/select.mp3", false, true, true);
+	dashSound = engine->play2D("music/dash.mp3", false, true, true);
 }
 
 void AudioManager::menuMusicPlay()
@@ -121,5 +122,19 @@ void AudioManager::selectSoundPlay()
 	{
 		selectSound->drop();
 		selectSound = engine->play2D("music/select.mp3", false, false, true);
+	}
+}
+
+void AudioManager::dashSoundPlay()
+{
+	if (dashSound->getIsPaused())
+	{
+		bool paused = false;
+		dashSound->setIsPaused(paused);
+	}
+	else
+	{
+		dashSound->drop();
+		dashSound = engine->play2D("music/dash.mp3", false, false, true);
 	}
 }
