@@ -120,7 +120,7 @@ void MapScene::init(int level) {
 	map = TileMap::createTileMap("levels/level_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, level, &spriteShouldBeRendered);
 	background = TileMap::createTileMap("levels/background_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, &spriteShouldBeRendered);
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
-	//player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
+	player->setTremolar(true); 
 	player->setTileMap(map);
 
 	if (level == 1)
@@ -490,7 +490,7 @@ void MapScene::init(int level) {
 void MapScene::update(int deltaTime) {
 	currentTime += deltaTime;
 	//cout << "currentTime " << currentTime << "        deltaTime " << deltaTime << endl; 
-	player->update(deltaTime);
+	player->update(deltaTime, currentTime);
 
 	if (currentLevel == 3)
 	{

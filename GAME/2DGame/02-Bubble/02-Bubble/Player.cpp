@@ -4,11 +4,14 @@
 #include <GL/glut.h>
 #include "Player.h"
 #include "Game.h"
+#include <stdlib.h> 
 
 
 #define JUMP_ANGLE_STEP 4
 #define JUMP_HEIGHT 80
 #define FALL_STEP 4
+#define DURACIOTREMOLAR 500
+#define STRENGTHTREMOLAR 15
 
 
 enum PlayerAnims
@@ -19,7 +22,8 @@ enum PlayerAnims
 
 void Player::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
 {
-	tremolarWhenPosible = false; 
+	fentTremolar = make_pair(false, 0.f); 
+	tremolarAlCaure = false; 
 	displacement = glm::vec2(float(0.f), float(0.f));
 	texProgram = shaderProgram; 
 	spritesheet.setWrapS(GL_CLAMP_TO_EDGE);
@@ -73,7 +77,7 @@ void Player::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
 
 }
 
-void Player::update(int deltaTime)
+void Player::update(int deltaTime, float currentTime)
 {
 	sprite->update(deltaTime);
 
@@ -212,6 +216,13 @@ void Player::update(int deltaTime)
 		posPlayer.y += FALL_STEP;  //UN COP SACABA EL SALT, la caiguda es fa lineal ja que es va restant el fall_step
 		if (map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
 		{
+			if (tremolarAlCaure)
+			{
+				fentTremolar.first = true; 
+				fentTremolar.second = currentTime;
+				tremolarAlCaure = false; 
+				//cout << "començant el tremolar" << endl; 
+			}
 			if ((Game::instance().getKey(67)|| Game::instance().getKey(99)) && deixatClicarSalt) //Codis: C=67 i c=99
 			{
 				deixatClicarSalt = false;
@@ -227,6 +238,29 @@ void Player::update(int deltaTime)
 		dashCarregat = false;
 		sprite->setColor(glm::vec4(0.f, 1.f, 1.f, 1.f));
 		render();
+	}
+
+
+	if (fentTremolar.first)
+	{
+		if ((currentTime - fentTremolar.second) >= DURACIOTREMOLAR)
+		{
+			displacement = glm::vec2(float(0.f), float(0.f));
+			fentTremolar.first = false;
+			//cout << "acabant tremolar" << endl; 
+		}
+		else
+		{
+			float strength = (1.f - ((currentTime - fentTremolar.second) / DURACIOTREMOLAR * 1.f))*(STRENGTHTREMOLAR*1.f); 
+			float desviacioy = strength * sin(currentTime); 
+			float desviaciox = ((rand() % 10+1)*0.1f)*desviacioy;
+			if ((rand() % 2) == 0)
+			{
+				desviaciox = -desviaciox; 
+			}
+			displacement = glm::vec2(float(desviaciox), float(desviacioy));
+			//cout << "desviaciox " << desviaciox << "        desviacioy " << desviacioy << endl;
+		}
 	}
 
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y)));
@@ -252,4 +286,21 @@ void Player::setPosition(const glm::vec2& pos)
 glm::ivec2 Player::getPositionPlayer()
 {
 	return posPlayer;
+}
+
+void Player::setTremolar(bool tremolar)
+{
+	if (tremolar == true)
+	{
+		tremolarAlCaure = true; 
+		fentTremolar.first = false; 
+		displacement = glm::vec2(float(0.f), float(0.f));
+
+	}
+	else
+	{
+		tremolarAlCaure = false; 
+		fentTremolar.first = false;
+		displacement = glm::vec2(float(0.f), float(0.f));
+	}
 }

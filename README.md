@@ -20,6 +20,9 @@
 
 - El boto exit. 
 
+- Vibrar al començar nivell
+
+
 ## Coses que falten
 
 - Fer sprite molles. Juan
@@ -54,7 +57,11 @@
 
 - Classe map. 
 
-- funcio vibrar. David
+- <del>Vibrar al començar nivell. David</del>
+
+- Vibrar al morir. 
+
+- Vibrar al dash
 
 - Sprite punxes matar. Juan
 
