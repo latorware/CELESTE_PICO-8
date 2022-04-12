@@ -2,6 +2,10 @@
 
 <b>Recordar treure la AllocConsole(serveix per debugejar couts) a l'hora d'entregar</b>
 
+<b> PROBLEMA VELOCIDAD: </B>Para aumentar la velocidad del jugador, hay que cambiar el valor de pos.x (de 2 a 4) cuando se comprueba si se están pulsando las flechas a la izquierda y a la derecha (en la clase Plaayer.cpp). Esto hace que el jugador entre dentro de los tiles que están a su misma altura, y por tanto hay que modificar la función collisionMoveLeft y collisionMoveRight de la clase TileMap.cpp. Así se consigue una velocidad muy parecida a la del juego original y se pueden pasar todos los niveles. El problema es que al modificar estas dos funciones, deja de funcionar la habilidad CLIMB del perosnaje.
+
+<B>PROBLEMA CLIMB: </b>El CLIMB funciona como en el juego original cuando el obstáculo se encuentra a la derecha, pero cuando el obstáculo se encuentra a la izquierda, si dejas pulsada la tecla de la flecha a la izquierda mientras el personaje está agarrado a la pared, salta hacia arriba en vez de saltar en la dirección contraria al obtáculo (en el CLIMB a la dercha si que lo hace bien).
+
 ## Coses fetes
 
 - Climb. 
@@ -29,6 +33,20 @@
 
 - Fer sprite molles. Juan
 
+- Sprite nubes. Juan
+
+- Sprite contador. David
+
+- Tecla invulnerabilitat. Juan
+
+- Totes altres animacions. 
+
+- Sprite punxes matar. Juan
+
+- Tecla dash infinit. Juan
+
+- Tecla velocitat joc. 
+
 - <del>Fer sprite maduixes no voladores. David</del>
 
 - <del>Fer sprite maduixes voladores. David</del>
@@ -45,8 +63,6 @@
 
 - <del>Sprite nieve. Juan</del>
 
-- Sprite nubes. Juan
-
 - <del>Modificar jump. David</del>
 
 - <del>Limits jugador mapa. </del>
@@ -61,24 +77,12 @@
 
 - <del>Vibrar al dash.  Juan</del>
 
-- Sprite punxes matar. Juan
-
 - <del>Climb. David</del>
 
 - <del>Sprites correr. Juan </del>
 
-- Sprite contador. David
-
-- Tecla invulnerabilitat. Juan
-
-- Tecla dash infinit. Juan
-
-- Tecla velocitat joc. 
-
 - <del>Musica.       David   </del>
 
 - <del>Efectes especials. David </del>
-
-- Totes altres animacions. 
 
 - <del>Gestió de memòria (alliberar espai de memòria al cambiar de mapa).  Juan </del>
