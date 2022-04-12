@@ -31,8 +31,6 @@
 
 - <del>Fer sprite maduixes no voladores. David</del>
 
-- Sprite nuvols.            Juan
-
 - <del>Fer sprite maduixes voladores. David</del>
 
 - <del>Fer sprite blocs que despareixen. David</del>
@@ -47,7 +45,7 @@
 
 - <del>Sprite nieve. Juan</del>
 
-- Sprite nuves. Juan
+- Sprite nubes. Juan
 
 - <del>Modificar jump. David</del>
 
@@ -55,32 +53,32 @@
 
 - <del>Mort del jugador per caiguda</del>
 
-- Fer dash. Juan
+- <del>Fer dash. Juan </del>
 
 - <del>Vibrar al començar nivell. David</del>
 
-- Vibrar al morir. 
+- <del>Vibrar al morir. </del>
 
-- Vibrar al dash
+- <del>Vibrar al dash.  Juan</del>
 
 - Sprite punxes matar. Juan
 
 - <del>Climb. David</del>
 
-- Sprites correr. Juan
+- <del>Sprites correr. Juan </del>
 
 - Sprite contador. David
 
 - Tecla invulnerabilitat. Juan
 
-- Tecla dash infinit. David
+- Tecla dash infinit. Juan
 
 - Tecla velocitat joc. 
 
-- Musica.       David
+- <del>Musica.       David   </del>
 
-- So efectes especials. David
+- <del>Efectes especials. David </del>
 
 - Totes altres animacions. 
 
-- Gestió de memòria (alliberar espai de memòria al cambiar de mapa). 
+- <del>Gestió de memòria (alliberar espai de memòria al cambiar de mapa).  Juan </del>
