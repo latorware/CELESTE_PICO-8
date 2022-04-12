@@ -22,6 +22,10 @@ public:
 	void comensaJoc(); 
 	void canviaNivell(int level); 
 
+
+private:
+	void inicialitzaNivellActual(); 
+
 private:
 	TileMap* map, * background;
 	Player* player;
