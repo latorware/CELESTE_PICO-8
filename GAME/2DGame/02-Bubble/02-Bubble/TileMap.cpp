@@ -221,7 +221,7 @@ bool TileMap::collisionMoveLeft(const glm::ivec2& pos, const glm::ivec2& size) c
 	return false;
 }
 
-bool TileMap::collisionMoveRight(const glm::ivec2& pos, const glm::ivec2& size) const
+bool TileMap::collisionMoveRight(const glm::ivec2& pos, const glm::ivec2& size/*, int* posX*/) const
 {
 	int x, y0, y1;
 
@@ -231,7 +231,15 @@ bool TileMap::collisionMoveRight(const glm::ivec2& pos, const glm::ivec2& size) 
 	for (int y = y0; y <= y1; y++)
 	{
 		if (map[y * mapSize.x + x] != 0)
+		{
+			/*	Necesario para comprobar las colisiones hacia la derecha si aumentamos la velocidad a 4
+			if (*posX - tileSize * x + size.x <= 8)
+			{
+				*posX = tileSize * x - size.x;
+				return true;
+			}*/
 			return true;
+		}
 	}
 
 	return false;

@@ -112,7 +112,7 @@ void Player::update(int deltaTime, float currentTime)
 		else
 		{
 			posPlayer.x += 4;
-			if (map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)))
+			if (map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)/*, &posPlayer.x*/))
 			{
 				//fem el climb
 				posPlayer.x -= 2;
@@ -151,8 +151,8 @@ void Player::update(int deltaTime, float currentTime)
 		{
 			sprite->changeAnimation(MOVE_RIGHT);
 		}
-		posPlayer.x += 2;
-		if (map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)))
+		posPlayer.x += 2;	//Aumnetar el desplazameitno en x a 4 para conseguir más velocidad
+		if (map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)/*, &posPlayer.x*/))
 		{
 			posPlayer.x -= 2;
 			sprite->changeAnimation(STAND_RIGHT);
@@ -268,7 +268,7 @@ void Player::update(int deltaTime, float currentTime)
 	}
 	else if (dashCarregat) 
 	{
-		sprite->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
 	}
 
 

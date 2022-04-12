@@ -31,8 +31,9 @@ public:
 
 	int getTileSize() const { return tileSize; }
 
+	//int* posX Necesario para comprobar las colisiones hacia la izquierda y la derecha si aumentamos el desplazamiento a 4
 	bool collisionMoveLeft(const glm::ivec2& pos, const glm::ivec2& size) const;
-	bool collisionMoveRight(const glm::ivec2& pos, const glm::ivec2& size) const;
+	bool collisionMoveRight(const glm::ivec2& pos, const glm::ivec2& size/*, int* posX*/) const;
 	bool collisionMoveDown(const glm::ivec2& pos, const glm::ivec2& size, int* posY) const;
 	bool collisionMoveUp(const glm::ivec2& pos, const glm::ivec2& size, int* posY) const;
 
