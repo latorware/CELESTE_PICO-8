@@ -42,6 +42,25 @@
 #define POSYMADUIXALVL5 380
 #define POSXMADUIXALVL7 330
 #define POSYMADUIXALVL7 120
+
+
+#define POSXBLOC1LVL8 230
+#define POSYBLOC1LVL8 460
+#define POSXBLOC2LVL8 262
+#define POSYBLOC2LVL8 460
+#define POSXBLOC3LVL8 294
+#define POSYBLOC3LVL8 460
+
+#define POSXBLOC1LVL10 180
+#define POSYBLOC1LVL10 460
+#define POSXBLOC2LVL10 212
+#define POSYBLOC2LVL10 460
+#define POSXBLOC3LVL10 340
+#define POSYBLOC3LVL10 460
+#define POSXBLOC4LVL10 372
+#define POSYBLOC4LVL10 460
+
+
 #define OFFSET 20
 
 
@@ -400,6 +419,120 @@ bool TileMap::collisionMoveDown(const glm::ivec2& pos, const glm::ivec2& size, i
 		else if ((((y >= ((POSYBLOC12LVL4 - 16) - OFFSET)) && (y <= ((POSYBLOC12LVL4 - 16) + OFFSET))) && ((x >= (POSXBLOC12LVL4 - OFFSET)) && (x <= (POSXBLOC12LVL4 + OFFSET)))))
 		{
 			if ((*spriteShouldBeRendered)[14])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+	}
+
+	//Cas que sigui level 8, analitzar els blocs flotants
+	if (level == 8)
+	{
+
+		int y = pos.y + 14;
+		int x = pos.x + 14;
+		if ((((y >= ((POSYBLOC1LVL8 - 16) - OFFSET)) && (y <= ((POSYBLOC1LVL8 - 16) + OFFSET))) && ((x >= (POSXBLOC1LVL8 - OFFSET)) && (x <= (POSXBLOC1LVL8 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[0])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC2LVL8 - 16) - OFFSET)) && (y <= ((POSYBLOC2LVL8 - 16) + OFFSET))) && ((x >= (POSXBLOC2LVL8 - OFFSET)) && (x <= (POSXBLOC2LVL8 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[1])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC3LVL8 - 16) - OFFSET)) && (y <= ((POSYBLOC3LVL8 - 16) + OFFSET))) && ((x >= (POSXBLOC3LVL8 - OFFSET)) && (x <= (POSXBLOC3LVL8 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[2])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+	}
+
+	//Cas que sigui level 10, analitzar els blocs flotants
+	if (level == 10)
+	{
+
+		int y = pos.y + 14;
+		int x = pos.x + 14;
+		if ((((y >= ((POSYBLOC1LVL10 - 16) - OFFSET)) && (y <= ((POSYBLOC1LVL10 - 16) + OFFSET))) && ((x >= (POSXBLOC1LVL10 - OFFSET)) && (x <= (POSXBLOC1LVL10 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[0])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC2LVL10 - 16) - OFFSET)) && (y <= ((POSYBLOC2LVL10 - 16) + OFFSET))) && ((x >= (POSXBLOC2LVL10 - OFFSET)) && (x <= (POSXBLOC2LVL10 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[1])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC3LVL10 - 16) - OFFSET)) && (y <= ((POSYBLOC3LVL10 - 16) + OFFSET))) && ((x >= (POSXBLOC3LVL10 - OFFSET)) && (x <= (POSXBLOC3LVL10 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[2])
+			{
+				//cout << "topat amb mur" << endl;
+				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)
+				{
+					*posY = tileSize * ((pos.y + size.y - 1) / tileSize) - size.y;
+					return true;
+				}
+
+				return true;
+			}
+		}
+		else if ((((y >= ((POSYBLOC4LVL10 - 16) - OFFSET)) && (y <= ((POSYBLOC4LVL10 - 16) + OFFSET))) && ((x >= (POSXBLOC4LVL10 - OFFSET)) && (x <= (POSXBLOC4LVL10 + OFFSET)))))
+		{
+			if ((*spriteShouldBeRendered)[3])
 			{
 				//cout << "topat amb mur" << endl;
 				if (*posY - tileSize * ((pos.y + size.y - 1) / tileSize) + size.y <= 8)

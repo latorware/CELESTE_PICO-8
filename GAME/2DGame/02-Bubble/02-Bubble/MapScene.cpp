@@ -47,6 +47,24 @@
 #define POSYMADUIXALVL5 380
 #define POSXMADUIXALVL7 330
 #define POSYMADUIXALVL7 120
+
+
+#define POSXBLOC1LVL8 230
+#define POSYBLOC1LVL8 460
+#define POSXBLOC2LVL8 262
+#define POSYBLOC2LVL8 460
+#define POSXBLOC3LVL8 294
+#define POSYBLOC3LVL8 460
+
+#define POSXBLOC1LVL10 180
+#define POSYBLOC1LVL10 460
+#define POSXBLOC2LVL10 212
+#define POSYBLOC2LVL10 460
+#define POSXBLOC3LVL10 340
+#define POSYBLOC3LVL10 460
+#define POSXBLOC4LVL10 372
+#define POSYBLOC4LVL10 460
+
 #define OFFSET 20
 
 
@@ -164,7 +182,7 @@ void MapScene::update(int deltaTime) {
 					player->setTremolar(true);
 					player->setTileMap(map);
 					inicialitzaNivellActual(); 
-
+					cout << "b" << endl; 
 
 
 				}
@@ -964,6 +982,299 @@ void MapScene::update(int deltaTime) {
 			}
 		}
 	}
+	else if (currentLevel == 8)
+	{
+		//tractem bloc 1
+		if (!spritesClicats[0].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= ((POSYBLOC1LVL8 - 16) - OFFSET)) && (y <= ((POSYBLOC1LVL8 - 16) + OFFSET))) && ((x >= (POSXBLOC1LVL8 - OFFSET)) && (x <= (POSXBLOC1LVL8 + OFFSET)))))
+			{
+				spritesClicats[0].first = true;
+				spritesClicats[0].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[0].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[0].first = false;
+				spriteShouldBeRendered[0] = true;
+				sprites[5]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[5]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[5]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[0] = false;
+				}
+			}
+		}
+
+
+
+		//tractem bloc 2
+		if (!spritesClicats[1].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= ((POSYBLOC2LVL8 - 16) - OFFSET)) && (y <= ((POSYBLOC2LVL8 - 16) + OFFSET))) && ((x >= (POSXBLOC2LVL8 - OFFSET)) && (x <= (POSXBLOC2LVL8 + OFFSET)))))
+			{
+				spritesClicats[1].first = true;
+				spritesClicats[1].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[1].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[1].first = false;
+				spriteShouldBeRendered[1] = true;
+				sprites[6]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[6]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[6]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[1] = false;
+				}
+			}
+		}
+		//tractem bloc 3
+		if (!spritesClicats[2].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= ((POSYBLOC3LVL8 - 16) - OFFSET)) && (y <= ((POSYBLOC3LVL8 - 16) + OFFSET))) && ((x >= (POSXBLOC3LVL8 - OFFSET)) && (x <= (POSXBLOC3LVL8 + OFFSET)))))
+			{
+				spritesClicats[2].first = true;
+				spritesClicats[2].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[2].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[2].first = false;
+				spriteShouldBeRendered[2] = true;
+				sprites[7]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[7]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[7]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[2] = false;
+				}
+			}
+		}
+	}
+
+		else if (currentLevel == 10)
+	{
+		//tractem bloc 1
+		if (!spritesClicats[0].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= ((POSYBLOC1LVL10 - 16) - OFFSET)) && (y <= ((POSYBLOC1LVL10 - 16) + OFFSET))) && ((x >= (POSXBLOC1LVL10 - OFFSET)) && (x <= (POSXBLOC1LVL10 + OFFSET)))))
+			{
+				spritesClicats[0].first = true;
+				spritesClicats[0].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[0].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[0].first = false;
+				spriteShouldBeRendered[0] = true;
+				sprites[6]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[6]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[6]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[0] = false;
+				}
+			}
+		}
+
+
+
+		//tractem bloc 2
+		if (!spritesClicats[1].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= ((POSYBLOC2LVL10 - 16) - OFFSET)) && (y <= ((POSYBLOC2LVL10 - 16) + OFFSET))) && ((x >= (POSXBLOC2LVL10 - OFFSET)) && (x <= (POSXBLOC2LVL10 + OFFSET)))))
+			{
+				spritesClicats[1].first = true;
+				spritesClicats[1].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[1].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[1].first = false;
+				spriteShouldBeRendered[1] = true;
+				sprites[7]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[7]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[7]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[1] = false;
+				}
+			}
+		}
+		//tractem bloc 3
+		if (!spritesClicats[2].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= ((POSYBLOC3LVL10 - 16) - OFFSET)) && (y <= ((POSYBLOC3LVL10 - 16) + OFFSET))) && ((x >= (POSXBLOC3LVL10 - OFFSET)) && (x <= (POSXBLOC3LVL10 + OFFSET)))))
+			{
+				spritesClicats[2].first = true;
+				spritesClicats[2].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[2].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[2].first = false;
+				spriteShouldBeRendered[2] = true;
+				sprites[8]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[8]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[8]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[2] = false;
+				}
+			}
+		}
+		//tractem bloc 4
+		if (!spritesClicats[3].first)
+		{
+			int y = player->getPositionPlayer().y + 14;
+			int x = player->getPositionPlayer().x + 14;
+			if ((((y >= ((POSYBLOC4LVL10 - 16) - OFFSET)) && (y <= ((POSYBLOC4LVL10 - 16) + OFFSET))) && ((x >= (POSXBLOC4LVL10 - OFFSET)) && (x <= (POSXBLOC4LVL10 + OFFSET)))))
+			{
+				spritesClicats[3].first = true;
+				spritesClicats[3].second = currentTime;
+			}
+		}
+		else
+		{
+			float difference = currentTime - spritesClicats[3].second;
+			if (difference >= 1500)
+			{
+				spritesClicats[3].first = false;
+				spriteShouldBeRendered[3] = true;
+				sprites[9]->changeAnimation(0);
+			}
+			else
+			{
+				if (difference < 500)
+				{
+					if (difference <= 250)
+					{
+						sprites[9]->changeAnimation(1);
+					}
+					else
+					{
+						sprites[9]->changeAnimation(2);
+					}
+				}
+
+				else
+				{
+					spriteShouldBeRendered[3] = false;
+				}
+			}
+		}
+	}
 }
 
 void MapScene::render() {
@@ -971,11 +1282,10 @@ void MapScene::render() {
 
 	if (!inincialitzatNivellPrimeraVegada)
 	{
-		
+		//cout << "b" << endl;  
 		inicialitzaNivellActual(); 
 		inincialitzatNivellPrimeraVegada = true;
 	}
-
 	glm::mat4 modelview;
 	texProgram.use();
 	texProgram.setUniformMatrix4f("projection", projection);
@@ -1198,6 +1508,19 @@ void MapScene::render() {
 			sprites[4]->render();
 
 		}
+
+		if (spriteShouldBeRendered[0])
+		{
+			sprites[5]->render();
+		}
+		if (spriteShouldBeRendered[1])
+		{
+			sprites[6]->render();
+		}
+		if (spriteShouldBeRendered[2])
+		{
+			sprites[7]->render();
+		}
 	}
 	else if (currentLevel == 9)
 	{
@@ -1222,6 +1545,26 @@ void MapScene::render() {
 		sprites[4]->render();
 		sprites[5]->render();
 
+
+
+
+	}
+
+	if (spriteShouldBeRendered[0])
+	{
+		sprites[6]->render();
+	}
+	if (spriteShouldBeRendered[1])
+	{
+		sprites[7]->render();
+	}
+	if (spriteShouldBeRendered[2])
+	{
+		sprites[8]->render();
+	}
+	if (spriteShouldBeRendered[3])
+	{
+		sprites[9]->render();
 	}
 	}
 }
@@ -2031,6 +2374,56 @@ void MapScene::inicialitzaNivellActual()
 		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 
 
+		textures.emplace_back();
+		textures[2].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[2].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[2].setMinFilter(GL_NEAREST);
+		textures[2].setMagFilter(GL_NEAREST);
+		textures[2].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		//bloc 1
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[5]->setNumberAnimations(3);
+		sprites[5]->setAnimationSpeed(0, 1);
+		sprites[5]->setAnimationSpeed(1, 1);
+		sprites[5]->setAnimationSpeed(2, 1);
+		sprites[5]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[5]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[5]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[5]->changeAnimation(0);
+		sprites[5]->setPosition(glm::vec2(float(POSXBLOC1LVL8), float(POSYBLOC1LVL8)));
+		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 2
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[6]->setNumberAnimations(3);
+		sprites[6]->setAnimationSpeed(0, 1);
+		sprites[6]->setAnimationSpeed(1, 1);
+		sprites[6]->setAnimationSpeed(2, 1);
+		sprites[6]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[6]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[6]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[6]->changeAnimation(0);
+		sprites[6]->setPosition(glm::vec2(float(POSXBLOC2LVL8), float(POSYBLOC2LVL8)));
+		sprites[6]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 3
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[7]->setNumberAnimations(3);
+		sprites[7]->setAnimationSpeed(0, 1);
+		sprites[7]->setAnimationSpeed(1, 1);
+		sprites[7]->setAnimationSpeed(2, 1);
+		sprites[7]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[7]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[7]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[7]->changeAnimation(0);
+		sprites[7]->setPosition(glm::vec2(float(POSXBLOC3LVL8), float(POSYBLOC3LVL8)));
+		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+
+
 	}
 
 	else if (currentLevel == 9)
@@ -2143,6 +2536,74 @@ void MapScene::inicialitzaNivellActual()
 		sprites[5]->changeAnimation(0);
 		sprites[5]->setPosition(glm::vec2(float(LETTERMETTERSX+ 50.f + SCREEN_X), float(METERSY + SCREEN_Y)));
 		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+
+
+		textures.emplace_back();
+		textures[2].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[2].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[2].setMinFilter(GL_NEAREST);
+		textures[2].setMagFilter(GL_NEAREST);
+		textures[2].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		//bloc 1
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[6]->setNumberAnimations(3);
+		sprites[6]->setAnimationSpeed(0, 1);
+		sprites[6]->setAnimationSpeed(1, 1);
+		sprites[6]->setAnimationSpeed(2, 1);
+		sprites[6]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[6]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[6]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[6]->changeAnimation(0);
+		sprites[6]->setPosition(glm::vec2(float(POSXBLOC1LVL10), float(POSYBLOC1LVL10)));
+		sprites[6]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 2
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[7]->setNumberAnimations(3);
+		sprites[7]->setAnimationSpeed(0, 1);
+		sprites[7]->setAnimationSpeed(1, 1);
+		sprites[7]->setAnimationSpeed(2, 1);
+		sprites[7]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[7]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[7]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[7]->changeAnimation(0);
+		sprites[7]->setPosition(glm::vec2(float(POSXBLOC2LVL10), float(POSYBLOC2LVL10)));
+		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 3
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[8]->setNumberAnimations(3);
+		sprites[8]->setAnimationSpeed(0, 1);
+		sprites[8]->setAnimationSpeed(1, 1);
+		sprites[8]->setAnimationSpeed(2, 1);
+		sprites[8]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[8]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[8]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[8]->changeAnimation(0);
+		sprites[8]->setPosition(glm::vec2(float(POSXBLOC3LVL10), float(POSYBLOC3LVL10)));
+		sprites[8]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 4
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[9]->setNumberAnimations(3);
+		sprites[9]->setAnimationSpeed(0, 1);
+		sprites[9]->setAnimationSpeed(1, 1);
+		sprites[9]->setAnimationSpeed(2, 1);
+		sprites[9]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[9]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[9]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[9]->changeAnimation(0);
+		sprites[9]->setPosition(glm::vec2(float(POSXBLOC4LVL10), float(POSYBLOC4LVL10)));
+		sprites[9]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+
+
+
 	}
 
 
