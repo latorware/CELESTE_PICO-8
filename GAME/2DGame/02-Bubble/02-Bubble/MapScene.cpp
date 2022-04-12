@@ -976,8 +976,18 @@ void MapScene::render() {
 	}
 	
 
-	background->render();
-	map->render();
+	
+	if (!(((currentTime - transicio.startTime) < 500) && (transicio.fentTransicio == true) && (transicio.desdeLevel == 0)))
+	{
+		background->render();
+		map->render();
+		
+	}
+	else 
+	{
+		return; 
+	}
+
 	if (!transicio.fentTransicio)
 	{
 		player->render();
