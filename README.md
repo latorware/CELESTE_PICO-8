@@ -22,6 +22,8 @@
 
 - Vibrar al començar nivell
 
+- Transicions entre mapes (i sprite mestres muntanya).
+
 
 ## Coses que falten
 
@@ -43,7 +45,7 @@
 
 - <del>Implementar boto exit. David</del>
 
-- Transicions entre mapes (i sprite mestres muntanya). David
+- <del>Transicions entre mapes (i sprite mestres muntanya). David</del>
 
 - <del>Sprite nieve. Juan</del>
 
