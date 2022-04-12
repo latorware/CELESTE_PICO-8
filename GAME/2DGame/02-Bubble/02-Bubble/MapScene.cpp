@@ -49,6 +49,40 @@
 #define POSYMADUIXALVL7 120
 #define OFFSET 20
 
+
+#define INIT_PLAYER_X_TILESLVL1 1
+#define INIT_PLAYER_Y_TILESLVL1 10
+
+#define INIT_PLAYER_X_TILESLVL2 1
+#define INIT_PLAYER_Y_TILESLVL2 12
+
+#define INIT_PLAYER_X_TILESLVL3 1
+#define INIT_PLAYER_Y_TILESLVL3 10
+
+#define INIT_PLAYER_X_TILESLVL4 1
+#define INIT_PLAYER_Y_TILESLVL4 9
+
+#define INIT_PLAYER_X_TILESLVL5 1
+#define INIT_PLAYER_Y_TILESLVL5 8
+
+#define INIT_PLAYER_X_TILESLVL6 1
+#define INIT_PLAYER_Y_TILESLVL6 8
+
+#define INIT_PLAYER_X_TILESLVL7 1
+#define INIT_PLAYER_Y_TILESLVL7 11
+
+#define INIT_PLAYER_X_TILESLVL8 1
+#define INIT_PLAYER_Y_TILESLVL8 11
+
+#define INIT_PLAYER_X_TILESLVL9 2
+#define INIT_PLAYER_Y_TILESLVL9 9
+
+#define INIT_PLAYER_X_TILESLVL10 1
+#define INIT_PLAYER_Y_TILESLVL10 10
+
+
+
+
 MapScene::MapScene() {
 	map = NULL;
 	background = NULL;
@@ -86,11 +120,22 @@ void MapScene::init(int level) {
 	map = TileMap::createTileMap("levels/level_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, level, &spriteShouldBeRendered);
 	background = TileMap::createTileMap("levels/background_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, &spriteShouldBeRendered);
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
-	player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
+	//player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
 	player->setTileMap(map);
 
-	if (level == 3)
+	if (level == 1)
 	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL1 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL1 * map->getTileSize()));
+	}
+
+	else if (level == 2)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL2 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL2 * map->getTileSize()));
+	}
+
+	else if (level == 3)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL3 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL3 * map->getTileSize()));
 		//sprite maduixa
 		textures.emplace_back();
 		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
@@ -111,6 +156,7 @@ void MapScene::init(int level) {
 
 	else if (level == 4)
 	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL4 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL4 * map->getTileSize()));
 		//maduixa voladora (sprite maduixa, ala dreta, ala esquerra)
 		textures.emplace_back();
 		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
@@ -327,6 +373,7 @@ void MapScene::init(int level) {
 
 	else if (level == 5)
 	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL5* map->getTileSize(), INIT_PLAYER_Y_TILESLVL5* map->getTileSize()));
 		textures.emplace_back();
 		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
 		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
@@ -370,8 +417,14 @@ void MapScene::init(int level) {
 
 	}
 
+	else if (level == 6)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL6* map->getTileSize(), INIT_PLAYER_Y_TILESLVL6* map->getTileSize()));
+	}
+
 	else if (level == 7)
 	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL7* map->getTileSize(), INIT_PLAYER_Y_TILESLVL7* map->getTileSize()));
 		//maduixa voladora (sprite maduixa, ala dreta, ala esquerra)
 		textures.emplace_back();
 		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
@@ -416,6 +469,21 @@ void MapScene::init(int level) {
 		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
 		spriteShouldBeRendered.push_back(true);
 
+	}
+
+	else if (level == 8)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL8* map->getTileSize(), INIT_PLAYER_Y_TILESLVL8* map->getTileSize()));
+	}
+
+	else if (level == 9)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL9* map->getTileSize(), INIT_PLAYER_Y_TILESLVL9* map->getTileSize()));
+	}
+
+	else if (level == 10)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL10* map->getTileSize(), INIT_PLAYER_Y_TILESLVL10* map->getTileSize()));
 	}
 }
 
