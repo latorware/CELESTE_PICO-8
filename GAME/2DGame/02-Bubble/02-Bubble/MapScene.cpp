@@ -82,6 +82,12 @@
 
 #define EXPFACTORYDESVIATION 15
 
+#define FIRSTNUMBERMETERSX 150
+#define SECONDNUMBERMETERSX 200
+#define THIRDNUMBERMETTERSX 250
+#define LETTERMETTERSX 300
+#define METERSY 240
+
 
 
 MapScene::MapScene() {
@@ -974,18 +980,18 @@ void MapScene::render() {
 	{
 		texProgram.setUniform2f("displacement", displacement.x, displacement.y);
 	}
-	
 
-	
+
+
 	if (!(((currentTime - transicio.startTime) < 500) && (transicio.fentTransicio == true) && (transicio.desdeLevel == 0)))
 	{
 		background->render();
 		map->render();
-		
+
 	}
-	else 
+	else
 	{
-		return; 
+		return;
 	}
 
 	if (!transicio.fentTransicio)
@@ -993,12 +999,47 @@ void MapScene::render() {
 		player->render();
 	}
 
+	if (currentLevel == 1)
+	{
+		if (currentTime < 3000)
+		{
+			sprites[0]->render();
+			sprites[1]->render();
+			sprites[2]->render();
+			sprites[3]->render();
+			sprites[4]->render();
 
-	if (currentLevel == 3)
+		}
+
+	}
+	else if (currentLevel == 2)
+	{
+		if (currentTime < 3000)
+		{
+			sprites[0]->render();
+			sprites[1]->render();
+			sprites[2]->render();
+			sprites[3]->render();
+			sprites[4]->render();
+
+		}
+	}
+
+	else if (currentLevel == 3)
 	{
 		if (spriteShouldBeRendered[0])
 		{
 			sprites[0]->render();
+		}
+
+		if (currentTime < 3000)
+		{
+			sprites[1]->render();
+			sprites[2]->render();
+			sprites[3]->render();
+			sprites[4]->render();
+			sprites[5]->render();
+
 		}
 	}
 	else if (currentLevel == 4)
@@ -1063,6 +1104,16 @@ void MapScene::render() {
 		{
 			sprites[14]->render();
 		}
+
+		if (currentTime < 3000)
+		{
+			sprites[15]->render();
+			sprites[16]->render();
+			sprites[17]->render();
+			sprites[18]->render();
+			sprites[19]->render();
+
+		}
 	}
 	else if (currentLevel == 5)
 	{
@@ -1077,6 +1128,29 @@ void MapScene::render() {
 		if (spriteShouldBeRendered[2])
 		{
 			sprites[2]->render();
+		}
+
+
+		if (currentTime < 3000)
+		{
+			sprites[3]->render();
+			sprites[4]->render();
+			sprites[5]->render();
+			sprites[6]->render();
+			sprites[7]->render();
+
+		}
+	}
+	else if (currentLevel == 6)
+	{
+		if (currentTime < 3000)
+		{
+			sprites[0]->render();
+			sprites[1]->render();
+			sprites[2]->render();
+			sprites[3]->render();
+			sprites[4]->render();
+
 		}
 	}
 	else if (currentLevel == 7)
@@ -1093,6 +1167,54 @@ void MapScene::render() {
 		{
 			sprites[2]->render();
 		}
+
+
+		if (currentTime < 3000)
+		{
+			sprites[3]->render();
+			sprites[4]->render();
+			sprites[5]->render();
+			sprites[6]->render();
+			sprites[7]->render();
+
+		}
+	}
+	else if (currentLevel == 8)
+	{
+		if (currentTime < 3000)
+		{
+			sprites[0]->render();
+			sprites[1]->render();
+			sprites[2]->render();
+			sprites[3]->render();
+			sprites[4]->render();
+
+		}
+	}
+	else if (currentLevel == 9)
+	{
+	if (currentTime < 3000)
+	{
+		sprites[0]->render();
+		sprites[1]->render();
+		sprites[2]->render();
+		sprites[3]->render();
+		sprites[4]->render();
+
+	}
+	}
+	else if (currentLevel == 10)
+	{
+	if (currentTime < 3000)
+	{
+		sprites[0]->render();
+		sprites[1]->render();
+		sprites[2]->render();
+		sprites[3]->render();
+		sprites[4]->render();
+		sprites[5]->render();
+
+	}
 	}
 }
 
@@ -1161,11 +1283,107 @@ void MapScene::inicialitzaNivellActual()
 	if (currentLevel == 1)
 	{
 		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL1 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL1 * map->getTileSize()));
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 1);
+		sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(0+SCREEN_X), float(220+SCREEN_Y)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[1]->setNumberAnimations(1);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(3.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[2]->setNumberAnimations(1);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[3]->setNumberAnimations(1);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[4]->setNumberAnimations(1);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+
 	}
 
 	else if (currentLevel == 2)
 	{
 		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL2 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL2 * map->getTileSize()));
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 1);
+		sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(0 + SCREEN_X), float(220 + SCREEN_Y)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[1]->setNumberAnimations(1);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(4.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[2]->setNumberAnimations(1);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[3]->setNumberAnimations(1);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[4]->setNumberAnimations(1);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	}
 
 	else if (currentLevel == 3)
@@ -1187,6 +1405,54 @@ void MapScene::inicialitzaNivellActual()
 		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 		spritesClicats.emplace_back(false, 0);
 		spriteShouldBeRendered.push_back(true);
+
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[1]->setNumberAnimations(1);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(0 + SCREEN_X), float(220 + SCREEN_Y)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[2].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[2].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[2].setMinFilter(GL_NEAREST);
+		textures[2].setMagFilter(GL_NEAREST);
+		textures[2].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[2]->setNumberAnimations(1);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(5.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[3]->setNumberAnimations(1);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[4]->setNumberAnimations(1);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[5]->setNumberAnimations(1);
+		sprites[5]->setAnimationSpeed(0, 1);
+		sprites[5]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[5]->changeAnimation(0);
+		sprites[5]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	}
 
 	else if (currentLevel == 4)
@@ -1404,6 +1670,58 @@ void MapScene::inicialitzaNivellActual()
 		sprites[14]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 		spritesClicats.emplace_back(false, 0);
 		spriteShouldBeRendered.push_back(true);
+
+
+
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[15]->setNumberAnimations(1);
+		sprites[15]->setAnimationSpeed(0, 1);
+		sprites[15]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[15]->changeAnimation(0);
+		sprites[15]->setPosition(glm::vec2(float(0 + SCREEN_X), float(220 + SCREEN_Y)));
+		sprites[15]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[2].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[2].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[2].setMinFilter(GL_NEAREST);
+		textures[2].setMagFilter(GL_NEAREST);
+		textures[2].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[16]->setNumberAnimations(1);
+		sprites[16]->setAnimationSpeed(0, 1);
+		sprites[16]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(6.f / 16.f)));
+		sprites[16]->changeAnimation(0);
+		sprites[16]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[16]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[17]->setNumberAnimations(1);
+		sprites[17]->setAnimationSpeed(0, 1);
+		sprites[17]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[17]->changeAnimation(0);
+		sprites[17]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[17]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[18]->setNumberAnimations(1);
+		sprites[18]->setAnimationSpeed(0, 1);
+		sprites[18]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[18]->changeAnimation(0);
+		sprites[18]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[18]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[19]->setNumberAnimations(1);
+		sprites[19]->setAnimationSpeed(0, 1);
+		sprites[19]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[19]->changeAnimation(0);
+		sprites[19]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[19]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+
 	}
 
 	else if (currentLevel == 5)
@@ -1450,11 +1768,106 @@ void MapScene::inicialitzaNivellActual()
 		spritesClicats.emplace_back(false, 0);
 		spriteShouldBeRendered.push_back(false); //AL PRINCIPI NO ES MOSTRA LA MADUIXA
 
+
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[3]->setNumberAnimations(1);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(0 + SCREEN_X), float(220 + SCREEN_Y)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[2].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[2].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[2].setMinFilter(GL_NEAREST);
+		textures[2].setMagFilter(GL_NEAREST);
+		textures[2].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[4]->setNumberAnimations(1);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(7.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[5]->setNumberAnimations(1);
+		sprites[5]->setAnimationSpeed(0, 1);
+		sprites[5]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[5]->changeAnimation(0);
+		sprites[5]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[6]->setNumberAnimations(1);
+		sprites[6]->setAnimationSpeed(0, 1);
+		sprites[6]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[6]->changeAnimation(0);
+		sprites[6]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[6]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[7]->setNumberAnimations(1);
+		sprites[7]->setAnimationSpeed(0, 1);
+		sprites[7]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[7]->changeAnimation(0);
+		sprites[7]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	}
 
 	else if (currentLevel == 6)
 	{
 		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL6 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL6 * map->getTileSize()));
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 1);
+		sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(0 + SCREEN_X), float(220 + SCREEN_Y)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[1]->setNumberAnimations(1);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(8.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[2]->setNumberAnimations(1);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[3]->setNumberAnimations(1);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[4]->setNumberAnimations(1);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	}
 
 	else if (currentLevel == 7)
@@ -1504,21 +1917,222 @@ void MapScene::inicialitzaNivellActual()
 		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
 		spriteShouldBeRendered.push_back(true);
 
+
+
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[3]->setNumberAnimations(1);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(0 + SCREEN_X), float(220 + SCREEN_Y)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[2].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[2].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[2].setMinFilter(GL_NEAREST);
+		textures[2].setMagFilter(GL_NEAREST);
+		textures[2].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[4]->setNumberAnimations(1);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(9.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[5]->setNumberAnimations(1);
+		sprites[5]->setAnimationSpeed(0, 1);
+		sprites[5]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[5]->changeAnimation(0);
+		sprites[5]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[6]->setNumberAnimations(1);
+		sprites[6]->setAnimationSpeed(0, 1);
+		sprites[6]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[6]->changeAnimation(0);
+		sprites[6]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[6]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[7]->setNumberAnimations(1);
+		sprites[7]->setAnimationSpeed(0, 1);
+		sprites[7]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[7]->changeAnimation(0);
+		sprites[7]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
 	}
 
 	else if (currentLevel == 8)
 	{
 		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL8 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL8 * map->getTileSize()));
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 1);
+		sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(0 + SCREEN_X), float(220 + SCREEN_Y)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[1]->setNumberAnimations(1);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(10.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[2]->setNumberAnimations(1);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[3]->setNumberAnimations(1);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[4]->setNumberAnimations(1);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+
 	}
 
 	else if (currentLevel == 9)
 	{
 		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL9 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL9 * map->getTileSize()));
+
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 1);
+		sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(0 + SCREEN_X), float(220 + SCREEN_Y)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[1]->setNumberAnimations(1);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(11.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[2]->setNumberAnimations(1);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[3]->setNumberAnimations(1);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[4]->setNumberAnimations(1);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	}
 
 	else if (currentLevel == 10)
 	{
 		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL10 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL10 * map->getTileSize()));
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(512, 64), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 1);
+		sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(0 + SCREEN_X), float(220 + SCREEN_Y)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		textures.emplace_back();
+		textures[1].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[1].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[1].setMinFilter(GL_NEAREST);
+		textures[1].setMagFilter(GL_NEAREST);
+		textures[1].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[1]->setNumberAnimations(1);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(3.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(FIRSTNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[2]->setNumberAnimations(1);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(SECONDNUMBERMETERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[3]->setNumberAnimations(1);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(THIRDNUMBERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[4]->setNumberAnimations(1);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(2.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[1], &texProgram));
+		sprites[5]->setNumberAnimations(1);
+		sprites[5]->setAnimationSpeed(0, 1);
+		sprites[5]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(12.f / 16.f)));
+		sprites[5]->changeAnimation(0);
+		sprites[5]->setPosition(glm::vec2(float(LETTERMETTERSX+ 50.f + SCREEN_X), float(METERSY + SCREEN_Y)));
+		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	}
 
 
