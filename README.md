@@ -37,9 +37,7 @@
 
 - <del>Fer sprite blocs que despareixen. David</del>
 
-- Main menu convertir a tilemap. 
-
-- Fer instruccions.         Juan
+- <del>Fer instruccions.         Juan</del>
 
 - <del>Fer credits.              David</del>
 
@@ -53,11 +51,11 @@
 
 - <del>Modificar jump. David</del>
 
-- Limits jugador mapa. 
+- <del>Limits jugador mapa. </del>
+
+- Mort del jugador per caiguda
 
 - Fer dash. Juan
-
-- Classe map. 
 
 - <del>Vibrar al començar nivell. David</del>
 
