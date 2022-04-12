@@ -53,7 +53,7 @@
 
 - <del>Limits jugador mapa. </del>
 
-- Mort del jugador per caiguda
+- <del>Mort del jugador per caiguda</del>
 
 - Fer dash. Juan
 
