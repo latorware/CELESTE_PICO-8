@@ -5,9 +5,9 @@
 
 void Game::init()
 {
-	//AllocConsole(); //consola per debuguejar
-	//freopen("CONOUT$", "w", stdout); //consola per debuguejar
-	//cout << "a" << endl; 
+	AllocConsole(); //consola per debuguejar
+	freopen("CONOUT$", "w", stdout); //consola per debuguejar
+	cout << "a" << endl; 
 	bPlay = true;
 	glClearColor(0.f, 0.f, 0.f, 1.0f);
 	scene.init();				//inicializa shaders que se usan en las subclases 

@@ -36,6 +36,7 @@ private:
 		int desdeLevel; 
 		int aLevel; 
 		float startTime; 
+		bool canviTileMapFet; 
 	} transicio;
-
+	glm::vec2 displacement;
 };
