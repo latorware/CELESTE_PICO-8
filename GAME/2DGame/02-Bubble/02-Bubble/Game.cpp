@@ -13,7 +13,7 @@ void Game::init()
 	scene.init();				//inicializa shaders que se usan en las subclases 
 	scene.initObjects();		//inicializa los objetos en una función diferente para evitar un uso excesivo de la memoria
 	menu.init();
-	MScene.init(1);
+	//MScene.init(1);
 	actualScene = 0; //0 = menu		1 = game	2 = guide		3 = credits
 	credits.init();
 	guide.init();
@@ -75,6 +75,7 @@ void Game::keyPressed(int key)
 	{
 		if (menu.getOption() == 0)
 		{
+			MScene.comensaJoc(); 
 			actualScene = 1;
 		}
 		else if (menu.getOption() == 1)
@@ -100,25 +101,25 @@ void Game::keyPressed(int key)
 
 	if (actualScene == 1) {		//Solo se inicializan los mapas una vez pulsamos jugar (mejor gestion de memoria)
 		if (key == 49) // Number 1 code
-			MScene.init(1);
+			MScene.canviaNivell(1); 
 		if (key == 50) // Number 2 code
-			MScene.init(2);
+			MScene.canviaNivell(2);
 		if (key == 51) // Number 3 code
-			MScene.init(3);
+			MScene.canviaNivell(3);
 		if (key == 52) // Number 4 code
-			MScene.init(4);
+			MScene.canviaNivell(4);
 		if (key == 53) // Number 5 code
-			MScene.init(5);
+			MScene.canviaNivell(5);
 		if (key == 54) // Number 6 code
-			MScene.init(6);
+			MScene.canviaNivell(6);
 		if (key == 55) // Number 7 code
-			MScene.init(7);
+			MScene.canviaNivell(7);
 		if (key == 56) // Number 8 code
-			MScene.init(8);
+			MScene.canviaNivell(8);
 		if (key == 57) // Number 9 code
-			MScene.init(9);
+			MScene.canviaNivell(9); ;
 		if (key == 48) // Number 0 code
-			MScene.init(10);
+			MScene.canviaNivell(10);
 	}
 
 	keys[key] = true;

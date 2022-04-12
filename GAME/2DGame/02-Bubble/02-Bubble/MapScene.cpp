@@ -97,394 +97,7 @@ MapScene::~MapScene() {
 }
 
 void MapScene::init(int level) {
-	Scene::init();
-	//displacement = glm::vec2(float(5.f), float(5.f)); 
-
-	currentLevel = level;
-	movementAngle = 0;
-
-	for (auto p : sprites)
-	{
-		delete p;
-	}
-	sprites.clear();
-
-
-	textures.clear();
-
-	spritesClicats.clear();
-
-	spriteShouldBeRendered.clear();
-
-
-	map = TileMap::createTileMap("levels/level_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, level, &spriteShouldBeRendered);
-	background = TileMap::createTileMap("levels/background_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, &spriteShouldBeRendered);
-	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
-	player->setTremolar(true); 
-	player->setTileMap(map);
-
-	if (level == 1)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL1 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL1 * map->getTileSize()));
-	}
-
-	else if (level == 2)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL2 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL2 * map->getTileSize()));
-	}
-
-	else if (level == 3)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL3 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL3 * map->getTileSize()));
-		//sprite maduixa
-		textures.emplace_back();
-		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
-		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
-		textures[0].setMinFilter(GL_NEAREST);
-		textures[0].setMagFilter(GL_NEAREST);
-		textures[0].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[0]->setNumberAnimations(1);
-		sprites[0]->setAnimationSpeed(0, 1);
-		sprites[0]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(6.f / 16.f)));
-		sprites[0]->changeAnimation(0);
-		sprites[0]->setPosition(glm::vec2(float(POSXMADUIXALVL3), float(POSYMADUIXALVL3)));
-		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-	}
-
-	else if (level == 4)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL4 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL4 * map->getTileSize()));
-		//maduixa voladora (sprite maduixa, ala dreta, ala esquerra)
-		textures.emplace_back();
-		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
-		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
-		textures[0].setMinFilter(GL_NEAREST);
-		textures[0].setMagFilter(GL_NEAREST);
-		textures[0].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
-		//maduixa
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[0]->setNumberAnimations(1);
-		sprites[0]->setAnimationSpeed(0, 1);
-		sprites[0]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(6.f / 16.f)));
-		sprites[0]->changeAnimation(0);
-		sprites[0]->setPosition(glm::vec2(float(POSXMADUIXALVL4), float(POSYMADUIXALVL4)));
-		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//ala esquerra
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[1]->setNumberAnimations(2);
-		sprites[1]->setAnimationSpeed(0, 1);
-		sprites[1]->setAnimationSpeed(1, 5);
-		sprites[1]->addKeyframe(0, glm::vec2(float(6.f / 16.f), float(6.f / 16.f)));
-		sprites[1]->addKeyframe(1, glm::vec2(float(7.f / 16.f), float(6.f / 16.f)));
-		sprites[1]->addKeyframe(1, glm::vec2(float(8.f / 16.f), float(6.f / 16.f)));
-		sprites[1]->changeAnimation(0);
-		sprites[1]->setPosition(glm::vec2(float(POSXMADUIXALVL4 - 28), float(POSYMADUIXALVL4)));
-		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
-		spriteShouldBeRendered.push_back(true);
-		//ala dreta
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[2]->setNumberAnimations(2);
-		sprites[2]->setAnimationSpeed(0, 1);
-		sprites[2]->setAnimationSpeed(1, 5);
-		sprites[2]->addKeyframe(0, glm::vec2(float(13.f / 16.f), float(6.f / 16.f)));
-		sprites[2]->addKeyframe(1, glm::vec2(float(12.f / 16.f), float(6.f / 16.f)));
-		sprites[2]->addKeyframe(1, glm::vec2(float(11.f / 16.f), float(6.f / 16.f)));
-		sprites[2]->changeAnimation(0);
-		sprites[2]->setPosition(glm::vec2(float(POSXMADUIXALVL4 + 28), float(POSYMADUIXALVL4)));
-		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
-		spriteShouldBeRendered.push_back(true);
-
-		//bloc 1
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[3]->setNumberAnimations(3);
-		sprites[3]->setAnimationSpeed(0, 1);
-		sprites[3]->setAnimationSpeed(1, 1);
-		sprites[3]->setAnimationSpeed(2, 1);
-		sprites[3]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[3]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[3]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[3]->changeAnimation(0);
-		sprites[3]->setPosition(glm::vec2(float(POSXBLOC1LVL4), float(POSYBLOC1LVL4)));
-		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 2
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[4]->setNumberAnimations(3);
-		sprites[4]->setAnimationSpeed(0, 1);
-		sprites[4]->setAnimationSpeed(1, 1);
-		sprites[4]->setAnimationSpeed(2, 1);
-		sprites[4]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[4]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[4]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[4]->changeAnimation(0);
-		sprites[4]->setPosition(glm::vec2(float(POSXBLOC2LVL4), float(POSYBLOC2LVL4)));
-		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 3
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[5]->setNumberAnimations(3);
-		sprites[5]->setAnimationSpeed(0, 1);
-		sprites[5]->setAnimationSpeed(1, 1);
-		sprites[5]->setAnimationSpeed(2, 1);
-		sprites[5]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[5]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[5]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[5]->changeAnimation(0);
-		sprites[5]->setPosition(glm::vec2(float(POSXBLOC3LVL4), float(POSYBLOC3LVL4)));
-		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 4
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[6]->setNumberAnimations(3);
-		sprites[6]->setAnimationSpeed(0, 1);
-		sprites[6]->setAnimationSpeed(1, 1);
-		sprites[6]->setAnimationSpeed(2, 1);
-		sprites[6]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[6]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[6]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[6]->changeAnimation(0);
-		sprites[6]->setPosition(glm::vec2(float(POSXBLOC4LVL4), float(POSYBLOC4LVL4)));
-		sprites[6]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 5
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[7]->setNumberAnimations(3);
-		sprites[7]->setAnimationSpeed(0, 1);
-		sprites[7]->setAnimationSpeed(1, 1);
-		sprites[7]->setAnimationSpeed(2, 1);
-		sprites[7]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[7]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[7]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[7]->changeAnimation(0);
-		sprites[7]->setPosition(glm::vec2(float(POSXBLOC5LVL4), float(POSYBLOC5LVL4)));
-		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 6
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[8]->setNumberAnimations(3);
-		sprites[8]->setAnimationSpeed(0, 1);
-		sprites[8]->setAnimationSpeed(1, 1);
-		sprites[8]->setAnimationSpeed(2, 1);
-		sprites[8]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[8]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[8]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[8]->changeAnimation(0);
-		sprites[8]->setPosition(glm::vec2(float(POSXBLOC6LVL4), float(POSYBLOC6LVL4)));
-		sprites[8]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 7
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[9]->setNumberAnimations(3);
-		sprites[9]->setAnimationSpeed(0, 1);
-		sprites[9]->setAnimationSpeed(1, 1);
-		sprites[9]->setAnimationSpeed(2, 1);
-		sprites[9]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[9]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[9]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[9]->changeAnimation(0);
-		sprites[9]->setPosition(glm::vec2(float(POSXBLOC7LVL4), float(POSYBLOC7LVL4)));
-		sprites[9]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 8
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[10]->setNumberAnimations(3);
-		sprites[10]->setAnimationSpeed(0, 1);
-		sprites[10]->setAnimationSpeed(1, 1);
-		sprites[10]->setAnimationSpeed(2, 1);
-		sprites[10]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[10]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[10]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[10]->changeAnimation(0);
-		sprites[10]->setPosition(glm::vec2(float(POSXBLOC8LVL4), float(POSYBLOC8LVL4)));
-		sprites[10]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 9
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[11]->setNumberAnimations(3);
-		sprites[11]->setAnimationSpeed(0, 1);
-		sprites[11]->setAnimationSpeed(1, 1);
-		sprites[11]->setAnimationSpeed(2, 1);
-		sprites[11]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[11]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[11]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[11]->changeAnimation(0);
-		sprites[11]->setPosition(glm::vec2(float(POSXBLOC9LVL4), float(POSYBLOC9LVL4)));
-		sprites[11]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 10
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[12]->setNumberAnimations(3);
-		sprites[12]->setAnimationSpeed(0, 1);
-		sprites[12]->setAnimationSpeed(1, 1);
-		sprites[12]->setAnimationSpeed(2, 1);
-		sprites[12]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[12]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[12]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[12]->changeAnimation(0);
-		sprites[12]->setPosition(glm::vec2(float(POSXBLOC10LVL4), float(POSYBLOC10LVL4)));
-		sprites[12]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 11
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[13]->setNumberAnimations(3);
-		sprites[13]->setAnimationSpeed(0, 1);
-		sprites[13]->setAnimationSpeed(1, 1);
-		sprites[13]->setAnimationSpeed(2, 1);
-		sprites[13]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[13]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[13]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[13]->changeAnimation(0);
-		sprites[13]->setPosition(glm::vec2(float(POSXBLOC11LVL4), float(POSYBLOC11LVL4)));
-		sprites[13]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//bloc 12
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[14]->setNumberAnimations(3);
-		sprites[14]->setAnimationSpeed(0, 1);
-		sprites[14]->setAnimationSpeed(1, 1);
-		sprites[14]->setAnimationSpeed(2, 1);
-		sprites[14]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
-		sprites[14]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
-		sprites[14]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
-		sprites[14]->changeAnimation(0);
-		sprites[14]->setPosition(glm::vec2(float(POSXBLOC12LVL4), float(POSYBLOC12LVL4)));
-		sprites[14]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-	}
-
-	else if (level == 5)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL5* map->getTileSize(), INIT_PLAYER_Y_TILESLVL5* map->getTileSize()));
-		textures.emplace_back();
-		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
-		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
-		textures[0].setMinFilter(GL_NEAREST);
-		textures[0].setMagFilter(GL_NEAREST);
-		textures[0].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
-		//clau
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[0]->setNumberAnimations(1);
-		sprites[0]->setAnimationSpeed(0, 5);
-		sprites[0]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(7.f / 16.f)));
-		sprites[0]->addKeyframe(0, glm::vec2(float(6.f / 16.f), float(7.f / 16.f)));
-		sprites[0]->addKeyframe(0, glm::vec2(float(7.f / 16.f), float(7.f / 16.f)));
-		sprites[0]->addKeyframe(0, glm::vec2(float(7.f / 16.f), float(9.f / 16.f)));
-		sprites[0]->addKeyframe(0, glm::vec2(float(6.f / 16.f), float(9.f / 16.f)));
-		sprites[0]->changeAnimation(0);
-		sprites[0]->setPosition(glm::vec2(float(POSXCLAULVL5), float(POSYCLAULVL5)));
-		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//tresor
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[1]->setNumberAnimations(1);
-		sprites[1]->setAnimationSpeed(0, 1);
-		sprites[1]->addKeyframe(0, glm::vec2(float(8.f / 16.f), float(7.f / 16.f)));
-		sprites[1]->changeAnimation(0);
-		sprites[1]->setPosition(glm::vec2(float(POSXTRESORLVL5), float(POSYTRESORLVL5)));
-		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		//spritesClicats.emplace_back(false, 0); EL TRESOR NO ES CLICA
-		spriteShouldBeRendered.push_back(true);
-		//maduixa
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[2]->setNumberAnimations(1);
-		sprites[2]->setAnimationSpeed(0, 1);
-		sprites[2]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(6.f / 16.f)));
-		sprites[2]->changeAnimation(0);
-		sprites[2]->setPosition(glm::vec2(float(POSXMADUIXALVL5), float(POSYMADUIXALVL5)));
-		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(false); //AL PRINCIPI NO ES MOSTRA LA MADUIXA
-
-	}
-
-	else if (level == 6)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL6* map->getTileSize(), INIT_PLAYER_Y_TILESLVL6* map->getTileSize()));
-	}
-
-	else if (level == 7)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL7* map->getTileSize(), INIT_PLAYER_Y_TILESLVL7* map->getTileSize()));
-		//maduixa voladora (sprite maduixa, ala dreta, ala esquerra)
-		textures.emplace_back();
-		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
-		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
-		textures[0].setMinFilter(GL_NEAREST);
-		textures[0].setMagFilter(GL_NEAREST);
-		textures[0].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
-		//maduixa
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[0]->setNumberAnimations(1);
-		sprites[0]->setAnimationSpeed(0, 1);
-		sprites[0]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(6.f / 16.f)));
-		sprites[0]->changeAnimation(0);
-		sprites[0]->setPosition(glm::vec2(float(POSXMADUIXALVL7), float(POSYMADUIXALVL7)));
-		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		spritesClicats.emplace_back(false, 0);
-		spriteShouldBeRendered.push_back(true);
-		//ala esquerra
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[1]->setNumberAnimations(2);
-		sprites[1]->setAnimationSpeed(0, 1);
-		sprites[1]->setAnimationSpeed(1, 5);
-		sprites[1]->addKeyframe(0, glm::vec2(float(6.f / 16.f), float(6.f / 16.f)));
-		sprites[1]->addKeyframe(1, glm::vec2(float(7.f / 16.f), float(6.f / 16.f)));
-		sprites[1]->addKeyframe(1, glm::vec2(float(8.f / 16.f), float(6.f / 16.f)));
-		sprites[1]->changeAnimation(0);
-		sprites[1]->setPosition(glm::vec2(float(POSXMADUIXALVL7 - 28), float(POSYMADUIXALVL7)));
-		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
-		spriteShouldBeRendered.push_back(true);
-		//ala dreta
-		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
-		sprites[2]->setNumberAnimations(2);
-		sprites[2]->setAnimationSpeed(0, 1);
-		sprites[2]->setAnimationSpeed(1, 5);
-		sprites[2]->addKeyframe(0, glm::vec2(float(13.f / 16.f), float(6.f / 16.f)));
-		sprites[2]->addKeyframe(1, glm::vec2(float(12.f / 16.f), float(6.f / 16.f)));
-		sprites[2]->addKeyframe(1, glm::vec2(float(11.f / 16.f), float(6.f / 16.f)));
-		sprites[2]->changeAnimation(0);
-		sprites[2]->setPosition(glm::vec2(float(POSXMADUIXALVL7 + 28), float(POSYMADUIXALVL7)));
-		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
-		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
-		spriteShouldBeRendered.push_back(true);
-
-	}
-
-	else if (level == 8)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL8* map->getTileSize(), INIT_PLAYER_Y_TILESLVL8* map->getTileSize()));
-	}
-
-	else if (level == 9)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL9* map->getTileSize(), INIT_PLAYER_Y_TILESLVL9* map->getTileSize()));
-	}
-
-	else if (level == 10)
-	{
-		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL10* map->getTileSize(), INIT_PLAYER_Y_TILESLVL10* map->getTileSize()));
-	}
+	//dividit en comensaJoc(), canviaNivell(int level)
 }
 
 void MapScene::update(int deltaTime) {
@@ -1385,4 +998,415 @@ void MapScene::render() {
 			sprites[2]->render();
 		}
 	}
+}
+
+void MapScene::comensaJoc()
+{
+	Scene::init();
+	transicio.fentTransicio = false;
+	currentLevel = 1;
+	movementAngle = 0;
+	for (auto p : sprites)
+	{
+		delete p;
+	}
+	sprites.clear();
+	textures.clear();
+	spritesClicats.clear();
+	spriteShouldBeRendered.clear();
+	map = TileMap::createTileMap("levels/level_" + to_string(1) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 1, &spriteShouldBeRendered);
+	background = TileMap::createTileMap("levels/background_" + to_string(1) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, &spriteShouldBeRendered);
+	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
+	player->setTremolar(true);
+	player->setTileMap(map);
+
+	player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL1 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL1 * map->getTileSize()));
+	contador = 0; 
+}
+
+void MapScene::canviaNivell(int level)
+{
+
+	Scene::init();
+	transicio.fentTransicio = false;
+	currentLevel = level;
+	movementAngle = 0;
+	for (auto p : sprites)
+	{
+		delete p;
+	}
+	sprites.clear();
+	textures.clear();
+	spritesClicats.clear();
+	spriteShouldBeRendered.clear();
+	map = TileMap::createTileMap("levels/level_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, level, &spriteShouldBeRendered);
+	background = TileMap::createTileMap("levels/background_" + to_string(level) + ".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram, 90, &spriteShouldBeRendered);
+	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
+	player->setTremolar(true);
+	player->setTileMap(map);
+
+	if (level == 1)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL1 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL1 * map->getTileSize()));
+	}
+
+	else if (level == 2)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL2 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL2 * map->getTileSize()));
+	}
+
+	else if (level == 3)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL3 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL3 * map->getTileSize()));
+		//sprite maduixa
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 1);
+		sprites[0]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(6.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(POSXMADUIXALVL3), float(POSYMADUIXALVL3)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+	}
+
+	else if (level == 4)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL4 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL4 * map->getTileSize()));
+		//maduixa voladora (sprite maduixa, ala dreta, ala esquerra)
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		//maduixa
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 1);
+		sprites[0]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(6.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(POSXMADUIXALVL4), float(POSYMADUIXALVL4)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//ala esquerra
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[1]->setNumberAnimations(2);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->setAnimationSpeed(1, 5);
+		sprites[1]->addKeyframe(0, glm::vec2(float(6.f / 16.f), float(6.f / 16.f)));
+		sprites[1]->addKeyframe(1, glm::vec2(float(7.f / 16.f), float(6.f / 16.f)));
+		sprites[1]->addKeyframe(1, glm::vec2(float(8.f / 16.f), float(6.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(POSXMADUIXALVL4 - 28), float(POSYMADUIXALVL4)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
+		spriteShouldBeRendered.push_back(true);
+		//ala dreta
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[2]->setNumberAnimations(2);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->setAnimationSpeed(1, 5);
+		sprites[2]->addKeyframe(0, glm::vec2(float(13.f / 16.f), float(6.f / 16.f)));
+		sprites[2]->addKeyframe(1, glm::vec2(float(12.f / 16.f), float(6.f / 16.f)));
+		sprites[2]->addKeyframe(1, glm::vec2(float(11.f / 16.f), float(6.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(POSXMADUIXALVL4 + 28), float(POSYMADUIXALVL4)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
+		spriteShouldBeRendered.push_back(true);
+
+		//bloc 1
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[3]->setNumberAnimations(3);
+		sprites[3]->setAnimationSpeed(0, 1);
+		sprites[3]->setAnimationSpeed(1, 1);
+		sprites[3]->setAnimationSpeed(2, 1);
+		sprites[3]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[3]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[3]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[3]->changeAnimation(0);
+		sprites[3]->setPosition(glm::vec2(float(POSXBLOC1LVL4), float(POSYBLOC1LVL4)));
+		sprites[3]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 2
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[4]->setNumberAnimations(3);
+		sprites[4]->setAnimationSpeed(0, 1);
+		sprites[4]->setAnimationSpeed(1, 1);
+		sprites[4]->setAnimationSpeed(2, 1);
+		sprites[4]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[4]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[4]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[4]->changeAnimation(0);
+		sprites[4]->setPosition(glm::vec2(float(POSXBLOC2LVL4), float(POSYBLOC2LVL4)));
+		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 3
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[5]->setNumberAnimations(3);
+		sprites[5]->setAnimationSpeed(0, 1);
+		sprites[5]->setAnimationSpeed(1, 1);
+		sprites[5]->setAnimationSpeed(2, 1);
+		sprites[5]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[5]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[5]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[5]->changeAnimation(0);
+		sprites[5]->setPosition(glm::vec2(float(POSXBLOC3LVL4), float(POSYBLOC3LVL4)));
+		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 4
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[6]->setNumberAnimations(3);
+		sprites[6]->setAnimationSpeed(0, 1);
+		sprites[6]->setAnimationSpeed(1, 1);
+		sprites[6]->setAnimationSpeed(2, 1);
+		sprites[6]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[6]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[6]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[6]->changeAnimation(0);
+		sprites[6]->setPosition(glm::vec2(float(POSXBLOC4LVL4), float(POSYBLOC4LVL4)));
+		sprites[6]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 5
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[7]->setNumberAnimations(3);
+		sprites[7]->setAnimationSpeed(0, 1);
+		sprites[7]->setAnimationSpeed(1, 1);
+		sprites[7]->setAnimationSpeed(2, 1);
+		sprites[7]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[7]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[7]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[7]->changeAnimation(0);
+		sprites[7]->setPosition(glm::vec2(float(POSXBLOC5LVL4), float(POSYBLOC5LVL4)));
+		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 6
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[8]->setNumberAnimations(3);
+		sprites[8]->setAnimationSpeed(0, 1);
+		sprites[8]->setAnimationSpeed(1, 1);
+		sprites[8]->setAnimationSpeed(2, 1);
+		sprites[8]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[8]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[8]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[8]->changeAnimation(0);
+		sprites[8]->setPosition(glm::vec2(float(POSXBLOC6LVL4), float(POSYBLOC6LVL4)));
+		sprites[8]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 7
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[9]->setNumberAnimations(3);
+		sprites[9]->setAnimationSpeed(0, 1);
+		sprites[9]->setAnimationSpeed(1, 1);
+		sprites[9]->setAnimationSpeed(2, 1);
+		sprites[9]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[9]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[9]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[9]->changeAnimation(0);
+		sprites[9]->setPosition(glm::vec2(float(POSXBLOC7LVL4), float(POSYBLOC7LVL4)));
+		sprites[9]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 8
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[10]->setNumberAnimations(3);
+		sprites[10]->setAnimationSpeed(0, 1);
+		sprites[10]->setAnimationSpeed(1, 1);
+		sprites[10]->setAnimationSpeed(2, 1);
+		sprites[10]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[10]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[10]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[10]->changeAnimation(0);
+		sprites[10]->setPosition(glm::vec2(float(POSXBLOC8LVL4), float(POSYBLOC8LVL4)));
+		sprites[10]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 9
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[11]->setNumberAnimations(3);
+		sprites[11]->setAnimationSpeed(0, 1);
+		sprites[11]->setAnimationSpeed(1, 1);
+		sprites[11]->setAnimationSpeed(2, 1);
+		sprites[11]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[11]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[11]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[11]->changeAnimation(0);
+		sprites[11]->setPosition(glm::vec2(float(POSXBLOC9LVL4), float(POSYBLOC9LVL4)));
+		sprites[11]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 10
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[12]->setNumberAnimations(3);
+		sprites[12]->setAnimationSpeed(0, 1);
+		sprites[12]->setAnimationSpeed(1, 1);
+		sprites[12]->setAnimationSpeed(2, 1);
+		sprites[12]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[12]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[12]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[12]->changeAnimation(0);
+		sprites[12]->setPosition(glm::vec2(float(POSXBLOC10LVL4), float(POSYBLOC10LVL4)));
+		sprites[12]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 11
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[13]->setNumberAnimations(3);
+		sprites[13]->setAnimationSpeed(0, 1);
+		sprites[13]->setAnimationSpeed(1, 1);
+		sprites[13]->setAnimationSpeed(2, 1);
+		sprites[13]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[13]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[13]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[13]->changeAnimation(0);
+		sprites[13]->setPosition(glm::vec2(float(POSXBLOC11LVL4), float(POSYBLOC11LVL4)));
+		sprites[13]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//bloc 12
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[14]->setNumberAnimations(3);
+		sprites[14]->setAnimationSpeed(0, 1);
+		sprites[14]->setAnimationSpeed(1, 1);
+		sprites[14]->setAnimationSpeed(2, 1);
+		sprites[14]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(7.f / 16.f)));
+		sprites[14]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(7.f / 16.f)));
+		sprites[14]->addKeyframe(2, glm::vec2(float(11.f / 16.f), float(7.f / 16.f)));
+		sprites[14]->changeAnimation(0);
+		sprites[14]->setPosition(glm::vec2(float(POSXBLOC12LVL4), float(POSYBLOC12LVL4)));
+		sprites[14]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+	}
+
+	else if (level == 5)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL5 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL5 * map->getTileSize()));
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		//clau
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 5);
+		sprites[0]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(7.f / 16.f)));
+		sprites[0]->addKeyframe(0, glm::vec2(float(6.f / 16.f), float(7.f / 16.f)));
+		sprites[0]->addKeyframe(0, glm::vec2(float(7.f / 16.f), float(7.f / 16.f)));
+		sprites[0]->addKeyframe(0, glm::vec2(float(7.f / 16.f), float(9.f / 16.f)));
+		sprites[0]->addKeyframe(0, glm::vec2(float(6.f / 16.f), float(9.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(POSXCLAULVL5), float(POSYCLAULVL5)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//tresor
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[1]->setNumberAnimations(1);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->addKeyframe(0, glm::vec2(float(8.f / 16.f), float(7.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(POSXTRESORLVL5), float(POSYTRESORLVL5)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		//spritesClicats.emplace_back(false, 0); EL TRESOR NO ES CLICA
+		spriteShouldBeRendered.push_back(true);
+		//maduixa
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[2]->setNumberAnimations(1);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(6.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(POSXMADUIXALVL5), float(POSYMADUIXALVL5)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(false); //AL PRINCIPI NO ES MOSTRA LA MADUIXA
+
+	}
+
+	else if (level == 6)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL6 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL6 * map->getTileSize()));
+	}
+
+	else if (level == 7)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL7 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL7 * map->getTileSize()));
+		//maduixa voladora (sprite maduixa, ala dreta, ala esquerra)
+		textures.emplace_back();
+		textures[0].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[0].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[0].setMinFilter(GL_NEAREST);
+		textures[0].setMagFilter(GL_NEAREST);
+		textures[0].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		//maduixa
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[0]->setNumberAnimations(1);
+		sprites[0]->setAnimationSpeed(0, 1);
+		sprites[0]->addKeyframe(0, glm::vec2(float(5.f / 16.f), float(6.f / 16.f)));
+		sprites[0]->changeAnimation(0);
+		sprites[0]->setPosition(glm::vec2(float(POSXMADUIXALVL7), float(POSYMADUIXALVL7)));
+		sprites[0]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+		//ala esquerra
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[1]->setNumberAnimations(2);
+		sprites[1]->setAnimationSpeed(0, 1);
+		sprites[1]->setAnimationSpeed(1, 5);
+		sprites[1]->addKeyframe(0, glm::vec2(float(6.f / 16.f), float(6.f / 16.f)));
+		sprites[1]->addKeyframe(1, glm::vec2(float(7.f / 16.f), float(6.f / 16.f)));
+		sprites[1]->addKeyframe(1, glm::vec2(float(8.f / 16.f), float(6.f / 16.f)));
+		sprites[1]->changeAnimation(0);
+		sprites[1]->setPosition(glm::vec2(float(POSXMADUIXALVL7 - 28), float(POSYMADUIXALVL7)));
+		sprites[1]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
+		spriteShouldBeRendered.push_back(true);
+		//ala dreta
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
+		sprites[2]->setNumberAnimations(2);
+		sprites[2]->setAnimationSpeed(0, 1);
+		sprites[2]->setAnimationSpeed(1, 5);
+		sprites[2]->addKeyframe(0, glm::vec2(float(13.f / 16.f), float(6.f / 16.f)));
+		sprites[2]->addKeyframe(1, glm::vec2(float(12.f / 16.f), float(6.f / 16.f)));
+		sprites[2]->addKeyframe(1, glm::vec2(float(11.f / 16.f), float(6.f / 16.f)));
+		sprites[2]->changeAnimation(0);
+		sprites[2]->setPosition(glm::vec2(float(POSXMADUIXALVL7 + 28), float(POSYMADUIXALVL7)));
+		sprites[2]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		//spritesClicats.emplace_back(false, 0);  LES ALES NO ES CLIQUEN
+		spriteShouldBeRendered.push_back(true);
+
+	}
+
+	else if (level == 8)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL8 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL8 * map->getTileSize()));
+	}
+
+	else if (level == 9)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL9 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL9 * map->getTileSize()));
+	}
+
+	else if (level == 10)
+	{
+		player->setPosition(glm::vec2(INIT_PLAYER_X_TILESLVL10 * map->getTileSize(), INIT_PLAYER_Y_TILESLVL10 * map->getTileSize()));
+	}
+
+
 }

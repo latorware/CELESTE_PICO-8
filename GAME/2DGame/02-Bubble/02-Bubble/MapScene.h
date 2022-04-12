@@ -19,6 +19,8 @@ public:
 	void init(int level);
 	void update(int deltaTime);
 	void render();
+	void comensaJoc(); 
+	void canviaNivell(int level); 
 
 private:
 	TileMap* map, * background;
@@ -28,4 +30,12 @@ private:
 	vector<pair<bool, float>> spritesClicats; //si sa clicat sprite (jugador a passat per sobre) i en quin instant
 	vector<bool> spriteShouldBeRendered;
 	int currentLevel, movementAngle;
+	int contador; 
+	struct Transicio {
+		bool fentTransicio; 
+		int desdeLevel; 
+		int aLevel; 
+		float startTime; 
+	} transicio;
+
 };
