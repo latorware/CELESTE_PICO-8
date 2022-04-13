@@ -41,7 +41,7 @@
 
 - Totes altres animacions. 
 
-- Sprite punxes matar. Juan
+- <del>Sprite punxes matar. Juan</del>
 
 - <del>Tecla dash infinit. Juan </del>
 

@@ -135,6 +135,7 @@ void MapScene::init(int level) {
 
 void MapScene::update(int deltaTime) {
 	currentTime += deltaTime;
+	//cout << "posx " << player->getPositionPlayer().x << "        posy " << player->getPositionPlayer().y << endl;
 	//cout << "currentTime " << currentTime << "        deltaTime " << deltaTime << endl; 
 
 	if (player->getPositionPlayer().y <= 1.f)
@@ -3077,9 +3078,9 @@ bool MapScene::enPosicioPunxesLevel5()
 
 bool MapScene::enPosicioPunxesLevel6()
 {
-	if (player->getPositionPlayer().y > 210 && player->getPositionPlayer().y < 224)
+	if ((player->getPositionPlayer().y < 230) && (player->getPositionPlayer().y > 220))
 	{
-		if ((player->getPositionPlayer().x >= 36) && (player->getPositionPlayer().x <= 152))
+		if ((player->getPositionPlayer().x >= 128) && (player->getPositionPlayer().x <= 152))
 		{
 			return true;
 		}
@@ -3090,20 +3091,102 @@ bool MapScene::enPosicioPunxesLevel6()
 
 bool MapScene::enPosicioPunxesLevel7()
 {
+	if ((player->getPositionPlayer().x < 192) && (player->getPositionPlayer().x > 160))
+	{
+		if ((player->getPositionPlayer().y >= 160) && (player->getPositionPlayer().y <= 192))
+		{
+			return true;
+		}
+	}
+
+	if (player->getPositionPlayer().y == 128)
+	{
+		if ((player->getPositionPlayer().x >= 193) && (player->getPositionPlayer().x <= 287))
+		{
+			return true;
+		}
+	}
+
+	if ((player->getPositionPlayer().x < 320) && (player->getPositionPlayer().x > 288))
+	{
+		if ((player->getPositionPlayer().y >= 160) && (player->getPositionPlayer().y <= 192))
+		{
+			return true;
+		}
+	}
+
 	return false;
 }
 
 bool MapScene::enPosicioPunxesLevel8()
 {
+
+	if (player->getPositionPlayer().y == 128)
+	{
+		if ((player->getPositionPlayer().x >= 32) && (player->getPositionPlayer().x <= 63))
+		{
+			return true;
+		}
+	}
 	return false;
 }
 
 bool MapScene::enPosicioPunxesLevel9()
 {
+	if (player->getPositionPlayer().y == 384)
+	{
+		if ((player->getPositionPlayer().x <= 45))
+		{
+			return true;
+		}
+	}
+	if (player->getPositionPlayer().y == 384)
+	{
+		if ((player->getPositionPlayer().x >= 92) && (player->getPositionPlayer().x <= 160))
+		{
+			return true;
+		}
+	}
+	if (player->getPositionPlayer().y == 352)
+	{
+		if ((player->getPositionPlayer().x >= 161) && (player->getPositionPlayer().x <= 287))
+		{
+			return true;
+		}
+	}
+	if (player->getPositionPlayer().y == 416)
+	{
+		if ((player->getPositionPlayer().x >= 288) && (player->getPositionPlayer().x <= 366))
+		{
+			return true;
+		}
+	}
+	if (player->getPositionPlayer().y == 416)
+	{
+		if ((player->getPositionPlayer().x >= 448))
+		{
+			return true;
+		}
+	}
 	return false;
 }
 
 bool MapScene::enPosicioPunxesLevel10()
 {
+	if (player->getPositionPlayer().y == 192)
+	{
+		if ((player->getPositionPlayer().x >= 128) && (player->getPositionPlayer().x <= 188))
+		{
+			return true;
+		}
+	}
+	if (player->getPositionPlayer().y == 192)
+	{
+		if ((player->getPositionPlayer().x >= 356) && (player->getPositionPlayer().x <= 384))
+		{
+			return true;
+		}
+	}
+
 	return false;
 }
