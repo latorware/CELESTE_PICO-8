@@ -35,7 +35,7 @@
 
 - Sprite nubes. Juan
 
-- Sprite contador. David
+- <del>Sprite contador. David</del> (explicamos las funciones especiales en el info.txt)
 
 - Tecla invulnerabilitat. Juan
 
