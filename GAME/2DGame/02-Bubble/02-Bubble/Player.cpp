@@ -8,7 +8,7 @@
 
 
 #define JUMP_ANGLE_STEP 4
-#define JUMP_HEIGHT 80
+#define JUMP_HEIGHT 90
 #define FALL_STEP 4
 #define DURACIOTREMOLAR 500
 #define STRENGTHTREMOLAR 15
@@ -112,6 +112,7 @@ void Player::update(int deltaTime, float currentTime)
 			posPlayer.x += VELOCITATPERSONATGE;
 			deixatClicarSalt = false;
 			bJumping = true;
+			audioManager->jumpSoundPlay();
 			jumpAngle = 0;
 			startY = posPlayer.y;
 			climbDretEnProces = true;
@@ -126,6 +127,7 @@ void Player::update(int deltaTime, float currentTime)
 				posPlayer.x -= VELOCITATPERSONATGE;
 				deixatClicarSalt = false;
 				bJumping = true;
+				audioManager->jumpSoundPlay();
 				jumpAngle = 0;
 				startY = posPlayer.y;
 				climbEsquerreEnProces = true;
@@ -274,6 +276,7 @@ void Player::update(int deltaTime, float currentTime)
 			{
 				deixatClicarSalt = false;
 				bJumping = true;
+				audioManager->jumpSoundPlay();
 				jumpAngle = 0;
 				startY = posPlayer.y;
 			}

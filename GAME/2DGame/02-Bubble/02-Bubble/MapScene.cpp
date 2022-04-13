@@ -259,6 +259,7 @@ void MapScene::update(int deltaTime) {
 				//el sprite de maduixa passa a ser nombre 1000 durant temps limitat
 				spritesClicats[0].first = true;
 				spritesClicats[0].second = currentTime;
+				audioManager->maduixaSoundPlay();
 				delete sprites[0];
 				textures[0].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
 				sprites[0] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram);
@@ -311,6 +312,7 @@ void MapScene::update(int deltaTime) {
 				//el sprite de maduixa passa a ser nombre 1000 durant temps limitat
 				spritesClicats[0].first = true;
 				spritesClicats[0].second = currentTime;
+				audioManager->maduixaSoundPlay();
 				delete sprites[0];
 				textures[0].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
 				sprites[0] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram);
@@ -866,6 +868,7 @@ void MapScene::update(int deltaTime) {
 			{
 				spritesClicats[0].first = true;
 				spritesClicats[0].second = currentTime;
+				audioManager->maduixaSoundPlay();
 				//clau ja desapareix
 				spriteShouldBeRendered[0] = false;
 			}
@@ -913,6 +916,7 @@ void MapScene::update(int deltaTime) {
 						//el sprite de maduixa passa a ser nombre 1000 durant temps limitat
 						spritesClicats[1].first = true;
 						spritesClicats[1].second = currentTime;
+						audioManager->maduixaSoundPlay();
 						delete sprites[2];
 						textures[0].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
 						sprites[2] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram);
@@ -962,6 +966,8 @@ void MapScene::update(int deltaTime) {
 				//el sprite de maduixa passa a ser nombre 1000 durant temps limitat
 				spritesClicats[0].first = true;
 				spritesClicats[0].second = currentTime;
+				
+				audioManager->maduixaSoundPlay();
 				delete sprites[0];
 				textures[0].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
 				sprites[0] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram);
