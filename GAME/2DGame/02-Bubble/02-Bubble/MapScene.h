@@ -66,4 +66,13 @@ private:
 	bool invulnerable; 
 	bool personatgepunxat; 
 	float punxatUltimaVegada; 
+
+	Texture fpsTexture;
+	Texture blackFPSTexture;
+	Sprite* firstDigit;
+	Sprite* secondDigit;
+	Sprite* FLetter;
+	Sprite* PLetter;
+	Sprite* SLetter;
+	Sprite* blackFPS;
 };

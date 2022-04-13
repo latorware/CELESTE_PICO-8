@@ -63,6 +63,7 @@ private:
 	AudioManager audioManager; 
 	bool slowMode; 
 
+
 };
 
 
