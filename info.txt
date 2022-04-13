@@ -66,7 +66,7 @@ Instruccions
         - Fletxes del teclat per moure's amb el personatge. 
         - Tecla c per saltar amb el personatge. 
         - Tecla x per fer dash. 
-        - Tecla d per ser invulnerable a les punxes. 
+        - Tecla g per ser invulnerable a les punxes. 
         - Tecla s per reduir la velocitat del joc. 
         - Telca d per fer el dash infinit. 
         - Tecles numeriques del teclat per fer el canvi de nivells sense tenir que passar-se els nivells. 
