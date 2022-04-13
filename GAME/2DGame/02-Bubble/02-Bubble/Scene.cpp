@@ -18,7 +18,9 @@ void Scene::init()
 void Scene::initObjects() 
 {
 	for (int i = 0; i < 20; ++i) {
-		randomSnow.push_back(15 + rand() % (41 - 15));
+		int random = 15 + rand() % (41 - 15);
+		randomSnow.push_back(random);
+		randomClouds.push_back(random);
 	}
 
 	spritesheet.setWrapS(GL_CLAMP_TO_EDGE);
@@ -36,6 +38,15 @@ void Scene::initObjects()
 		snowFlakes[i]->setPosition(glm::vec2(10, 10));
 		snowFlakes[i]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	}
+	for (int i = 0; i < randomClouds.size(); ++i) {
+		clouds.push_back(Sprite::createSprite(glm::ivec2(128, 32 + 12 * (i % 2)), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &texProgram));
+		clouds[i]->setNumberAnimations(1);
+		clouds[i]->setAnimationSpeed(0, 1);
+		clouds[i]->addKeyframe(0, glm::vec2(float(4.f / 16.f), float(0.f / 16.f)));
+		clouds[i]->changeAnimation(0);
+		clouds[i]->setPosition(glm::vec2(10, 10));
+		clouds[i]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+	}
 }
 
 void Scene::update(int deltaTime)
@@ -47,7 +58,13 @@ void Scene::update(int deltaTime)
 		int desplazamiento = ((int)currentTime / randomSnow[i]) + i*20; //calcula el desplazamiento horizontal de cada SnowFlake
 		snowFlakes[i]->setPosition(glm::vec2(desplazamiento % 546, (randomSnow[i] * 4 * oscilation) + (546/20) * i));
 	}
-	
+
+	for (int i = 0; i < randomClouds.size(); ++i) {
+		//float oscilation = (sin(((currentTime / 1000.f) + randomSnow[i]) + 1.0f) / 2.0f); //calcula el movimiento vertical de cada SnowFlake
+		int desplazamiento = ((int)currentTime / randomSnow[i]) + i * 20; //calcula el desplazamiento horizontal de cada SnowFlake
+		clouds[i]->setPosition(glm::vec2(desplazamiento % 546, (randomSnow[i] * 4 /* * oscilation*/) + (546 / 20) * i));
+	}
+
 }
 
 void Scene::render() {
@@ -63,6 +80,11 @@ void Scene::render() {
 
 void Scene::renderClouds() {
 	render();
+
+	for (int i = 0; i < clouds.size(); ++i)
+	{
+		clouds[i]->render();
+	}
 }
 
 void Scene::renderSnow()

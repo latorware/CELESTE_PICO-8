@@ -1,20 +1,5 @@
-﻿  AudioManager.cpp
-C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\AudioManager.cpp(22,30): warning C4244: 'argument': conversion from 'float' to 'irrklang::ik_u32', possible loss of data
-C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\AudioManager.cpp(53,30): warning C4244: 'argument': conversion from 'float' to 'irrklang::ik_u32', possible loss of data
-  Credits.cpp
-  Game.cpp
-  main.cpp
-  MainMenu.cpp
-  Player.cpp
-  Scene.cpp
-C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(30,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(45,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(72,20): warning C4018: '<': signed/unsigned mismatch
-  Shader.cpp
-  ShaderProgram.cpp
-  Source.cpp
-  MapScene.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\utility(190,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+﻿  MapScene.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\utility(190,54): warning C4244: 'inicializando': conversión de '_Ty' a '_Ty2'; posible pérdida de datos
           with
           [
               _Ty=int
@@ -23,47 +8,44 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.3110
           [
               _Ty2=float
           ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\xmemory(680): message : see reference to function template instantiation 'std::pair<bool,float>::pair<_Ty,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\xmemory(680): message : Vea la referencia a la creación de una instancia de la función plantilla "std::pair<bool,float>::pair<_Ty,int,0>(_Other1 &&,_Other2 &&) noexcept" que se está compilando
           with
           [
               _Ty=bool,
               _Other1=bool,
               _Other2=int
           ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\xmemory(680): message : see reference to function template instantiation 'std::pair<bool,float>::pair<_Ty,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\xmemory(680): message : Vea la referencia a la creación de una instancia de la función plantilla "std::pair<bool,float>::pair<_Ty,int,0>(_Other1 &&,_Other2 &&) noexcept" que se está compilando
           with
           [
               _Ty=bool,
               _Other1=bool,
               _Other2=int
           ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\vector(607): message : see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,bool,int>(_Alloc &,_Objty *const ,bool &&,int &&)' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\vector(607): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::_Default_allocator_traits<_Alloc>::construct<_Ty,bool,int>(_Alloc &,_Objty *const ,bool &&,int &&)" que se está compilando
           with
           [
               _Alloc=std::allocator<std::pair<bool,float>>,
               _Ty=std::pair<bool,float>,
               _Objty=std::pair<bool,float>
           ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\vector(607): message : see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,bool,int>(_Alloc &,_Objty *const ,bool &&,int &&)' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\vector(607): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::_Default_allocator_traits<_Alloc>::construct<_Ty,bool,int>(_Alloc &,_Objty *const ,bool &&,int &&)" que se está compilando
           with
           [
               _Alloc=std::allocator<std::pair<bool,float>>,
               _Ty=std::pair<bool,float>,
               _Objty=std::pair<bool,float>
           ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\vector(625): message : see reference to function template instantiation 'void std::vector<std::pair<bool,float>,std::allocator<std::pair<bool,float>>>::_Emplace_back_with_unused_capacity<_Ty,int>(_Ty &&,int &&)' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\vector(625): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::vector<std::pair<bool,float>,std::allocator<std::pair<bool,float>>>::_Emplace_back_with_unused_capacity<_Ty,int>(_Ty &&,int &&)" que se está compilando
           with
           [
               _Ty=bool
           ]
-C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.cpp(2207): message : see reference to function template instantiation 'void std::vector<std::pair<bool,float>,std::allocator<std::pair<bool,float>>>::emplace_back<bool,int>(bool &&,int &&)' being compiled
-  Guide.cpp
-  Sprite.cpp
-  Texture.cpp
-  TileMap.cpp
-  Generating Code...
-SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; linking object as if no debug info
-SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; linking object as if no debug info
-SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; linking object as if no debug info
-SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; linking object as if no debug info
-  02-Bubble.vcxproj -> C:\Users\lator\Documents\GitHub\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\02-Bubble.exe
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.cpp(2265): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::vector<std::pair<bool,float>,std::allocator<std::pair<bool,float>>>::emplace_back<bool,int>(bool &&,int &&)" que se está compilando
+  Player.cpp
+  Generando código...
+SOIL.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'vc100.pdb' con 'SOIL.lib(image_DXT.obj)' o en 'C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+SOIL.lib(image_helper.obj) : warning LNK4099: no se encontró PDB 'vc100.pdb' con 'SOIL.lib(image_helper.obj)' o en 'C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+SOIL.lib(SOIL.obj) : warning LNK4099: no se encontró PDB 'vc100.pdb' con 'SOIL.lib(SOIL.obj)' o en 'C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+SOIL.lib(stb_image_aug.obj) : warning LNK4099: no se encontró PDB 'vc100.pdb' con 'SOIL.lib(stb_image_aug.obj)' o en 'C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+  02-Bubble.vcxproj -> C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\02-Bubble.exe

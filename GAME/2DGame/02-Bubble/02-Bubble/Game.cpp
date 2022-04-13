@@ -61,7 +61,7 @@ void Game::render()
 	}
 	else if (actualScene == 1) 
 	{
-		scene.renderClouds(); //solo renderiza las nubes si estamos en un nivel
+		//scene.renderClouds(); //solo renderiza las nubes si estamos en un nivel
 		MScene.render();
 	}
 	else if (actualScene == 2) 

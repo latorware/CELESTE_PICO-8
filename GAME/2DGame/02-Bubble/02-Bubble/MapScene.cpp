@@ -4,6 +4,7 @@
 #define MOVEMENT_HEIGHT 5
 #define ANGLE_STEP 5
 
+//LEVEL 3
 #define POSXMADUIXALVL3 45
 #define POSYMADUIXALVL3 200
 #define POSXMOLLA1LVL3 175
@@ -11,6 +12,7 @@
 #define POSXMOLLA2LVL3 430
 #define POSYMOLLA2LVL3 463
 
+//LEVEL 4
 #define POSXMADUIXALVL4 65
 #define POSYMADUIXALVL4 165
 
@@ -44,12 +46,19 @@
 #define POSXBLOC12LVL4 430
 #define POSYBLOC12LVL4 207
 
+//LEVEL 5
 #define POSXCLAULVL5 245
 #define POSYCLAULVL5 460
 #define POSXTRESORLVL5 470
 #define POSYTRESORLVL5 400
 #define POSXMADUIXALVL5 485
 #define POSYMADUIXALVL5 380
+
+//LEVEL 6
+#define POSXMOLLALVL6 398
+#define POSYMOLLALVL6 431
+
+//LEVEL 7
 #define POSXMADUIXALVL7 330
 #define POSYMADUIXALVL7 120
 
@@ -59,6 +68,12 @@
 #define POSYBLOC2LVL8 460
 #define POSXBLOC3LVL8 294
 #define POSYBLOC3LVL8 460
+
+//LEVEL 9
+#define POSXMOLLA1LVL9 398
+#define POSYMOLLA1LVL9 431
+#define POSXMOLLA2LVL9 430
+#define POSYMOLLA2LVL9 431
 
 #define POSXBLOC1LVL10 180
 #define POSYBLOC1LVL10 460
@@ -553,7 +568,7 @@ void MapScene::update(int deltaTime) {
 		}
 
 		//Animació MOLLA 1 nivell 3
-		if (((y >= (POSYMOLLA1LVL3 - OFFSET)) && (y <= (POSYMOLLA1LVL3 + OFFSET))) && ((x >= (POSXMOLLA1LVL3 - OFFSET)) && (x <= (POSXMOLLA1LVL3 + OFFSET)))) 
+		if (((y >= (POSYMOLLA1LVL3 - OFFSET)) && (y <= (POSYMOLLA1LVL3 + OFFSET))) && ((x >= (POSXMOLLA1LVL3 - OFFSET)) && (x <= (POSXMOLLA1LVL3 + OFFSET))))
 		{
 			sprites[6]->changeAnimation(1);
 			player->saltMolla();
@@ -1227,6 +1242,21 @@ void MapScene::update(int deltaTime) {
 		}
 
 	}
+	else if (currentLevel == 6)
+	{
+		int y = player->getPositionPlayer().y + 14;
+		int x = player->getPositionPlayer().x + 14;
+		//Animació MOLLA nivell 3
+		if (((y >= (POSYMOLLALVL6 - OFFSET)) && (y <= (POSYMOLLALVL6 + OFFSET))) && ((x >= (POSXMOLLALVL6 - OFFSET)) && (x <= (POSXMOLLALVL6 + OFFSET))))
+		{
+			sprites[5]->changeAnimation(1);
+			player->saltMolla();
+		}
+		else
+		{
+			sprites[5]->changeAnimation(0);
+		}
+	}
 	else if (currentLevel == 7)
 	{
 		if (!spritesClicats[0].first)
@@ -1424,6 +1454,32 @@ void MapScene::update(int deltaTime) {
 					spriteShouldBeRendered[2] = false;
 				}
 			}
+		}
+	}
+	else if (currentLevel == 9)
+	{
+		int y = player->getPositionPlayer().y + 14;
+		int x = player->getPositionPlayer().x + 14;
+		//Animació MOLLA 1 nivell 9
+		if (((y >= (POSYMOLLA1LVL9 - OFFSET)) && (y <= (POSYMOLLA1LVL9 + OFFSET))) && ((x >= (POSXMOLLA1LVL9 - OFFSET)) && (x <= (POSXMOLLA1LVL9 + OFFSET))))
+		{
+			sprites[5]->changeAnimation(1);
+			player->saltMolla();
+		}
+		else
+		{
+			sprites[5]->changeAnimation(0);
+		}
+
+		//Animació MOLLA 2 nivell 9
+		if (((y >= (POSYMOLLA2LVL9 - OFFSET)) && (y <= (POSYMOLLA2LVL9 + OFFSET))) && ((x >= (POSXMOLLA2LVL9 - OFFSET)) && (x <= (POSXMOLLA2LVL9 + OFFSET))))
+		{
+			sprites[6]->changeAnimation(1);
+			player->saltMolla();
+		}
+		else
+		{
+			sprites[6]->changeAnimation(0);
 		}
 	}
 	else if (currentLevel == 10)
@@ -1793,6 +1849,8 @@ void MapScene::render() {
 	}
 	else if (currentLevel == 6)
 	{
+		sprites[5]->render(); //Molla nivel 6
+
 		if (currentTime < 3000)
 		{
 			sprites[0]->render();
@@ -1856,15 +1914,19 @@ void MapScene::render() {
 	}
 	else if (currentLevel == 9)
 	{
-	if (currentTime < 3000)
-	{
-		sprites[0]->render();
-		sprites[1]->render();
-		sprites[2]->render();
-		sprites[3]->render();
-		sprites[4]->render();
 
-	}
+		sprites[5]->render(); //Molla 1 nivel 9
+		sprites[6]->render(); //Molla 2 nivel 9
+
+		if (currentTime < 3000)
+		{
+			sprites[0]->render();
+			sprites[1]->render();
+			sprites[2]->render();
+			sprites[3]->render();
+			sprites[4]->render();
+
+		}
 	}
 	else if (currentLevel == 10)
 	{
@@ -1876,10 +1938,6 @@ void MapScene::render() {
 		sprites[3]->render();
 		sprites[4]->render();
 		sprites[5]->render();
-
-
-
-
 	}
 
 	if (spriteShouldBeRendered[0])
@@ -2720,6 +2778,25 @@ void MapScene::inicialitzaNivellActual()
 		sprites[4]->changeAnimation(0);
 		sprites[4]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
 		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+		//MOLLA
+		textures.emplace_back();
+		textures[2].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[2].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[2].setMinFilter(GL_NEAREST);
+		textures[2].setMagFilter(GL_NEAREST);
+		textures[2].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[5]->setNumberAnimations(2);
+		sprites[5]->setAnimationSpeed(0, 1);
+		sprites[5]->setAnimationSpeed(1, 1);
+		sprites[5]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(8.f / 16.f)));
+		sprites[5]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(8.f / 16.f)));
+		sprites[5]->changeAnimation(0);
+		sprites[5]->setPosition(glm::vec2(float(POSXMOLLALVL6), float(POSYMOLLALVL6)));
+		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
 	}
 
 	else if (currentLevel == 7)
@@ -2984,6 +3061,40 @@ void MapScene::inicialitzaNivellActual()
 		sprites[4]->changeAnimation(0);
 		sprites[4]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
 		sprites[4]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+		//Carrega textures MOLLA
+		textures.emplace_back();
+		textures[2].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[2].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[2].setMinFilter(GL_NEAREST);
+		textures[2].setMagFilter(GL_NEAREST);
+		textures[2].loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
+
+		//MOLLA 1
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[5]->setNumberAnimations(2);
+		sprites[5]->setAnimationSpeed(0, 1);
+		sprites[5]->setAnimationSpeed(1, 1);
+		sprites[5]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(8.f / 16.f)));
+		sprites[5]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(8.f / 16.f)));
+		sprites[5]->changeAnimation(0);
+		sprites[5]->setPosition(glm::vec2(float(POSXMOLLA1LVL9), float(POSYMOLLA1LVL9)));
+		sprites[5]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
+
+		//MOLLA 2
+		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[2], &texProgram));
+		sprites[6]->setNumberAnimations(2);
+		sprites[6]->setAnimationSpeed(0, 1);
+		sprites[6]->setAnimationSpeed(1, 1);
+		sprites[6]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(8.f / 16.f)));
+		sprites[6]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(8.f / 16.f)));
+		sprites[6]->changeAnimation(0);
+		sprites[6]->setPosition(glm::vec2(float(POSXMOLLA2LVL9), float(POSYMOLLA2LVL9)));
+		sprites[6]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		spritesClicats.emplace_back(false, 0);
+		spriteShouldBeRendered.push_back(true);
 	}
 
 	else if (currentLevel == 10)

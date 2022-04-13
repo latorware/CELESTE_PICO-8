@@ -431,4 +431,5 @@ void Player::saltMolla()
 	jumpAngle = 0;
 	startY = posPlayer.y;
 	alcadaSaltMolla = 40;
+	dashCarregat = true;
 }
