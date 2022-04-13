@@ -433,3 +433,8 @@ void Player::saltMolla()
 	alcadaSaltMolla = 40;
 	dashCarregat = true;
 }
+
+void Player::carregarDash()
+{
+	dashCarregat = true;
+}

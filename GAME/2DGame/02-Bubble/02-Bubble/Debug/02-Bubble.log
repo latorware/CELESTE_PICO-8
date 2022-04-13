@@ -1,4 +1,8 @@
-﻿  MapScene.cpp
+﻿  Credits.cpp
+  Game.cpp
+  Guide.cpp
+  MainMenu.cpp
+  MapScene.cpp
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\utility(190,54): warning C4244: 'inicializando': conversión de '_Ty' a '_Ty2'; posible pérdida de datos
           with
           [
@@ -41,8 +45,16 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.3110
           [
               _Ty=bool
           ]
-C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.cpp(2265): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::vector<std::pair<bool,float>,std::allocator<std::pair<bool,float>>>::emplace_back<bool,int>(bool &&,int &&)" que se está compilando
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\MapScene.cpp(2350): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::vector<std::pair<bool,float>,std::allocator<std::pair<bool,float>>>::emplace_back<bool,int>(bool &&,int &&)" que se está compilando
   Player.cpp
+  Scene.cpp
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(32,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(41,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(56,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(62,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(84,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\02-Bubble\Scene.cpp(94,20): warning C4018: '<': no coinciden signed/unsigned
+  main.cpp
   Generando código...
 SOIL.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'vc100.pdb' con 'SOIL.lib(image_DXT.obj)' o en 'C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 SOIL.lib(image_helper.obj) : warning LNK4099: no se encontró PDB 'vc100.pdb' con 'SOIL.lib(image_helper.obj)' o en 'C:\Users\Juan\Desktop\CELESTE_PICO-8\GAME\2DGame\02-Bubble\Debug\vc100.pdb'; se vinculará el objeto sin tener en cuenta información de depuración

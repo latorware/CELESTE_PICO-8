@@ -25,6 +25,7 @@ public:
 	void setTremolar(bool tremolar); 
 	bool encaraTremolant(); 
 	void saltMolla();
+	void carregarDash();
 
 private:
 	bool bJumping;
