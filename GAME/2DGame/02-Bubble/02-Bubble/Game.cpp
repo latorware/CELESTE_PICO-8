@@ -13,7 +13,6 @@ void Game::init()
 	scene.init();				//inicializa shaders que se usan en las subclases 
 	scene.initObjects();		//inicializa los objetos en una función diferente para evitar un uso excesivo de la memoria
 	menu.init();
-	//MScene.init(1);
 	actualScene = 0; //0 = menu		1 = game	2 = guide		3 = credits
 	audioManager.menuMusicPlay(); 
 	credits.init();

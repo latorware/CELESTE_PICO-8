@@ -27,8 +27,8 @@ public:
 
 private:
 	bool bJumping;
-	bool dashCarregat;
-	bool deixatClicarSalt;
+	bool dashCarregat, dashInfinit;
+	bool deixatClicarSalt, deixatClicarDash;
 	bool climbDretEnProces, climbEsquerreEnProces;
 	glm::ivec2 tileMapDispl, posPlayer;
 	int jumpAngle, startY;

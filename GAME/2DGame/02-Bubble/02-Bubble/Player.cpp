@@ -35,7 +35,9 @@ void Player::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, Au
 
 	bJumping = false;
 	dashCarregat = true;
+	dashInfinit = false;
 	deixatClicarSalt = true;
+	deixatClicarDash = true;
 	climbDretEnProces = false;
 	climbEsquerreEnProces = false;
 	spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
@@ -93,6 +95,10 @@ void Player::update(int deltaTime, float currentTime)
 	{
 		deixatClicarSalt = true;
 	}
+	if (!(Game::instance().getKey(88) || Game::instance().getKey(120))) //Per que no es produeixi loop de DASH
+	{
+		deixatClicarDash = true;
+	}
 
 	if (deixatClicarSalt && (Game::instance().getKey(67) || Game::instance().getKey(99))) //comprovem si es vol fer salt de CLIMB. Codis: C=67 i c=99 
 	{
@@ -133,7 +139,7 @@ void Player::update(int deltaTime, float currentTime)
 
 	if (Game::instance().getSpecialKey(GLUT_KEY_LEFT) || climbEsquerreEnProces)
 	{
-		if (sprite->animation() != MOVE_LEFT && dashCarregat)
+		if (sprite->animation() != MOVE_LEFT && dashCarregat && !dashInfinit)
 		{
 			sprite->changeAnimation(MOVE_LEFT);
 		}
@@ -147,7 +153,7 @@ void Player::update(int deltaTime, float currentTime)
 	}
 	else if (Game::instance().getSpecialKey(GLUT_KEY_RIGHT) || climbDretEnProces)
 	{
-		if (sprite->animation() != MOVE_RIGHT && dashCarregat)
+		if (sprite->animation() != MOVE_RIGHT && dashCarregat && !dashInfinit)
 		{
 			sprite->changeAnimation(MOVE_RIGHT);
 		}
@@ -247,9 +253,14 @@ void Player::update(int deltaTime, float currentTime)
 	}
 
 	//Gestión del DASH
-	if ((Game::instance().getKey(88) || Game::instance().getKey(120)) && dashCarregat) //Codis: X=88 i x=120
+	if (deixatClicarDash && ((Game::instance().getKey(88) || Game::instance().getKey(120)) && dashCarregat)) //Codis: X=88 i x=120
 	{
-		dashCarregat = false;
+		if (!dashInfinit)
+		{
+			dashCarregat = false;
+		}
+		if (dashInfinit)
+			deixatClicarDash = false;
 		audioManager->dashSoundPlay();
 		bJumping = true;
 		jumpAngle = 0;
@@ -265,10 +276,17 @@ void Player::update(int deltaTime, float currentTime)
 		{
 			sprite->changeAnimation(DASH_RIGHT);
 		}
-	}
-	else if (dashCarregat) 
-	{
 
+	}
+
+	//Gestió DASH infinit
+	if (Game::instance().getKey(68) || Game::instance().getKey(100) && !dashInfinit) //Codis: D=68 i d=100
+	{
+			dashInfinit = true;       
+	} 
+	else if (Game::instance().getKey(68) || Game::instance().getKey(100) && dashInfinit)
+	{
+		dashInfinit = false;
 	}
 
 
