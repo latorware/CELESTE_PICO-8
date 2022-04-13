@@ -4,7 +4,7 @@
 
 <b> PROBLEMA VELOCIDAD: </B>Para aumentar la velocidad del jugador, hay que cambiar el valor de pos.x (de 2 a 4) cuando se comprueba si se están pulsando las flechas a la izquierda y a la derecha (en la clase Plaayer.cpp). Esto hace que el jugador entre dentro de los tiles que están a su misma altura, y por tanto hay que modificar la función collisionMoveLeft y collisionMoveRight de la clase TileMap.cpp. Así se consigue una velocidad muy parecida a la del juego original y se pueden pasar todos los niveles. El problema es que al modificar estas dos funciones, deja de funcionar la habilidad CLIMB del perosnaje.
 
-<B>PROBLEMA CLIMB: </b>El CLIMB funciona como en el juego original cuando el obstáculo se encuentra a la derecha, pero cuando el obstáculo se encuentra a la izquierda, si dejas pulsada la tecla de la flecha a la izquierda mientras el personaje está agarrado a la pared, salta hacia arriba en vez de saltar en la dirección contraria al obtáculo (en el CLIMB a la dercha si que lo hace bien).
+<del><B>PROBLEMA CLIMB: </b>El CLIMB funciona como en el juego original cuando el obstáculo se encuentra a la derecha, pero cuando el obstáculo se encuentra a la izquierda, si dejas pulsada la tecla de la flecha a la izquierda mientras el personaje está agarrado a la pared, salta hacia arriba en vez de saltar en la dirección contraria al obtáculo (en el CLIMB a la dercha si que lo hace bien).</del> <b>arreglat</b>
 
 ## Coses fetes
 
