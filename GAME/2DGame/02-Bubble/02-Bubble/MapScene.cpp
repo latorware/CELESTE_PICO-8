@@ -414,12 +414,12 @@ void MapScene::update(int deltaTime) {
 			{
 				if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
 					{
-					cout << "d" << endl;
+					//cout << "d" << endl;
 					player->update(deltaTime, currentTime);
 					}
 				else
 					{
-					cout << "e" << endl;
+					//cout << "e" << endl;
 					personatgepunxat = false;
 					canviaNivell(currentLevel);
 					}
@@ -1586,7 +1586,7 @@ void MapScene::update(int deltaTime) {
 
 	//firstDigit->addKeyframe(0, glm::vec2(float(0.f / 16.f), float((2+firstDigitNumber)/16.f)));
 	//secondDigit->addKeyframe(0, glm::vec2(float(0.f / 16.f), float((2+ secondDigitNumber)/16.f)));
-	cout << "first digit " << firstDigitNumber << "            second digit " << secondDigitNumber << endl;
+	//cout << "first digit " << firstDigitNumber << "            second digit " << secondDigitNumber << endl;
 }
 
 void MapScene::render() {
