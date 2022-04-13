@@ -173,7 +173,31 @@ void MapScene::update(int deltaTime) {
 		}
 		else
 		{
-			player->update(deltaTime, currentTime);
+			if (currentLevel == 1 && enPosicioPunxesLevel1())
+			{
+				if ((!player->encaraTremolant()) && (!personatgepunxat))
+				{
+					audioManager->deathSoundPlay();
+					personatgepunxat = true;
+					player->setTremolar(true);
+					player->update(deltaTime, currentTime);
+				}
+				else if ((player->encaraTremolant()) && (personatgepunxat))
+				{
+					player->update(deltaTime, currentTime);
+				}
+				else if ((!player->encaraTremolant()) && (personatgepunxat))
+				{
+					personatgepunxat = false;
+					canviaNivell(currentLevel);
+				}
+			}
+			
+			else 
+			{
+				player->update(deltaTime, currentTime);
+			}
+			
 		}
 	}
 	else
@@ -1614,7 +1638,9 @@ void MapScene::render() {
 void MapScene::comensaJoc(AudioManager* audioManagerr)
 {
 	jocEnded = false; 
+	invulnerable = false; 
 	personatgeCaigut = false; 
+	personatgepunxat = false; 
 	audioManager = audioManagerr; 
 	audioManager->levelUpSoundPlay();
 	inincialitzatNivellPrimeraVegada = false; 
@@ -1699,6 +1725,18 @@ void MapScene::treuGris()
 	texProgram.use();
 	texProgram.setUniformInt("gris", 0);
 	slowMode = false; 
+}
+
+void MapScene::toggleInvulnerabilitat()
+{
+	if (!invulnerable)
+	{
+		invulnerable = true; 
+	}
+	else
+	{
+		invulnerable = false; 
+	}
 }
 
 void MapScene::inicialitzaNivellActual()
@@ -2736,4 +2774,65 @@ void MapScene::inicialitzaNivellActual()
 
 
 	inincialitzatNivellPrimeraVegada = true; 
+}
+
+bool MapScene::enPosicioPunxesLevel1()
+{
+	if (player->getPositionPlayer().y == 416)
+	{
+		if ((player->getPositionPlayer().x >= 160) && (player->getPositionPlayer().x <= 192))
+		{
+			return true; 
+		}
+	}
+	else if (player->getPositionPlayer().y == 384)
+	{
+		if ((player->getPositionPlayer().x >= 288) && (player->getPositionPlayer().x <= 320))
+		{
+			return true;
+		}
+	}
+	else if (player->getPositionPlayer().y == 352)
+	{
+		if ((player->getPositionPlayer().x >= 289) && (player->getPositionPlayer().x <= 416))
+		{
+			return true;
+		}
+	}
+	return false; 
+}
+
+bool MapScene::enPosicioPunxesLevel2()
+{
+	return false;
+}
+
+bool MapScene::enPosicioPunxesLevel3()
+{
+	return false;
+}
+
+bool MapScene::enPosicioPunxesLevel5()
+{
+	return false;
+}
+
+bool MapScene::enPosicioPunxesLevel6()
+{
+	return false;
+}
+
+bool MapScene::enPosicioPunxesLevel7()
+{
+	return false;
+}
+
+bool MapScene::enPosicioPunxesLevel8()
+{
+	return false;
+}
+
+bool MapScene::enPosicioPunxesLevel10()
+{
+	return false;
 }

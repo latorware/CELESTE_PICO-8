@@ -259,7 +259,7 @@ bool TileMap::collisionMoveDown(const glm::ivec2& pos, const glm::ivec2& size, i
 			if (*posY - tileSize * y + size.y <= 8)
 			{
 				*posY = tileSize * y - size.y;
-				//cout << "posy" << pos.y << endl;
+				cout << "posx " << pos.x << "        posy " << pos.y << endl;
 				return true;
 			}
 		}

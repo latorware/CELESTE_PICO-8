@@ -25,10 +25,21 @@ public:
 	bool jocAcabat(); 
 	void setGris(); 
 	void treuGris(); 
+	void toggleInvulnerabilitat();
 
 
 private:
 	void inicialitzaNivellActual(); 
+	bool enPosicioPunxesLevel1();
+	bool enPosicioPunxesLevel2();
+	bool enPosicioPunxesLevel3();
+	bool enPosicioPunxesLevel5();
+	bool enPosicioPunxesLevel6();
+	bool enPosicioPunxesLevel7();
+	bool enPosicioPunxesLevel8();
+	bool enPosicioPunxesLevel9();
+	bool enPosicioPunxesLevel10();
+
 
 private:
 	TileMap* map, * background;
@@ -52,4 +63,6 @@ private:
 	bool jocEnded; 
 	bool personatgeCaigut; 
 	bool slowMode; 
+	bool invulnerable; 
+	bool personatgepunxat; 
 };

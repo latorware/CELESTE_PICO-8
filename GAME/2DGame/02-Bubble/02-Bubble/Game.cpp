@@ -169,6 +169,12 @@ void Game::keyPressed(int key)
 		}
 	}
 
+
+	if (key == 71 || key == 103) //g, la invulnerabilitat
+	{
+		MScene.toggleInvulnerabilitat();
+	}
+
 	keys[key] = true;
 }
 
