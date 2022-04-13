@@ -113,6 +113,24 @@
 #define LIMITINFERIOR 480
 #define DURACIOTREMOLAR 500
 
+#define POSX1DIGITFPS 25
+#define POSY1DIGITFPS 5
+
+#define POSX2DIGITFPS 50
+#define POSY2DIGITFPS 5
+
+#define POSXFLETTERFPS 75
+#define POSYFLETTERFPS 5
+
+#define POSXPLETTERFPS 100
+#define POSYPLETTERFPS 5
+
+#define POSXSLETTERFPS 125
+#define POSYSLETTERFPS 5
+
+#define POSXBLACKFPS 25
+#define POSYBLACKFPS 3
+
 
 
 MapScene::MapScene() {
@@ -1554,10 +1572,24 @@ void MapScene::update(int deltaTime) {
 			}
 		}
 	}
+
+
+	int fps = int(float(1.f / (deltaTime * 1.f)) * 1000); 
+	//cout << fps << endl; 
+	int firstDigitNumber = (fps / 10) % 10;
+	int secondDigitNumber = fps % 10;
+		
+	firstDigit->changeKeyFrameDisplacement(0, 0, glm::vec2(float(0.f / 16.f), float((2 + firstDigitNumber) / 16.f))); 
+	secondDigit->changeKeyFrameDisplacement(0, 0, glm::vec2(float(0.f / 16.f), float((2 + secondDigitNumber) / 16.f))); 
+	firstDigit->update(deltaTime); 
+	secondDigit->update(deltaTime); 
+
+	//firstDigit->addKeyframe(0, glm::vec2(float(0.f / 16.f), float((2+firstDigitNumber)/16.f)));
+	//secondDigit->addKeyframe(0, glm::vec2(float(0.f / 16.f), float((2+ secondDigitNumber)/16.f)));
+	cout << "first digit " << firstDigitNumber << "            second digit " << secondDigitNumber << endl;
 }
 
 void MapScene::render() {
-
 
 	if (!inincialitzatNivellPrimeraVegada)
 	{
@@ -1847,6 +1879,13 @@ void MapScene::render() {
 		sprites[9]->render();
 	}
 	}
+
+	blackFPS->render(); 
+	firstDigit->render();
+	secondDigit->render(); 
+	FLetter->render();
+	PLetter->render();
+	SLetter->render();
 }
 
 void MapScene::comensaJoc(AudioManager* audioManagerr)
@@ -1889,6 +1928,72 @@ void MapScene::comensaJoc(AudioManager* audioManagerr)
 	{
 		setGris();
 	}
+
+
+
+
+	fpsTexture.setWrapS(GL_CLAMP_TO_EDGE);
+	fpsTexture.setWrapT(GL_CLAMP_TO_EDGE);
+	fpsTexture.setMinFilter(GL_NEAREST);
+	fpsTexture.setMagFilter(GL_NEAREST);
+	fpsTexture.loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+
+	firstDigit = Sprite::createSprite(glm::ivec2(16, 16), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &fpsTexture, &texProgram);
+	firstDigit->setNumberAnimations(1);
+	firstDigit->setAnimationSpeed(0, 30);
+	firstDigit->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+	firstDigit->changeAnimation(0);
+	firstDigit->setPosition(glm::vec2(float(POSX1DIGITFPS + SCREEN_X), float(POSY1DIGITFPS + SCREEN_Y)));
+	firstDigit->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+	secondDigit = Sprite::createSprite(glm::ivec2(16, 16), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &fpsTexture, &texProgram);
+	secondDigit->setNumberAnimations(1);
+	secondDigit->setAnimationSpeed(0, 30);
+	secondDigit->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+	secondDigit->changeAnimation(0);
+	secondDigit->setPosition(glm::vec2(float(POSX2DIGITFPS + SCREEN_X), float(POSY2DIGITFPS + SCREEN_Y)));
+	secondDigit->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+	FLetter = Sprite::createSprite(glm::ivec2(16, 16), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &fpsTexture, &texProgram);
+	FLetter->setNumberAnimations(1);
+	FLetter->setAnimationSpeed(0, 30);
+	FLetter->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(13.f / 16.f)));
+	FLetter->changeAnimation(0);
+	FLetter->setPosition(glm::vec2(float(POSXFLETTERFPS + SCREEN_X), float(POSYFLETTERFPS + SCREEN_Y)));
+	FLetter->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+	PLetter = Sprite::createSprite(glm::ivec2(16, 16), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &fpsTexture, &texProgram);
+	PLetter->setNumberAnimations(1);
+	PLetter->setAnimationSpeed(0, 30);
+	PLetter->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(15.f / 16.f)));
+	PLetter->changeAnimation(0);
+	PLetter->setPosition(glm::vec2(float(POSXPLETTERFPS + SCREEN_X), float(POSYPLETTERFPS + SCREEN_Y)));
+	PLetter->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+	SLetter = Sprite::createSprite(glm::ivec2(16, 16), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &fpsTexture, &texProgram);
+	SLetter->setNumberAnimations(1);
+	SLetter->setAnimationSpeed(0, 30);
+	SLetter->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(14.f / 16.f)));
+	SLetter->changeAnimation(0);
+	SLetter->setPosition(glm::vec2(float(POSXSLETTERFPS + SCREEN_X), float(POSYSLETTERFPS + SCREEN_Y)));
+	SLetter->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+
+	blackFPSTexture.setWrapS(GL_CLAMP_TO_EDGE);
+	blackFPSTexture.setWrapT(GL_CLAMP_TO_EDGE);
+	blackFPSTexture.setMinFilter(GL_NEAREST);
+	blackFPSTexture.setMagFilter(GL_NEAREST);
+	blackFPSTexture.loadFromFile("images/black.png", TEXTURE_PIXEL_FORMAT_RGBA);
+
+	blackFPS = Sprite::createSprite(glm::ivec2(125, 20), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &blackFPSTexture, &texProgram);
+	blackFPS->setNumberAnimations(1);
+	blackFPS->setAnimationSpeed(0, 1);
+	blackFPS->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
+	blackFPS->changeAnimation(0);
+	blackFPS->setPosition(glm::vec2(float(POSXBLACKFPS + SCREEN_X), float(POSYBLACKFPS + SCREEN_Y)));
+	blackFPS->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+
 }
 
 void MapScene::canviaNivell(int level)
