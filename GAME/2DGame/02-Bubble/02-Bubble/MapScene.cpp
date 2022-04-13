@@ -2164,6 +2164,10 @@ void MapScene::canviaNivell(int level)
 	inincialitzatNivellPrimeraVegada = false; 
 	audioManager->levelUpSoundPlay();
 	Scene::init();
+	if (slowMode)
+	{
+		setGris();
+	}
 	if (level == currentLevel)
 	{
 		transicio.fentTransicio = false; 
