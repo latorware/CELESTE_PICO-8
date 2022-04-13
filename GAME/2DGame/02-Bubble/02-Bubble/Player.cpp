@@ -42,6 +42,7 @@ void Player::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, Au
 	deixatClicarDash = true;
 	climbDretEnProces = false;
 	climbEsquerreEnProces = false;
+	alcadaSaltMolla = 0;
 	spritesheet.loadFromFile("images/repaired_sheet.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	sprite = Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &spritesheet, &shaderProgram);
 	sprite->setNumberAnimations(10);
@@ -254,7 +255,7 @@ void Player::update(int deltaTime, float currentTime)
 		else
 		{
 			int posicioAnterior = posPlayer.y; //la guardem en el cas que hi hagi collisinMoveUp
-			posPlayer.y = int(startY - JUMP_HEIGHT * sin(3.14159f * jumpAngle / 180.f));
+			posPlayer.y = int(startY - (JUMP_HEIGHT + alcadaSaltMolla) * sin(3.14159f * jumpAngle / 180.f));
 			if (map->collisionMoveUp(posPlayer, glm::ivec2(32, 32), &posPlayer.y)) //comprovar collisionMoveUp
 			{
 				posPlayer.y = posicioAnterior;
@@ -287,6 +288,7 @@ void Player::update(int deltaTime, float currentTime)
 		if (map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
 		{
 			dashCarregat = true;
+			alcadaSaltMolla = 0;
 			if (tremolarAlCaure)
 			{
 				fentTremolar.first = true; 
@@ -421,4 +423,12 @@ void Player::setTremolar(bool tremolar)
 bool Player::encaraTremolant()
 {
 	return fentTremolar.first; 
+}
+
+void Player::saltMolla()
+{
+	bJumping = true;
+	jumpAngle = 0;
+	startY = posPlayer.y;
+	alcadaSaltMolla = 40;
 }

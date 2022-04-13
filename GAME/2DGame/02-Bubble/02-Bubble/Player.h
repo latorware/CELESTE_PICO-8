@@ -24,6 +24,7 @@ public:
 	glm::ivec2 getPositionPlayer();
 	void setTremolar(bool tremolar); 
 	bool encaraTremolant(); 
+	void saltMolla();
 
 private:
 	bool bJumping;
@@ -40,6 +41,7 @@ private:
 	bool tremolarAlCaure; 
 	pair<bool, float> fentTremolar;
 	AudioManager* audioManager;
+	int alcadaSaltMolla;
 
 };
 

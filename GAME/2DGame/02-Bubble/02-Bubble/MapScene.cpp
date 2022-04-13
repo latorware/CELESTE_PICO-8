@@ -487,10 +487,10 @@ void MapScene::update(int deltaTime) {
 
 	if (currentLevel == 3)
 	{
+		int y = player->getPositionPlayer().y + 14;
+		int x = player->getPositionPlayer().x + 14;
 		if (!spritesClicats[0].first)
 		{
-			int y = player->getPositionPlayer().y + 14;
-			int x = player->getPositionPlayer().x + 14;
 			//cout << "x " << x << "     y " << y << endl; 
 			if (((y >= (POSYMADUIXALVL3 - OFFSET)) && (y <= (POSYMADUIXALVL3 + OFFSET))) && ((x >= (POSXMADUIXALVL3 - OFFSET)) && (x <= (POSXMADUIXALVL3 + OFFSET))))
 			{
@@ -534,7 +534,27 @@ void MapScene::update(int deltaTime) {
 			}
 		}
 
+		//Animació MOLLA 1 nivell 3
+		if (((y >= (POSYMOLLA1LVL3 - OFFSET)) && (y <= (POSYMOLLA1LVL3 + OFFSET))) && ((x >= (POSXMOLLA1LVL3 - OFFSET)) && (x <= (POSXMOLLA1LVL3 + OFFSET)))) 
+		{
+			sprites[6]->changeAnimation(1);
+			player->saltMolla();
+		}
+		else 
+		{
+			sprites[6]->changeAnimation(0);
+		}
 
+		//Animació MOLLA 2 nivell 3
+		if (((y >= (POSYMOLLA2LVL3 - OFFSET)) && (y <= (POSYMOLLA2LVL3 + OFFSET))) && ((x >= (POSXMOLLA2LVL3 - OFFSET)) && (x <= (POSXMOLLA2LVL3 + OFFSET))))
+		{
+			sprites[7]->changeAnimation(1);
+			player->saltMolla();
+		}
+		else
+		{
+			sprites[7]->changeAnimation(0);
+		}
 
 	}
 	else if (currentLevel == 4)
@@ -2134,8 +2154,9 @@ void MapScene::inicialitzaNivellActual()
 		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
 		sprites[6]->setNumberAnimations(2);
 		sprites[6]->setAnimationSpeed(0, 1);
+		sprites[6]->setAnimationSpeed(1, 1);
 		sprites[6]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(8.f / 16.f)));
-		sprites[6]->addKeyframe(0, glm::vec2(float(10.f / 10.f), float(8.f / 16.f)));
+		sprites[6]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(8.f / 16.f)));
 		sprites[6]->changeAnimation(0);
 		sprites[6]->setPosition(glm::vec2(float(POSXMOLLA1LVL3), float(POSYMOLLA1LVL3)));
 		sprites[6]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
@@ -2146,8 +2167,9 @@ void MapScene::inicialitzaNivellActual()
 		sprites.push_back(Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(float(1.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram));
 		sprites[7]->setNumberAnimations(2);
 		sprites[7]->setAnimationSpeed(0, 1);
+		sprites[7]->setAnimationSpeed(1, 1);
 		sprites[7]->addKeyframe(0, glm::vec2(float(9.f / 16.f), float(8.f / 16.f)));
-		sprites[7]->addKeyframe(0, glm::vec2(float(10.f / 10.f), float(8.f / 16.f)));
+		sprites[7]->addKeyframe(1, glm::vec2(float(10.f / 16.f), float(8.f / 16.f)));
 		sprites[7]->changeAnimation(0);
 		sprites[7]->setPosition(glm::vec2(float(POSXMOLLA2LVL3), float(POSYMOLLA2LVL3)));
 		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
