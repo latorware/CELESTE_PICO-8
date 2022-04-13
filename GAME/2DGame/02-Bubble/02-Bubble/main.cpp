@@ -8,9 +8,11 @@
 
 
 #define TIME_PER_FRAME 1000.f / 60.f // Approx. 60 fps
+#define TIME_PER_FRAME_SLOW 1000.f / 30.f
 
 
 static int prevTime;
+bool slowMode = false; 
 
 
 // If a key is pressed this callback is called
@@ -68,14 +70,43 @@ static void idleCallback()
 {
 	int currentTime = glutGet(GLUT_ELAPSED_TIME);
 	int deltaTime = currentTime - prevTime;
-	
-	if(deltaTime > TIME_PER_FRAME)
+
+
+	if (slowMode)
 	{
-		// Every time we enter here is equivalent to a game loop execution
-		if(!Game::instance().update(deltaTime))
-			exit(0);
-		prevTime = currentTime;
-		glutPostRedisplay();
+		if (deltaTime > TIME_PER_FRAME_SLOW)
+		{
+			// Every time we enter here is equivalent to a game loop execution
+			if (!Game::instance().update(deltaTime))
+			{
+				exit(0);
+			}
+			else
+			{
+				slowMode = Game::instance().checkSlowMode();
+			}
+
+			prevTime = currentTime;
+			glutPostRedisplay();
+		}
+	}
+	else
+	{
+		if (deltaTime > TIME_PER_FRAME)
+		{
+			// Every time we enter here is equivalent to a game loop execution
+			if (!Game::instance().update(deltaTime))
+			{
+				exit(0);
+			}
+			else
+			{
+				slowMode = Game::instance().checkSlowMode(); 
+			}
+				
+			prevTime = currentTime;
+			glutPostRedisplay();
+		}
 	}
 }
 

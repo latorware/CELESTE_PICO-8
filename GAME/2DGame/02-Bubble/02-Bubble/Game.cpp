@@ -5,9 +5,9 @@
 
 void Game::init()
 {
-	//AllocConsole(); //consola per debuguejar
-	//freopen("CONOUT$", "w", stdout); //consola per debuguejar
-	//cout << "a" << endl; 
+	AllocConsole(); //consola per debuguejar
+	freopen("CONOUT$", "w", stdout); //consola per debuguejar
+	cout << "a" << endl; 
 	bPlay = true;
 	glClearColor(0.f, 0.f, 0.f, 1.0f);
 	scene.init();				//inicializa shaders que se usan en las subclases 
@@ -17,11 +17,11 @@ void Game::init()
 	audioManager.menuMusicPlay(); 
 	credits.init();
 	guide.init();
+	slowMode = false; 
 }
 
 bool Game::update(int deltaTime)
 {
-
 	scene.update(deltaTime);
 
 	if (actualScene == 0) 
@@ -145,6 +145,22 @@ void Game::keyPressed(int key)
 			MScene.canviaNivell(10);
 	}
 
+	if (key == 83 || key == 115) // s, toggle speed
+	{
+		if (slowMode)
+		{
+			slowMode = false; 
+			audioManager.menuMusicNormalMode();
+			audioManager.gameMusicNormalMode();
+		}
+		else
+		{
+			slowMode = true; 
+			audioManager.menuMusicSlowMode();
+			audioManager.gameMusicSlowMode();
+		}
+	}
+
 	keys[key] = true;
 }
 
@@ -199,6 +215,11 @@ bool Game::getKey(int key) const
 bool Game::getSpecialKey(int key) const
 {
 	return specialKeys[key];
+}
+
+bool Game::checkSlowMode()
+{
+	return slowMode; 
 }
 
 

@@ -16,9 +16,13 @@ public:
 
 	void menuMusicPlay(); 
 	void menuMusicStop(); 
+	void menuMusicSlowMode();
+	void menuMusicNormalMode();
 
 	void gameMusicPlay(); 
 	void gameMusicStop(); 
+	void gameMusicSlowMode(); 
+	void gameMusicNormalMode();
 
 	void deathSoundPlay(); 
 	void jumpSoundPlay(); 

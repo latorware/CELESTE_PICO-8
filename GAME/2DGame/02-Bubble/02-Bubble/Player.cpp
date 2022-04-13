@@ -14,6 +14,8 @@
 #define STRENGTHTREMOLAR 15
 #define LIMITINFERIOR 479
 
+#define VELOCITATPERSONATGE 4
+
 enum PlayerAnims
 {
 	STAND_LEFT, STAND_RIGHT, MOVE_LEFT, MOVE_RIGHT, LOOK_UP_LEFT, LOOK_UP_RIGHT, LOOK_DOWN_LEFT, LOOK_DOWN_RIGHT,
@@ -103,11 +105,11 @@ void Player::update(int deltaTime, float currentTime)
 	if (deixatClicarSalt && (Game::instance().getKey(67) || Game::instance().getKey(99))) //comprovem si es vol fer salt de CLIMB. Codis: C=67 i c=99 
 	{
 		//comprovem si estem al costat de mur esquerre
-		posPlayer.x -= 2;
+		posPlayer.x -= VELOCITATPERSONATGE;
 		if (map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
 		{
 			//fem el climb
-			posPlayer.x += 2;
+			posPlayer.x += VELOCITATPERSONATGE;
 			deixatClicarSalt = false;
 			bJumping = true;
 			jumpAngle = 0;
@@ -117,11 +119,11 @@ void Player::update(int deltaTime, float currentTime)
 		//altrament comprovem si estem al costat de mur dret
 		else
 		{
-			posPlayer.x += 4;
+			posPlayer.x += VELOCITATPERSONATGE + VELOCITATPERSONATGE;
 			if (map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)/*, &posPlayer.x*/))
 			{
 				//fem el climb
-				posPlayer.x -= 2;
+				posPlayer.x -= VELOCITATPERSONATGE;
 				deixatClicarSalt = false;
 				bJumping = true;
 				jumpAngle = 0;
@@ -130,7 +132,7 @@ void Player::update(int deltaTime, float currentTime)
 			}
 			else
 			{
-				posPlayer.x -= 2;
+				posPlayer.x -= VELOCITATPERSONATGE;
 			}
 		}
 
@@ -142,10 +144,10 @@ void Player::update(int deltaTime, float currentTime)
 		{
 			sprite->changeAnimation(MOVE_LEFT);
 		}
-		posPlayer.x -= 2;
+		posPlayer.x -= VELOCITATPERSONATGE;
 		if (map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
 		{
-			posPlayer.x += 2;
+			posPlayer.x += VELOCITATPERSONATGE;
 			sprite->changeAnimation(STAND_LEFT);
 
 		}
@@ -156,10 +158,10 @@ void Player::update(int deltaTime, float currentTime)
 		{
 			sprite->changeAnimation(MOVE_RIGHT);
 		}
-		posPlayer.x += 2;	//Aumnetar el desplazameitno en x a 4 para conseguir más velocidad
+		posPlayer.x += VELOCITATPERSONATGE;	//Aumnetar el desplazameitno en x a 4 para conseguir más velocidad
 		if (map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)/*, &posPlayer.x*/))
 		{
-			posPlayer.x -= 2;
+			posPlayer.x -= VELOCITATPERSONATGE;
 			sprite->changeAnimation(STAND_RIGHT);
 		}
 	}
@@ -169,10 +171,10 @@ void Player::update(int deltaTime, float currentTime)
 		{
 			sprite->changeAnimation(MOVE_LEFT);
 		}
-		posPlayer.x -= 2;
+		posPlayer.x -= VELOCITATPERSONATGE;
 		if (map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
 		{
-			posPlayer.x += 2;
+			posPlayer.x += VELOCITATPERSONATGE;
 			sprite->changeAnimation(STAND_LEFT);
 
 		}
@@ -183,10 +185,10 @@ void Player::update(int deltaTime, float currentTime)
 		{
 			sprite->changeAnimation(MOVE_RIGHT);
 		}
-		posPlayer.x += 2;	//Aumnetar el desplazameitno en x a 4 para conseguir más velocidad
+		posPlayer.x += VELOCITATPERSONATGE;	//Aumnetar el desplazameitno en x a 4 para conseguir más velocidad
 		if (map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)/*, &posPlayer.x*/))
 		{
-			posPlayer.x -= 2;
+			posPlayer.x -= VELOCITATPERSONATGE;
 			sprite->changeAnimation(STAND_RIGHT);
 		}
 	}

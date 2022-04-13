@@ -35,6 +35,16 @@ void AudioManager::menuMusicStop()
 	}
 }
 
+void AudioManager::menuMusicSlowMode()
+{
+	menuMusic->setPlaybackSpeed(0.5f); 
+}
+
+void AudioManager::menuMusicNormalMode()
+{
+	menuMusic->setPlaybackSpeed(1.f); 
+}
+
 void AudioManager::gameMusicPlay()
 {
 	if (gameMusic->getIsPaused())
@@ -53,6 +63,16 @@ void AudioManager::gameMusicStop()
 		gameMusic->setIsPaused(paused);
 
 	}
+}
+
+void AudioManager::gameMusicSlowMode()
+{
+	gameMusic->setPlaybackSpeed(0.5f); 
+}
+
+void AudioManager::gameMusicNormalMode()
+{
+	gameMusic->setPlaybackSpeed(1.f); 
 }
 
 void AudioManager::deathSoundPlay()

@@ -48,6 +48,7 @@ public:
 
 	bool getKey(int key) const;
 	bool getSpecialKey(int key) const;
+	bool checkSlowMode(); 
 
 private:
 	bool bPlay;                       // Continue to play game?
@@ -60,6 +61,7 @@ private:
 									  // we can have access at any time
 	int actualScene;
 	AudioManager audioManager; 
+	bool slowMode; 
 
 };
 
