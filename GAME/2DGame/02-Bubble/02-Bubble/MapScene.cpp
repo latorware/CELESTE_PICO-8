@@ -261,8 +261,7 @@ void MapScene::update(int deltaTime) {
 				spritesClicats[0].second = currentTime;
 				audioManager->maduixaSoundPlay();
 				delete sprites[0];
-				textures[0].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
-				sprites[0] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram);
+				sprites[0] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[3], &texProgram);
 				sprites[0]->setNumberAnimations(1);
 				sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
 				sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(1.f / 16.f)));
@@ -314,8 +313,7 @@ void MapScene::update(int deltaTime) {
 				spritesClicats[0].second = currentTime;
 				audioManager->maduixaSoundPlay();
 				delete sprites[0];
-				textures[0].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
-				sprites[0] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram);
+				sprites[0] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[3], &texProgram);
 				sprites[0]->setNumberAnimations(1);
 				sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
 				sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(1.f / 16.f)));
@@ -918,8 +916,7 @@ void MapScene::update(int deltaTime) {
 						spritesClicats[1].second = currentTime;
 						audioManager->maduixaSoundPlay();
 						delete sprites[2];
-						textures[0].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
-						sprites[2] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram);
+						sprites[2] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[3], &texProgram);
 						sprites[2]->setNumberAnimations(1);
 						sprites[2]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
 						sprites[2]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(1.f / 16.f)));
@@ -969,8 +966,7 @@ void MapScene::update(int deltaTime) {
 				
 				audioManager->maduixaSoundPlay();
 				delete sprites[0];
-				textures[0].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
-				sprites[0] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[0], &texProgram);
+				sprites[0] = Sprite::createSprite(glm::ivec2(64, 32), glm::vec2(float(2.f / 16.f), float(1.f / 16.f)), &textures[3], &texProgram);
 				sprites[0]->setNumberAnimations(1);
 				sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(0.f / 16.f)));
 				sprites[0]->addKeyframe(0, glm::vec2(float(0.f / 16.f), float(1.f / 16.f)));
@@ -1905,6 +1901,14 @@ void MapScene::inicialitzaNivellActual()
 		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 		spritesClicats.emplace_back(false, 0);
 		spriteShouldBeRendered.push_back(true);
+
+
+		textures.emplace_back();
+		textures[3].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[3].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[3].setMinFilter(GL_NEAREST);
+		textures[3].setMagFilter(GL_NEAREST);
+		textures[3].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	}
 
 	else if (currentLevel == 4)
@@ -2174,6 +2178,15 @@ void MapScene::inicialitzaNivellActual()
 		sprites[19]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 
 
+
+		textures.emplace_back();
+		textures[3].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[3].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[3].setMinFilter(GL_NEAREST);
+		textures[3].setMagFilter(GL_NEAREST);
+		textures[3].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
+
+
 	}
 
 	else if (currentLevel == 5)
@@ -2268,6 +2281,14 @@ void MapScene::inicialitzaNivellActual()
 		sprites[7]->changeAnimation(0);
 		sprites[7]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
 		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+
+		textures.emplace_back();
+		textures[3].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[3].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[3].setMinFilter(GL_NEAREST);
+		textures[3].setMagFilter(GL_NEAREST);
+		textures[3].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	}
 
 	else if (currentLevel == 6)
@@ -2418,6 +2439,14 @@ void MapScene::inicialitzaNivellActual()
 		sprites[7]->changeAnimation(0);
 		sprites[7]->setPosition(glm::vec2(float(LETTERMETTERSX + SCREEN_X), float(METERSY + SCREEN_Y)));
 		sprites[7]->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+
+		textures.emplace_back();
+		textures[3].setWrapS(GL_CLAMP_TO_EDGE);
+		textures[3].setWrapT(GL_CLAMP_TO_EDGE);
+		textures[3].setMinFilter(GL_NEAREST);
+		textures[3].setMagFilter(GL_NEAREST);
+		textures[3].loadFromFile("images/numbers.png", TEXTURE_PIXEL_FORMAT_RGBA);
 
 	}
 

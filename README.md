@@ -45,7 +45,7 @@
 
 - <del>Tecla dash infinit. Juan </del>
 
-- Tecla velocitat joc. 
+- <del>Tecla velocitat joc. </del>
 
 - <del>Fer sprite maduixes no voladores. David</del>
 
