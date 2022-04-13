@@ -15,6 +15,8 @@ public:
 	void init();
 	void update(int deltaTime);
 	void render();
+	void setGris();
+	void treuGris();
 
 private:
 	void initShaders();

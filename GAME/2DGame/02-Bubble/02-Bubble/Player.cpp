@@ -320,7 +320,7 @@ void Player::update(int deltaTime, float currentTime)
 
 	if (fentTremolar.first)
 	{
-		cout << currentTime - fentTremolar.second << endl;
+		//cout << currentTime - fentTremolar.second << endl;
 		if ((currentTime - fentTremolar.second) >= DURACIOTREMOLAR)
 		{
 			displacement = glm::vec2(float(0.f), float(0.f));

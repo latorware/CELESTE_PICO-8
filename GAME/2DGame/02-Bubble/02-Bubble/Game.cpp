@@ -152,12 +152,20 @@ void Game::keyPressed(int key)
 			slowMode = false; 
 			audioManager.menuMusicNormalMode();
 			audioManager.gameMusicNormalMode();
+			MScene.treuGris();
+			credits.treuGris();
+			menu.treuGris();
+			guide.treuGris();
 		}
 		else
 		{
 			slowMode = true; 
 			audioManager.menuMusicSlowMode();
 			audioManager.gameMusicSlowMode();
+			credits.setGris();
+			menu.setGris();
+			guide.setGris();
+			MScene.setGris();
 		}
 	}
 

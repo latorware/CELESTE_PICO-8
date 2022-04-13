@@ -83,3 +83,15 @@ void Credits::initShaders()
 	vShader.free();
 	fShader.free();
 }
+
+void Credits::setGris()
+{
+	texProgram.use();
+	texProgram.setUniformInt("gris", 1);
+}
+
+void Credits::treuGris()
+{
+	texProgram.use();
+	texProgram.setUniformInt("gris", 0);
+}

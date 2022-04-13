@@ -23,6 +23,8 @@ public:
 	void comensaJoc(AudioManager* audioManagerr);
 	void canviaNivell(int level); 
 	bool jocAcabat(); 
+	void setGris(); 
+	void treuGris(); 
 
 
 private:
@@ -49,4 +51,5 @@ private:
 	AudioManager* audioManager; 
 	bool jocEnded; 
 	bool personatgeCaigut; 
+	bool slowMode; 
 };

@@ -145,3 +145,17 @@ int MainMenu::getOption()
 {
 	return actualPosition;
 }
+
+
+
+void MainMenu::setGris()
+{
+	texProgram.use();
+	texProgram.setUniformInt("gris", 1);
+}
+
+void MainMenu::treuGris()
+{
+	texProgram.use();
+	texProgram.setUniformInt("gris", 0);
+}

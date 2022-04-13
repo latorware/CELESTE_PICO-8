@@ -16,6 +16,8 @@ public:
 	void init();
 	void render();
 	void update(int deltaTime);
+	void setGris();
+	void treuGris();
 
 
 private:

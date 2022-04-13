@@ -118,6 +118,7 @@ MapScene::MapScene() {
 	map = NULL;
 	background = NULL;
 	player = new Player();
+	slowMode = false;
 }
 
 MapScene::~MapScene() {
@@ -1642,6 +1643,10 @@ void MapScene::comensaJoc(AudioManager* audioManagerr)
 	transicio.aLevel = 1; 
 	transicio.startTime = currentTime; 
 	transicio.canviTileMapFet = false; 
+	if (slowMode)
+	{
+		setGris();
+	}
 }
 
 void MapScene::canviaNivell(int level)
@@ -1678,6 +1683,20 @@ void MapScene::canviaNivell(int level)
 bool MapScene::jocAcabat()
 {
 	return jocEnded; 
+}
+
+void MapScene::setGris()
+{
+	texProgram.use();
+	texProgram.setUniformInt("gris", 1);
+	slowMode = true; 
+}
+
+void MapScene::treuGris()
+{
+	texProgram.use();
+	texProgram.setUniformInt("gris", 0);
+	slowMode = false; 
 }
 
 void MapScene::inicialitzaNivellActual()

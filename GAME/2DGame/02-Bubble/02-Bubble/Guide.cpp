@@ -74,3 +74,15 @@ void Guide::initShaders()
 	vShader.free();
 	fShader.free();
 }
+
+void Guide::setGris()
+{
+	texProgram.use();
+	texProgram.setUniformInt("gris", 1);
+}
+
+void Guide::treuGris()
+{
+	texProgram.use();
+	texProgram.setUniformInt("gris", 0);
+}

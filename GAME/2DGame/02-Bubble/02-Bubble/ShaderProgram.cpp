@@ -1,5 +1,6 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "ShaderProgram.h"
+#include <iostream>
 
 
 ShaderProgram::ShaderProgram()
@@ -96,5 +97,14 @@ void ShaderProgram::setUniformMatrix4f(const string &uniformName, glm::mat4 &mat
 
 	if(location != -1)
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(mat));
+}
+
+void ShaderProgram::setUniformInt(const string& uniformName, int v1)
+{
+	GLint location = glGetUniformLocation(programId, uniformName.c_str());
+	cout << location << endl; 
+	if (location != -1)
+		cout << uniformName << endl; 
+		glUniform1i(location, v1); 
 }
 

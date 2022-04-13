@@ -21,6 +21,8 @@ public:
 	void setOptionArrowUp();
 	void setOptionArrowDown();
 	int getOption();
+	void setGris();
+	void treuGris();
 
 
 private:
