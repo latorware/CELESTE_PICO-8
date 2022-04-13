@@ -1,0 +1,74 @@
+Integrants
+    - David Latorre
+    - Juan Cortés
+
+Funcionalitats
+    - Disposa d'una pantalla principal menú. 
+    - Des del menú es poden accedir a tres pantalles: 
+        - Game. 
+        - Instruccions. 
+        - Crèdits. 
+    - Game disposa de 10 pantalles, cada una és un nivell del joc. 
+    - Transicions entre cada nivell del joc: 
+        - Transició cap avall en cas que retrocedim el nivell. 
+        - Transició cap amunt en cas que avancem el nivell, o el superem. 
+    - So: 
+        - El joc disposa de música independent tant pel menú del joc com per quan s'està jugant. 
+        - Aquesta música es reprodueix més lent quan estem al mode de baixa velocitat. 
+        - Efectes de soroll: 
+            - Efecte de selecció en el menú. 
+            - Efecte en els canvis de nivell del joc. 
+            - Efecte en els jumps. 
+            - Efecte en el dash. 
+            - Efecte al morir. 
+            - Efecte al agafar una maduixa, agafar una clau. 
+    - Capa de background estàtica. 
+    - Capa de foreground amb neu en moviment en tot el joc. 
+    - Animacions: 
+        - Animacions de les maduixes al passar per elles. 
+        - Animacions de les maduixes voladores al passar per elles. 
+        - Animacions de moviment de les maduixes. 
+        - Animacions de moviment de les maduixes voladores. 
+        - Animacions dels trampolins al passar per ells. 
+        - Animacions dels globus. 
+        - Animacions dels cubs flotants al destruir-se, i reviure. 
+        - Animacio de moviment de la clau del nivell 5. 
+        - Animacio de vibracio de la càmara al iniciar nivell, morir, i al fer el dash. 
+        - Animacions de moviment del personatge: 
+            - Al moures. 
+            - Mirar cap a un cantó o altre. 
+            - Al fer dash (canvia el color del cabell)
+            - ...
+    - Cartell temporal a l'inici de cada nivell que indica els metres pujats de la muntanya. 
+    - Tots els nivells han estat principalment copiats del joc original, amb algunes modificacions. 
+    - Algunes característiques d'aquestes pantalles: 
+        - Contenten punxes que fan que el jugador mori. 
+        - Conten vegetacio (com plantes, flors...). 
+        - Contenen objectes que es mouen o desaparèixen (maduixes, clau, tresor, blocs flotants, trampolins, els globus...)
+    - Habilitats del personatge: 
+        - Es pot moure. 
+        - Pot saltar. 
+        - Pot fer DASH. 
+        - Pot fer CLIMB. 
+        - Reviu al morir-se. 
+    - Es pot canviar facilment de nivell amb les tecles del teclat. 
+    - Funcionalitats especials: 
+        - Capacitat de invulnerabilitat: No es mor al tocar les punxes. 
+        - Capacitat de reduir la velocitat del joc. 
+        - Capacitat de fer el DASH infinit, es recarrega de forma automàtica. 
+    - Al reduir la velocitat del joc, el joc es mostra en blanc i negre. 
+    - Contador de fps a la cantonada superior esquerre. 
+    - Si el personatge surt dels limits del mapa mort i reviu. 
+
+Instruccions
+        - Tecla enter per seleccionar alguna de les opcions del menu. 
+        - Tecla escape per tornar al menu. 
+        - Fletxes del teclat per moure's amb el personatge. 
+        - Tecla c per saltar amb el personatge. 
+        - Tecla x per fer dash. 
+        - Tecla d per ser invulnerable a les punxes. 
+        - Tecla s per reduir la velocitat del joc. 
+        - Telca d per fer el dash infinit. 
+        - Tecles numeriques del teclat per fer el canvi de nivells sense tenir que passar-se els nivells. 
+        
+ 
