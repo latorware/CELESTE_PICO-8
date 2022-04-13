@@ -111,6 +111,7 @@
 #define METERSY 240
 
 #define LIMITINFERIOR 480
+#define DURACIOTREMOLAR 500
 
 
 
@@ -173,26 +174,238 @@ void MapScene::update(int deltaTime) {
 		}
 		else
 		{
-			if (currentLevel == 1 && enPosicioPunxesLevel1())
+			if (currentLevel == 1 && enPosicioPunxesLevel1() && (!invulnerable))
 			{
-				if ((!player->encaraTremolant()) && (!personatgepunxat))
+				if ((!personatgepunxat))
 				{
+					//cout << "a" << endl;
 					audioManager->deathSoundPlay();
 					personatgepunxat = true;
+					punxatUltimaVegada = currentTime;
 					player->setTremolar(true);
 					player->update(deltaTime, currentTime);
 				}
-				else if ((player->encaraTremolant()) && (personatgepunxat))
+				else if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
 				{
+					//cout << "b" << endl;
 					player->update(deltaTime, currentTime);
 				}
-				else if ((!player->encaraTremolant()) && (personatgepunxat))
+				else
 				{
+					//cout << "c" << endl;
 					personatgepunxat = false;
 					canviaNivell(currentLevel);
 				}
 			}
-			
+
+			else if (currentLevel == 2 && enPosicioPunxesLevel2() && (!invulnerable))
+			{
+				if ((!personatgepunxat))
+				{
+					//cout << "a" << endl;
+					audioManager->deathSoundPlay();
+					personatgepunxat = true;
+					punxatUltimaVegada = currentTime;
+					player->setTremolar(true);
+					player->update(deltaTime, currentTime);
+				}
+				else if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
+				{
+					//cout << "b" << endl;
+					player->update(deltaTime, currentTime);
+				}
+				else
+				{
+					//cout << "c" << endl;
+					personatgepunxat = false;
+					canviaNivell(currentLevel);
+				}
+			}
+
+			else if (currentLevel == 3 && enPosicioPunxesLevel3() && (!invulnerable))
+			{
+				if ((!personatgepunxat))
+				{
+					//cout << "a" << endl;
+					audioManager->deathSoundPlay();
+					personatgepunxat = true;
+					punxatUltimaVegada = currentTime;
+					player->setTremolar(true);
+					player->update(deltaTime, currentTime);
+				}
+				else if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
+				{
+					//cout << "b" << endl;
+					player->update(deltaTime, currentTime);
+				}
+				else
+				{
+					//cout << "c" << endl;
+					personatgepunxat = false;
+					canviaNivell(currentLevel);
+				}
+			}
+
+
+			else if (currentLevel == 5 && enPosicioPunxesLevel5() && (!invulnerable))
+			{
+				if ((!personatgepunxat))
+				{
+					//cout << "a" << endl;
+					audioManager->deathSoundPlay();
+					personatgepunxat = true;
+					punxatUltimaVegada = currentTime;
+					player->setTremolar(true);
+					player->update(deltaTime, currentTime);
+				}
+				else if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
+				{
+					//cout << "b" << endl;
+					player->update(deltaTime, currentTime);
+				}
+				else
+				{
+					//cout << "c" << endl;
+					personatgepunxat = false;
+					canviaNivell(currentLevel);
+				}
+			}
+
+
+			else if (currentLevel == 6 && enPosicioPunxesLevel6() && (!invulnerable))
+			{
+				if ((!personatgepunxat))
+				{
+					//cout << "a" << endl;
+					audioManager->deathSoundPlay();
+					personatgepunxat = true;
+					punxatUltimaVegada = currentTime;
+					player->setTremolar(true);
+					player->update(deltaTime, currentTime);
+				}
+				else if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
+				{
+					//cout << "b" << endl;
+					player->update(deltaTime, currentTime);
+				}
+				else
+				{
+					//cout << "c" << endl;
+					personatgepunxat = false;
+					canviaNivell(currentLevel);
+				}
+			}
+
+			else if (currentLevel == 7 && enPosicioPunxesLevel7() && (!invulnerable))
+			{
+			if ((!personatgepunxat))
+			{
+				//cout << "a" << endl;
+				audioManager->deathSoundPlay();
+				personatgepunxat = true;
+				punxatUltimaVegada = currentTime;
+				player->setTremolar(true);
+				player->update(deltaTime, currentTime);
+			}
+			else if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
+			{
+				//cout << "b" << endl;
+				player->update(deltaTime, currentTime);
+			}
+			else
+			{
+				//cout << "c" << endl;
+				personatgepunxat = false;
+				canviaNivell(currentLevel);
+			}
+			}
+
+			else if (currentLevel == 8 && enPosicioPunxesLevel8() && (!invulnerable))
+			{
+			if ((!personatgepunxat))
+			{
+				//cout << "a" << endl;
+				audioManager->deathSoundPlay();
+				personatgepunxat = true;
+				punxatUltimaVegada = currentTime;
+				player->setTremolar(true);
+				player->update(deltaTime, currentTime);
+			}
+			else if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
+			{
+				//cout << "b" << endl;
+				player->update(deltaTime, currentTime);
+			}
+			else
+			{
+				//cout << "c" << endl;
+				personatgepunxat = false;
+				canviaNivell(currentLevel);
+			}
+			}
+
+			else if (currentLevel == 9 && enPosicioPunxesLevel9() && (!invulnerable))
+			{
+			if ((!personatgepunxat))
+			{
+				//cout << "a" << endl;
+				audioManager->deathSoundPlay();
+				personatgepunxat = true;
+				punxatUltimaVegada = currentTime; 
+				player->setTremolar(true);
+				player->update(deltaTime, currentTime);
+			}
+			else if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
+			{
+				//cout << "b" << endl;
+				player->update(deltaTime, currentTime);
+			}
+			else
+			{
+				//cout << "c" << endl;
+				personatgepunxat = false;
+				canviaNivell(currentLevel);
+			}
+			}
+
+			else if (currentLevel == 10 && enPosicioPunxesLevel10() && (!invulnerable))
+			{
+			if ((!personatgepunxat))
+			{
+				//cout << "a" << endl;
+				audioManager->deathSoundPlay();
+				personatgepunxat = true;
+				punxatUltimaVegada = currentTime;
+				player->setTremolar(true);
+				player->update(deltaTime, currentTime);
+			}
+			else if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
+			{
+				//cout << "b" << endl;
+				player->update(deltaTime, currentTime);
+			}
+			else
+			{
+				//cout << "c" << endl;
+				personatgepunxat = false;
+				canviaNivell(currentLevel);
+			}
+			}
+			else if (personatgepunxat && (!invulnerable))
+			{
+				if (((currentTime - punxatUltimaVegada) < DURACIOTREMOLAR) && personatgepunxat)
+					{
+					cout << "d" << endl;
+					player->update(deltaTime, currentTime);
+					}
+				else
+					{
+					cout << "e" << endl;
+					personatgepunxat = false;
+					canviaNivell(currentLevel);
+					}
+			}
+
 			else 
 			{
 				player->update(deltaTime, currentTime);
@@ -2804,22 +3017,75 @@ bool MapScene::enPosicioPunxesLevel1()
 
 bool MapScene::enPosicioPunxesLevel2()
 {
+	if (player->getPositionPlayer().y == 128)
+	{
+		if ((player->getPositionPlayer().x >= 193) && (player->getPositionPlayer().x <= 255))
+		{
+			return true;
+		}
+	}
+	else if (player->getPositionPlayer().y == 384)
+	{
+		if ((player->getPositionPlayer().x >= 256) && (player->getPositionPlayer().x <= 351))
+		{
+			return true;
+		}
+	}
+
+
 	return false;
 }
 
 bool MapScene::enPosicioPunxesLevel3()
 {
-	return false;
+	if (player->getPositionPlayer().y == 320)
+	{
+		if ((player->getPositionPlayer().x >= 197) && (player->getPositionPlayer().x <= 347))
+		{
+			return true;
+		}
+	}
+	else if (player->getPositionPlayer().y == 160)
+	{
+		if ((player->getPositionPlayer().x >= 224) && (player->getPositionPlayer().x <= 347))
+		{
+			return true;
+		}
+	}
+
+	return false; 
 }
 
 bool MapScene::enPosicioPunxesLevel5()
 {
-	return false;
+	if (player->getPositionPlayer().y == 160)
+	{
+		if ((player->getPositionPlayer().x >= 165) && (player->getPositionPlayer().x <= 251))
+		{
+			return true;
+		}
+	}
+	else if (player->getPositionPlayer().y == 96)
+	{
+		if ((player->getPositionPlayer().x >= 293) && (player->getPositionPlayer().x <= 383))
+		{
+			return true;
+		}
+	}
+	return false; 
 }
 
 bool MapScene::enPosicioPunxesLevel6()
 {
-	return false;
+	if (player->getPositionPlayer().y > 210 && player->getPositionPlayer().y < 224)
+	{
+		if ((player->getPositionPlayer().x >= 36) && (player->getPositionPlayer().x <= 152))
+		{
+			return true;
+		}
+	}
+	return false; 
+
 }
 
 bool MapScene::enPosicioPunxesLevel7()
@@ -2828,6 +3094,11 @@ bool MapScene::enPosicioPunxesLevel7()
 }
 
 bool MapScene::enPosicioPunxesLevel8()
+{
+	return false;
+}
+
+bool MapScene::enPosicioPunxesLevel9()
 {
 	return false;
 }

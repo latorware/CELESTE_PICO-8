@@ -65,4 +65,5 @@ private:
 	bool slowMode; 
 	bool invulnerable; 
 	bool personatgepunxat; 
+	float punxatUltimaVegada; 
 };
