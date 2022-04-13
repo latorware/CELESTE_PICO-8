@@ -142,17 +142,30 @@ void Player::update(int deltaTime, float currentTime)
 
 	if (climbEsquerreEnProces)
 	{
-		if (sprite->animation() != MOVE_LEFT && dashCarregat && !dashInfinit)
+
+
+		if ((posPlayer.x - VELOCITATPERSONATGE) < 0)
 		{
-			sprite->changeAnimation(MOVE_LEFT);
-		}
-		posPlayer.x -= VELOCITATPERSONATGE;
-		if (map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
-		{
-			posPlayer.x += VELOCITATPERSONATGE;
+			//No fer res
 			sprite->changeAnimation(STAND_LEFT);
+		}
+
+		else
+		{
+			if (sprite->animation() != MOVE_LEFT && dashCarregat && !dashInfinit)
+			{
+				sprite->changeAnimation(MOVE_LEFT);
+			}
+			posPlayer.x -= VELOCITATPERSONATGE;
+			if (map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
+			{
+				posPlayer.x += VELOCITATPERSONATGE;
+				sprite->changeAnimation(STAND_LEFT);
+
+			}
 
 		}
+
 	}
 	else if (climbDretEnProces)
 	{
@@ -169,16 +182,25 @@ void Player::update(int deltaTime, float currentTime)
 	}
 	else if (Game::instance().getSpecialKey(GLUT_KEY_LEFT))
 	{
-		if (sprite->animation() != MOVE_LEFT && dashCarregat && !dashInfinit)
-		{
-			sprite->changeAnimation(MOVE_LEFT);
-		}
-		posPlayer.x -= VELOCITATPERSONATGE;
-		if (map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
-		{
-			posPlayer.x += VELOCITATPERSONATGE;
-			sprite->changeAnimation(STAND_LEFT);
 
+		if ((posPlayer.x - VELOCITATPERSONATGE) < 0)
+		{
+			//No fer res
+			sprite->changeAnimation(STAND_LEFT);
+		}
+		else
+		{
+			if (sprite->animation() != MOVE_LEFT && dashCarregat && !dashInfinit)
+			{
+				sprite->changeAnimation(MOVE_LEFT);
+			}
+			posPlayer.x -= VELOCITATPERSONATGE;
+			if (map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
+			{
+				posPlayer.x += VELOCITATPERSONATGE;
+				sprite->changeAnimation(STAND_LEFT);
+
+			}
 		}
 	}
 	else if (Game::instance().getSpecialKey(GLUT_KEY_RIGHT))
