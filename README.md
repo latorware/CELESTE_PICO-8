@@ -43,7 +43,7 @@
 
 - Sprite punxes matar. Juan
 
-- Tecla dash infinit. Juan
+- <del>Tecla dash infinit. Juan </del>
 
 - Tecla velocitat joc. 
 
